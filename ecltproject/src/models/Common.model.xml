@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Model>
+  <DataType name="ECCase">
+    <Property name="matchType">com.eclt.entity.EcCase</Property>
+    <PropertyDef name="caseId">
+      <Property name="dataType">int</Property>
+      <Property name="label">案例id</Property>
+    </PropertyDef>
+    <PropertyDef name="caseName">
+      <Property/>
+      <Property name="label">案例名称</Property>
+    </PropertyDef>
+    <PropertyDef name="caseInfo">
+      <Property/>
+      <Property name="label">案例信息</Property>
+    </PropertyDef>
+    <PropertyDef name="caseImg">
+      <Property/>
+      <Property name="label">案例图片</Property>
+    </PropertyDef>
+    <PropertyDef name="cPreset">
+      <Property/>
+      <Property name="label">案例预设字段</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="ECNcp">
+    <Property name="matchType">com.eclt.entity.EcNcp</Property>
+    <PropertyDef name="ncpId">
+      <Property name="dataType">int</Property>
+      <Property name="label">认证id</Property>
+    </PropertyDef>
+    <PropertyDef name="ncpName">
+      <Property/>
+      <Property name="label">认证名称</Property>
+    </PropertyDef>
+    <PropertyDef name="ncpImg">
+      <Property/>
+      <Property name="label">认证图片</Property>
+    </PropertyDef>
+    <PropertyDef name="ncpSort">
+      <Property/>
+      <Property name="label">认证分类</Property>
+    </PropertyDef>
+    <PropertyDef name="nPreset">
+      <Property/>
+      <Property name="label">认证预设字段</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="ECProduct">
+    <Property name="matchType">com.eclt.entity.EcProduct</Property>
+    <PropertyDef name="productId">
+      <Property name="dataType">int</Property>
+      <Property name="label">产品id</Property>
+    </PropertyDef>
+    <PropertyDef name="productName">
+      <Property></Property>
+      <Property name="label">产品名称</Property>
+    </PropertyDef>
+    <PropertyDef name="productInfo">
+      <Property></Property>
+      <Property name="label">产品信息</Property>
+    </PropertyDef>
+    <PropertyDef name="productImg">
+      <Property></Property>
+      <Property name="label">产品图片</Property>
+    </PropertyDef>
+    <PropertyDef name="pPreset">
+      <Property></Property>
+      <Property name="label">产品预设字段</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="ECUser">
+    <Property name="matchType">com.eclt.entity.EcUser</Property>
+    <PropertyDef name="userId">
+      <Property name="dataType">int</Property>
+      <Property name="label">管理员id</Property>
+    </PropertyDef>
+    <PropertyDef name="username">
+      <Property></Property>
+      <Property name="label">管理员名称</Property>
+    </PropertyDef>
+    <PropertyDef name="password">
+      <Property></Property>
+      <Property name="label">密码</Property>
+    </PropertyDef>
+    <PropertyDef name="createTime">
+      <Property name="dataType">Date</Property>
+      <Property name="label">创建时间</Property>
+    </PropertyDef>
+    <PropertyDef name="updateTime">
+      <Property name="dataType">Date</Property>
+      <Property name="label">修改时间</Property>
+    </PropertyDef>
+    <PropertyDef name="uPreset">
+      <Property></Property>
+      <Property name="label">管理员预设字段</Property>
+    </PropertyDef>
+  </DataType>
+</Model>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model/>
+  <View>
+    <Dialog id="dialogLogin" layout="vbox align:center">
+      <Property name="caption">系统登录</Property>
+      <Property name="height">250</Property>
+      <Property name="width">450</Property>
+      <Property name="closeable">false</Property>
+      <Property name="visible">true</Property>
+      <Property name="resizeable">false</Property>
+      <Buttons>
+        <Button id="buttonLogin">
+          <Property name="caption">登录</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -100px -20px</Property>
+          <Property name="action">ajaxactionLogin</Property>
+        </Button>
+        <Button id="buttonCancel">
+          <ClientEvent name="onClick" signature="self,arg,autoformLogin">autoformLogin.set(&quot;entity&quot;,{});</ClientEvent>
+          <Property name="caption">重置</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -40px -0px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <Label layoutConstraint="padding:10">
+          <Property name="text">艾克森特后台登陆系统</Property>
+          <Property name="style">
+            <Property name="font-size">22px</Property>
+            <Property name="text-align">center</Property>
+          </Property>
+        </Label>
+        <AutoForm id="autoformLogin">
+          <Property name="cols">*</Property>
+          <Property name="labelSeparator">:</Property>
+          <Property name="width">250</Property>
+          <Property name="createPrivateDataSet">true</Property>
+          <AutoFormElement>
+            <ClientEvent name="onReady">//获取当前控件的dom对象&#xD;
+var dom = self.getDom();&#xD;
+var inputs = dom.getElementsByTagName(&quot;INPUT&quot;);&#xD;
+//获取用户名输入框&#xD;
+var inputUsername = inputs[0];&#xD;
+window.setTimeout(function(){&#xD;
+    //对其设置焦点&#xD;
+    inputUsername.focus();&#xD;
+},500);</ClientEvent>
+            <Property name="label">用户名</Property>
+            <Property name="name">username</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <ClientEvent name="onKeyDown" signature="self,arg,ajaxactionLogin">//获取按键对应的keyCode&#xD;
+var keyCode = arg.keyCode;&#xD;
+//如果是回车键则直接执行Action操作&#xD;
+if(13 == keyCode){&#xD;
+    ajaxactionLogin.execute();&#xD;
+}</ClientEvent>
+            <Property name="name">password</Property>
+            <Property name="label">密码</Property>
+            <Property name="editorType">PasswordEditor</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <AjaxAction id="ajaxactionLogin">
+      <ClientEvent name="beforeExecute" signature="self,arg,autoformLogin">//获取表单绑定的实体对象&#xD;
+var entity = autoformLogin.get(&quot;entity&quot;);&#xD;
+//获取用户名&#xD;
+var username = entity.get(&quot;username&quot;);&#xD;
+//获取密码&#xD;
+var password = entity.get(&quot;password&quot;);&#xD;
+//判断是否输入用户名密码，是则将对象作为参数传递到后台，否则提示用户&#xD;
+if(username &amp;&amp; password){&#xD;
+    self.set(&quot;parameter&quot;,entity);&#xD;
+}else{&#xD;
+    dorado.MessageBox.alert(&quot;用户名密码不允许为空&quot;);&#xD;
+    arg.processDefault=false;&#xD;
+}</ClientEvent>
+      <ClientEvent name="onSuccess">//获取返回值&#xD;
+var result = self.get(&quot;returnValue&quot;);&#xD;
+//如果用户名密码正确，则跳转到返回值中的url&#xD;
+if(result.result){&#xD;
+    location.href = result.url;&#xD;
+}else{&#xD;
+//否则弹出返回值中的异常消息提示&#xD;
+    dorado.MessageBox.alert(result.errormsg,{title:&quot;提示&quot;,icon:&quot;WARNING&quot;});&#xD;
+}</ClientEvent>
+      <Property name="service">ecUserService#doLogin</Property>
+    </AjaxAction>
+  </View>
+</ViewConfig>

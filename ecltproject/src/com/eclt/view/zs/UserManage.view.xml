@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="ECUser" parent="global:ECUser">
+      <PropertyDef name="userId">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="username">
+        <Property></Property>
+        <Property name="label">管理员姓名</Property>
+        <Validator name="validator1" type="required"/>
+        <Validator name="validator2" type="length">
+          <Property name="maxLength">25</Property>
+          <Property name="minLength">1</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="password">
+        <Property></Property>
+        <Property name="label">密码</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="createTime">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建时间</Property>
+      </PropertyDef>
+      <PropertyDef name="updateTime">
+        <Property name="dataType">Date</Property>
+        <Property name="label">修改时间</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <DataSet id="datasetUser">
+      <Property name="dataType">[ECUser]</Property>
+      <Property name="pageSize">10</Property>
+      <Property name="readOnly">true</Property>
+      <Property name="dataProvider">ecUserService#queryForCondition</Property>
+    </DataSet>
+    <AutoForm id="autoformCondition">
+      <Property name="cols">*</Property>
+      <Property name="createPrivateDataSet">true</Property>
+      <Property name="labelSeparator">:</Property>
+      <AutoFormElement>
+        <Property name="name">userId</Property>
+        <Property name="label">管理员id</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">username</Property>
+        <Property name="label">管理员名称</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">password</Property>
+        <Property name="label">密码</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">createTime</Property>
+        <Property name="label">创建时间</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">updateTime</Property>
+        <Property name="label">修改时间</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+    </AutoForm>
+    <ToolBar>
+      <ToolBarButton id="buttonQuery">
+        <ClientEvent name="onClick" signature="self,arg,autoformCondition,datasetUser">//获取autoformCondition绑定的实体对象&#xD;
+var entity = autoformCondition.get(&quot;entity&quot;);&#xD;
+//将实体对象作为参数传入，并异步刷新&#xD;
+datasetUser.set(&quot;parameter&quot;,entity).flushAsync();</ClientEvent>
+        <Property name="caption">查询</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -20px -40px</Property>
+      </ToolBarButton>
+      <DataPilot id="datapilotUser">
+        <Property name="dataSet">datasetUser</Property>
+        <Property name="itemCodes">pages,pageSize,+,-,x</Property>
+      </DataPilot>
+      <ToolBarButton id="buttonEdit">
+        <ClientEvent name="onClick" signature="self,arg,datasetUser">//设置datasetEmployee的只读属性为false，使绑定的DataGrid和AutoForm可以编辑&#xD;
+datasetUser.set(&quot;readOnly&quot;,false);</ClientEvent>
+        <Property name="caption">编辑</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -200px -0px</Property>
+      </ToolBarButton>
+      <ToolBarButton id="buttonSave">
+        <ClientEvent name="onClick" signature="self,arg,updateactionSave,datasetUser">//通过js执行updateactionSave，并在UpdateAction执行成功后调用回调函数将datasetEmployee设置为只读&#xD;
+updateactionSave.execute(function(){&#xD;
+    datasetUser.set(&quot;readOnly&quot;,true);&#xD;
+});</ClientEvent>
+        <Property name="caption">保存</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
+      </ToolBarButton>
+    </ToolBar>
+    <DataGrid id="datagridUser">
+      <Property name="dataSet">datasetUser</Property>
+      <Property name="height">300</Property>
+      <DataColumn name="userId">
+        <Property name="property">userId</Property>
+        <Property name="align">center</Property>
+        <Property name="width">100</Property>
+      </DataColumn>
+      <DataColumn name="username">
+        <Property name="property">username</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="password">
+        <Property name="property">password</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="createTime">
+        <Property name="property">createTime</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="updateTime">
+        <Property name="property">updateTime</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+    </DataGrid>
+    <AutoForm id="autoformUser">
+      <Property name="dataSet">datasetUser</Property>
+      <Property name="labelSeparator">:</Property>
+      <Property name="cols">*,*,*,*,*</Property>
+      <AutoFormElement layoutConstraint="align:center">
+        <Property name="name">userId</Property>
+        <Property name="property">userId</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement layoutConstraint="align:center">
+        <Property name="name">username</Property>
+        <Property name="property">username</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement layoutConstraint="align:center">
+        <Property name="name">password</Property>
+        <Property name="property">password</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement layoutConstraint="align:center">
+        <Property name="name">createTime</Property>
+        <Property name="property">createTime</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement layoutConstraint="align:center">
+        <Property name="name">updateTime</Property>
+        <Property name="property">updateTime</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+    </AutoForm>
+    <UpdateAction id="updateactionSave">
+      <Property name="dataResolver">ecUserService#saveAll</Property>
+      <Property name="executingMessage">正在保存...</Property>
+      <Property name="successMessage">保存成功！</Property>
+      <Property name="hotkey">ctrl+s</Property>
+      <UpdateItem>
+        <Property name="dataSet">datasetUser</Property>
+      </UpdateItem>
+    </UpdateAction>
+  </View>
+</ViewConfig>

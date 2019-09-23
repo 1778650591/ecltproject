@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="ECNcp" parent="global:ECNcp">
+      <PropertyDef name="ncpId">
+        <Property name="dataType">int</Property>
+        <Property name="label">认证id</Property>
+      </PropertyDef>
+      <PropertyDef name="ncpName">
+        <Property/>
+        <Property name="label">认证名称</Property>
+        <Validator name="validator1" type="required"/>
+      </PropertyDef>
+      <PropertyDef name="ncpImg">
+        <Property/>
+        <Property name="label">认证图片</Property>
+      </PropertyDef>
+      <PropertyDef name="ncpSort">
+        <Property/>
+        <Property name="label">认证分类</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <DataSet id="datasetNcp">
+      <Property name="pageSize">5</Property>
+      <Property name="readOnly">true</Property>
+      <Property name="dataProvider">ecNcpService#queryForCondition</Property>
+      <Property name="dataType">[ECNcp]</Property>
+    </DataSet>
+    <AutoForm id="autoformCondition">
+      <Property name="cols">*</Property>
+      <Property name="createPrivateDataSet">true</Property>
+      <Property name="labelSeparator">:</Property>
+      <AutoFormElement>
+        <Property name="name">ncpName</Property>
+        <Property name="label">认证名称</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">ncpImg</Property>
+        <Property name="label">认证图片</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">ncpSort</Property>
+        <Property name="label">认证分类</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+    </AutoForm>
+    <ToolBar>
+      <ToolBarButton id="buttonQuery">
+        <ClientEvent name="onClick" signature="self,arg,autoformCondition,datasetNcp">//获取autoformCondition绑定的实体对象&#xD;
+var entity = autoformCondition.get(&quot;entity&quot;);&#xD;
+//将实体对象作为参数传入，并异步刷新&#xD;
+datasetNcp.set(&quot;parameter&quot;,entity).flushAsync();</ClientEvent>
+        <Property name="caption">查询</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -20px -40px</Property>
+      </ToolBarButton>
+      <DataPilot id="datapilotNcp">
+        <Property name="dataSet">datasetNcp</Property>
+        <Property name="itemCodes">pages,pageSize,+,-,x</Property>
+      </DataPilot>
+      <ToolBarButton id="buttonEdit">
+        <ClientEvent name="onClick" signature="self,arg,datasetNcp">datasetNcp.set(&quot;readOnly&quot;,false);&#xD;
+</ClientEvent>
+        <Property name="caption">编辑</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -200px -0px</Property>
+      </ToolBarButton>
+      <ToolBarButton id="buttonSave">
+        <ClientEvent name="onClick" signature="self,arg,datasetNcp,updateactionSave">updateactionSave.execute(function(){&#xD;
+	datasetNcp.set(&quot;readOnly&quot;,true);&#xD;
+});&#xD;
+&#xD;
+</ClientEvent>
+        <Property name="caption">保存</Property>
+        <Property name="action">updateactionSave</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
+      </ToolBarButton>
+    </ToolBar>
+    <DataGrid id="datagridNcp">
+      <Property name="dataSet">datasetNcp</Property>
+      <Property name="height">300</Property>
+      <DataColumn name="ncpName">
+        <Property name="property">ncpName</Property>
+        <Property name="align">center</Property>
+        <Property name="width">300</Property>
+      </DataColumn>
+      <DataColumn name="ncpImg">
+        <Property name="property">ncpImg</Property>
+      </DataColumn>
+      <DataColumn name="ncpSort">
+        <Property name="property">ncpSort</Property>
+      </DataColumn>
+    </DataGrid>
+    <AutoForm id="autoformNcp">
+      <Property name="cols">*,*,*</Property>
+      <Property name="dataSet">datasetNcp</Property>
+      <Property name="labelSeparator">:</Property>
+      <AutoFormElement>
+        <Property name="name">ncpName</Property>
+        <Property name="property">ncpName</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">ncpImg</Property>
+        <Property name="property">ncpImg</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">ncpSort</Property>
+        <Property name="property">ncpSort</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+    </AutoForm>
+    <UpdateAction id="updateactionSave">
+      <Property name="successMessage">保存成功！</Property>
+      <Property name="executingMessage">正在保存。。。</Property>
+      <Property name="dataResolver">ecNcpService#saveAll</Property>
+      <Property name="hotkey">ctrl+s</Property>
+      <UpdateItem>
+        <Property name="dataSet">datasetNcp</Property>
+      </UpdateItem>
+    </UpdateAction>
+  </View>
+</ViewConfig>

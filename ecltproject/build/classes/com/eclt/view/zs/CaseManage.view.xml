@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="ECCase" parent="global:ECCase">
+      <PropertyDef name="caseId">
+        <Property name="dataType">int</Property>
+        <Property name="label">案例id</Property>
+      </PropertyDef>
+      <PropertyDef name="caseName">
+        <Property></Property>
+        <Property name="label">案例名称</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">25</Property>
+          <Property name="minLength">1</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="caseInfo">
+        <Property></Property>
+        <Property name="label">案例信息</Property>
+      </PropertyDef>
+      <PropertyDef name="caseImg">
+        <Property></Property>
+        <Property name="label">案例图片</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <DataSet id="datasetCase">
+      <Property name="dataType">[ECCase]</Property>
+      <Property name="pageSize">5</Property>
+      <Property name="readOnly">true</Property>
+      <Property name="dataProvider">ecCaseService#queryForCondition</Property>
+    </DataSet>
+    <AutoForm id="autoformCondition">
+      <Property name="createPrivateDataSet">true</Property>
+      <Property name="labelSeparator">:</Property>
+      <Property name="cols">*</Property>
+      <AutoFormElement>
+        <Property name="name">caseName</Property>
+        <Property name="label">案例名称</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="label">案例详情</Property>
+        <Property name="name">caseInfo</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">caseImg</Property>
+        <Property name="label">案例图片</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+    </AutoForm>
+    <ToolBar>
+      <ToolBarButton id="buttonQuery">
+        <ClientEvent name="onClick" signature="self,arg,autoformCondition,datasetCase">//获取autoformCondition绑定的实体对象&#xD;
+var entity = autoformCondition.get(&quot;entity&quot;);&#xD;
+//将实体对象作为参数传入，并异步刷新&#xD;
+datasetCase.set(&quot;parameter&quot;,entity).flushAsync();</ClientEvent>
+        <Property name="caption">查询</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -20px -40px</Property>
+      </ToolBarButton>
+      <DataPilot id="datapilotCase">
+        <Property name="dataSet">datasetCase</Property>
+        <Property name="itemCodes">pages,pageSize,+,-,x</Property>
+      </DataPilot>
+      <ToolBarButton id="buttonEdit">
+        <ClientEvent name="onClick" signature="self,arg,datasetCase">datasetCase.set(&quot;readOnly&quot;,false);&#xD;
+</ClientEvent>
+        <Property name="caption">编辑</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -200px -0px</Property>
+      </ToolBarButton>
+      <ToolBarButton id="buttonSave">
+        <ClientEvent name="onClick" signature="self,arg,updateactionSave,datasetCase">updateactionSave.execute(function(){&#xD;
+    datasetCase.set(&quot;readOnly&quot;,true);&#xD;
+});</ClientEvent>
+        <Property name="caption">保存</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
+        <Property name="action">updateactionSave</Property>
+      </ToolBarButton>
+    </ToolBar>
+    <DataGrid id="datagridCase">
+      <Property name="dataSet">datasetCase</Property>
+      <Property name="height">300</Property>
+      <DataColumn name="caseName">
+        <Property name="property">caseName</Property>
+        <Property name="width">200</Property>
+        <Property name="align">center</Property>
+      </DataColumn>
+      <DataColumn name="caseInfo">
+        <Property name="property">caseInfo</Property>
+      </DataColumn>
+      <DataColumn name="caseImg">
+        <Property name="property">caseImg</Property>
+      </DataColumn>
+    </DataGrid>
+    <AutoForm id="autoformCase">
+      <Property name="cols">*,*,*</Property>
+      <Property name="dataSet">datasetCase</Property>
+      <Property name="labelSeparator">:</Property>
+      <AutoFormElement>
+        <Property name="name">caseName</Property>
+        <Property name="property">caseName</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">caseInfo</Property>
+        <Property name="property">caseInfo</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">caseImg</Property>
+        <Property name="property">caseImg</Property>
+        <Property name="width">250</Property>
+        <Editor/>
+      </AutoFormElement>
+    </AutoForm>
+    <UpdateAction id="updateactionSave">
+      <Property name="executingMessage">正在保存...</Property>
+      <Property name="successMessage">保存成功！</Property>
+      <Property name="hotkey">ctrl+s</Property>
+      <Property name="dataResolver">ecCaseService#saveAll</Property>
+      <UpdateItem>
+        <Property name="dataSet">datasetCase</Property>
+      </UpdateItem>
+    </UpdateAction>
+  </View>
+</ViewConfig>

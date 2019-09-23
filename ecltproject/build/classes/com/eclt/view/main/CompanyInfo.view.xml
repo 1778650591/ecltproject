@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model/>
+  <View>
+    <Label id="lableCompanyInfo">
+      <Property name="text">公司名称：埃克森特科技发展有限公司&#xD;
+公司地址：北京市海淀区清华东路17-2号&#xD;
+邮政编码：100083&#xD;
+    传真   ：010-62397466、62397481 -8008&#xD;
+联系方式：62397466、62397481---8006&#xD;
+    手机   ：13911801866&#xD;
+业务合作：liuxiao@itexcel&#xD;
+网站备案号：110108007166号&#xD;
+企业邮箱：@eclt.com</Property>
+    </Label>
+  </View>
+</ViewConfig>
