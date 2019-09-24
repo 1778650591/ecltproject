@@ -96,7 +96,28 @@ datasetCase.set(&quot;parameter&quot;,entity).flushAsync();</ClientEvent>
         <Property name="property">caseInfo</Property>
       </DataColumn>
       <DataColumn name="caseImg">
+        <ClientEvent name="onRenderCell">if(arg.data.get(&quot;caseImg&quot;)){&#xD;
+    $(arg.dom).empty().xCreate(&#xD;
+    {&#xD;
+        tagName : &quot;IMG&quot;,&#xD;
+        src : $url(&quot;>images/&quot;+ arg.data.get(&quot;caseImg&quot;)),&#xD;
+        style : &quot;width: 20px; height: 20px; margin: 2px&quot;&#xD;
+    });&#xD;
+    //初始化Tip控件，在控件中显示图片&#xD;
+    dorado.TipManager.initTip(arg.dom.parentNode, {&#xD;
+        content : {&#xD;
+            tagName : &quot;IMG&quot;,&#xD;
+            src : $url(&quot;>images/&quot;+ arg.data.get(&quot;caseImg&quot;)),&#xD;
+            style : &quot;width: 128px; height: 128px; margin: 8px&quot;&#xD;
+        },&#xD;
+        arrowDirection : &quot;top&quot;,&#xD;
+        arrowAlign : &quot;left&quot;&#xD;
+    });    &#xD;
+}</ClientEvent>
         <Property name="property">caseImg</Property>
+        <Property name="caption">照片</Property>
+        <Property name="align">center</Property>
+        <Property name="width">150</Property>
       </DataColumn>
     </DataGrid>
     <AutoForm id="autoformCase">
