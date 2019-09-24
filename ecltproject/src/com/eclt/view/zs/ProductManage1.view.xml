@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="ECProduct" parent="global:ECProduct">
+      <PropertyDef name="productId">
+        <Property name="label">产品id</Property>
+      </PropertyDef>
+      <PropertyDef name="productName">
+        <Property name="label">产品名称</Property>
+      </PropertyDef>
+      <PropertyDef name="productInfo">
+        <Property name="label">产品信息</Property>
+      </PropertyDef>
+      <PropertyDef name="productImg">
+        <Property name="label">产品图片</Property>
+      </PropertyDef>
+      <Reference name="ecProductSet">
+        <Property name="dataType">[SELF]</Property>
+        <Property name="dataProvider">ecProductService#getProductByParentId</Property>
+        <Property name="parameter">$${this.productId}</Property>
+      </Reference>
+      <Reference name="productSet">
+        <Property name="dataType">[EcProduct]</Property>
+        <Property name="parameter">$${this.productId}</Property>
+        <Property name="pageSize">5</Property>
+        <Property name="dataProvider">ecProductService#getSubProduct</Property>
+      </Reference>
+    </DataType>
+    <DataType name="EcProduct" parent="global:ECProduct">
+      <PropertyDef name="productName"/>
+      <PropertyDef name="productInfo"/>
+      <PropertyDef name="productImg"/>
+    </DataType>
+  </Model>
+  <View>
+    <ClientEvent name="onReady">view.get(&quot;^add&quot;).addListener(&quot;onClick&quot;, function(self,arg,datatreeProduct){&#xD;
+    var currentNode = datatreeProduct.get(&quot;currentNode&quot;);&#xD;
+    if (!currentNode) {&#xD;
+        throw new dorado.Exception(&quot;请先点中一个树节点！&quot;);&#xD;
+    }&#xD;
+     &#xD;
+    var currentEntity = currentNode.get(&quot;data&quot;);&#xD;
+    currentEntity.createBrother({&#xD;
+        productName : &quot;&lt;产品名称>&quot;&#xD;
+    });&#xD;
+});&#xD;
+view.get(&quot;^addChild&quot;).addListener(&quot;onClick&quot;, function(self,arg,datatreeProduct){&#xD;
+    var currentNode = datatreeProduct.get(&quot;currentNode&quot;);&#xD;
+    if (!currentNode) {&#xD;
+        throw new dorado.Exception(&quot;请先点中一个树节点！&quot;);&#xD;
+    }&#xD;
+     &#xD;
+    var currentEntity = currentNode.get(&quot;data&quot;);&#xD;
+    currentNode.expandAsync(function() {&#xD;
+        currentEntity.createChild(&quot;ecProductSet&quot;, {&#xD;
+            productName : &quot;&lt;产品名称>&quot;&#xD;
+        });&#xD;
+    });&#xD;
+});&#xD;
+view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,datatreeProduct,updateactionSave){&#xD;
+    var currentEntity = datatreeProduct.get(&quot;currentEntity&quot;);&#xD;
+    if (!currentEntity) {&#xD;
+        throw new dorado.Exception(&quot;请先点中一个树节点！&quot;);&#xD;
+    }&#xD;
+    currentEntity.remove();&#xD;
+    updateactionSave.execute();&#xD;
+});</ClientEvent>
+    <DataSet id="dataProduct">
+      <Property name="dataProvider">ecProductService#getTopProduct</Property>
+      <Property name="dataType">[ECProduct]</Property>
+    </DataSet>
+    <SplitPanel>
+      <Property name="position">300</Property>
+      <MainControl>
+        <Container>
+          <Container layout="hbox">
+            <Button id="buttonAdd">
+              <Property name="caption">添加同级节点</Property>
+              <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+              <Property name="tags">add</Property>
+            </Button>
+            <Button id="buttonAddChild">
+              <Property name="caption">添加下级节点</Property>
+              <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+              <Property name="tags">addChild</Property>
+            </Button>
+            <Button id="buttonDel">
+              <Property name="caption">删除</Property>
+              <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+              <Property name="tags">del</Property>
+            </Button>
+            <Button id="buttonSave">
+              <ClientEvent name="onClick" signature="self,arg,autoformProduct">autoformProduct.set(&quot;readOnly&quot;,true);&#xD;
+</ClientEvent>
+              <Property name="caption">保存</Property>
+              <Property name="icon">url(>skin>common/icons.gif) -160px -20px</Property>
+              <Property name="action">updateactionSave</Property>
+            </Button>
+            <Button id="buttonEdit">
+              <ClientEvent name="onClick" signature="self,arg,autoformProduct">autoformProduct.set(&quot;readOnly&quot;,false);&#xD;
+</ClientEvent>
+              <Property name="caption">编辑</Property>
+              <Property name="icon">url(>skin>common/icons.gif) -60px -20px</Property>
+            </Button>
+          </Container>
+          <FieldSet>
+            <Property name="caption">产品信息</Property>
+            <Property name="height">170</Property>
+            <Buttons/>
+            <Children>
+              <AutoForm id="autoformProduct">
+                <Property name="dataPath">!CURRENT_PRODUCT</Property>
+                <Property name="labelSeparator">:</Property>
+                <Property name="dataSet">dataProduct</Property>
+                <Property name="cols">*</Property>
+                <Property name="readOnly">true</Property>
+                <AutoFormElement>
+                  <Property name="name">productName</Property>
+                  <Property name="width">350</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">productInfo</Property>
+                  <Property name="width">350</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">productImg</Property>
+                  <Property name="width">350</Property>
+                  <Property name="property">productImg</Property>
+                  <Editor/>
+                </AutoFormElement>
+              </AutoForm>
+            </Children>
+          </FieldSet>
+          <DataPilot id="datapilotProduct">
+            <Property name="dataSet">dataProduct</Property>
+            <Property name="itemCodes">pages,pageSize,+,-,x</Property>
+            <Property name="dataPath">!CURRENT_PRODUCT.productSet</Property>
+          </DataPilot>
+        </Container>
+      </MainControl>
+      <SideControl>
+        <DataTree id="datatreeProduct">
+          <ClientEvent name="onContextMenu" signature="self,arg,menuOper">menuOper.show({&#xD;
+     position:{&#xD;
+         left:arg.event.pageX,&#xD;
+         top:arg.event.pageY&#xD;
+     }&#xD;
+});</ClientEvent>
+          <Property name="dataSet">dataProduct</Property>
+          <Property name="currentNodeDataPath">CURRENT_PRODUCT</Property>
+          <BindingConfigs>
+            <BindingConfig>
+              <Property name="labelProperty">productName</Property>
+              <Property name="name">product</Property>
+              <Property name="recursive">true</Property>
+              <Property name="childrenProperty">ecProductSet</Property>
+            </BindingConfig>
+          </BindingConfigs>
+        </DataTree>
+      </SideControl>
+    </SplitPanel>
+    <Menu id="menuOper">
+      <MenuItem>
+        <Property name="name">menuitemAdd</Property>
+        <Property name="caption">添加同级节点</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+        <Property name="tags">add</Property>
+      </MenuItem>
+      <MenuItem>
+        <Property name="name">menuitemAddChild</Property>
+        <Property name="caption">添加下级节点</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+        <Property name="tags">addChild</Property>
+      </MenuItem>
+      <MenuItem>
+        <Property name="name">menuitemDel</Property>
+        <Property name="caption">删除当前节点</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+        <Property name="tags">del</Property>
+      </MenuItem>
+    </Menu>
+    <UpdateAction id="updateactionSave">
+      <Property name="dataResolver">ecProductService#saveAll</Property>
+      <Property name="executingMessage">正在保存...</Property>
+      <Property name="successMessage">保存成功！</Property>
+      <Property name="hotkey">ctrl+s</Property>
+      <UpdateItem>
+        <Property name="dataSet">dataProduct</Property>
+      </UpdateItem>
+    </UpdateAction>
+  </View>
+</ViewConfig>

@@ -9,16 +9,16 @@
         <Property name="label">认证id</Property>
       </PropertyDef>
       <PropertyDef name="ncpName">
-        <Property/>
+        <Property></Property>
         <Property name="label">认证名称</Property>
         <Validator name="validator1" type="required"/>
       </PropertyDef>
       <PropertyDef name="ncpImg">
-        <Property/>
+        <Property></Property>
         <Property name="label">认证图片</Property>
       </PropertyDef>
       <PropertyDef name="ncpSort">
-        <Property/>
+        <Property></Property>
         <Property name="label">认证分类</Property>
       </PropertyDef>
     </DataType>
@@ -91,11 +91,33 @@ datasetNcp.set(&quot;parameter&quot;,entity).flushAsync();</ClientEvent>
         <Property name="align">center</Property>
         <Property name="width">300</Property>
       </DataColumn>
-      <DataColumn name="ncpImg">
-        <Property name="property">ncpImg</Property>
-      </DataColumn>
       <DataColumn name="ncpSort">
         <Property name="property">ncpSort</Property>
+      </DataColumn>
+      <DataColumn name="ncpImg">
+        <ClientEvent name="onRenderCell">&#xD;
+if(arg.data.get(&quot;ncpImg&quot;)){&#xD;
+    $(arg.dom).empty().xCreate(&#xD;
+    {&#xD;
+        tagName : &quot;IMG&quot;,&#xD;
+        src : $url(&quot;>images/&quot;+ arg.data.get(&quot;ncpImg&quot;)),&#xD;
+        style : &quot;width: 20px; height: 20px; margin: 2px&quot;&#xD;
+    });&#xD;
+    //初始化Tip控件，在控件中显示图片&#xD;
+    dorado.TipManager.initTip(arg.dom.parentNode, {&#xD;
+        content : {&#xD;
+            tagName : &quot;IMG&quot;,&#xD;
+            src : $url(&quot;>images/&quot;+ arg.data.get(&quot;ncpImg&quot;)),&#xD;
+            style : &quot;width: 128px; height: 128px; margin: 8px&quot;&#xD;
+        },&#xD;
+        arrowDirection : &quot;top&quot;,&#xD;
+        arrowAlign : &quot;left&quot;&#xD;
+    });    &#xD;
+}</ClientEvent>
+        <Property name="property">ncpImg</Property>
+        <Property name="caption">认证图片</Property>
+        <Property name="align">center</Property>
+        <Property name="width">150</Property>
       </DataColumn>
     </DataGrid>
     <AutoForm id="autoformNcp">
