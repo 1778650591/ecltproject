@@ -12,6 +12,16 @@
             <bean class="com.eclt.controller.IndexActionResolver"/> 
         </property> 
     </bean> 
+    <bean parent="dorado.resolverRegister"> 
+        <property name="url" value="/getProductMenu.do" /> 
+        <property name="resolver"> 
+            <bean class="com.eclt.resolver.IndexProductResolver"/> 
+        </property> 
+    </bean>
+    
+    
+    
+    
     <!-- 产品页面 -->
     <bean parent="dorado.resolverRegister"> 
         <property name="url" value="/product.do" /> 
@@ -19,4 +29,27 @@
             <bean class="com.eclt.controller.ProductActionResolver"/> 
         </property> 
     </bean>
+    <!-- 项目页面 -->
+    <bean parent="dorado.resolverRegister"> 
+        <property name="url" value="/case.do" /> 
+        <property name="resolver"> 
+            <bean class="com.eclt.controller.CaseActionResolver"/> 
+        </property> 
+    </bean>
+    <!-- 认证页面 -->
+    <bean parent="dorado.resolverRegister"> 
+        <property name="url" value="/ncp.do" /> 
+        <property name="resolver"> 
+            <bean class="com.eclt.controller.NcpActionResolver"/> 
+        </property> 
+    </bean>
+    <!-- 我们页面 -->
+    <bean parent="dorado.resolverRegister"> 
+        <property name="url" value="/we.do" /> 
+        <property name="resolver"> 
+            <bean class="com.eclt.controller.WeActionResolver"/> 
+        </property> 
+    </bean>
+    
+    
 </beans>
