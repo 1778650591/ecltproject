@@ -21,20 +21,9 @@
         <Property name="dataProvider">ecProductService#getProductByParentId</Property>
         <Property name="parameter">$${this.productId}</Property>
       </Reference>
-      <Reference name="productSet">
-        <Property name="dataType">[EcProduct]</Property>
-        <Property name="parameter">$${this.productId}</Property>
-        <Property name="pageSize">5</Property>
-        <Property name="dataProvider">ecProductService#getSubProduct</Property>
-      </Reference>
-    </DataType>
-    <DataType name="EcProduct" parent="global:ECProduct">
-      <PropertyDef name="productName"/>
-      <PropertyDef name="productInfo"/>
-      <PropertyDef name="productImg"/>
     </DataType>
   </Model>
-  <View>
+  <View id="View">
     <ClientEvent name="onReady">view.get(&quot;^add&quot;).addListener(&quot;onClick&quot;, function(self,arg,datatreeProduct){&#xD;
     var currentNode = datatreeProduct.get(&quot;currentNode&quot;);&#xD;
     if (!currentNode) {&#xD;
@@ -92,22 +81,14 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
               <Property name="tags">del</Property>
             </Button>
             <Button id="buttonSave">
-              <ClientEvent name="onClick" signature="self,arg,autoformProduct">autoformProduct.set(&quot;readOnly&quot;,true);&#xD;
-</ClientEvent>
               <Property name="caption">保存</Property>
               <Property name="icon">url(>skin>common/icons.gif) -160px -20px</Property>
               <Property name="action">updateactionSave</Property>
             </Button>
-            <Button id="buttonEdit">
-              <ClientEvent name="onClick" signature="self,arg,autoformProduct">autoformProduct.set(&quot;readOnly&quot;,false);&#xD;
-</ClientEvent>
-              <Property name="caption">编辑</Property>
-              <Property name="icon">url(>skin>common/icons.gif) -60px -20px</Property>
-            </Button>
           </Container>
-          <FieldSet>
+          <FieldSet id="info">
             <Property name="caption">产品信息</Property>
-            <Property name="height">170</Property>
+            <Property name="height">300</Property>
             <Buttons/>
             <Children>
               <AutoForm id="autoformProduct">
@@ -115,7 +96,6 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
                 <Property name="labelSeparator">:</Property>
                 <Property name="dataSet">dataProduct</Property>
                 <Property name="cols">*</Property>
-                <Property name="readOnly">true</Property>
                 <AutoFormElement>
                   <Property name="name">productName</Property>
                   <Property name="width">350</Property>
@@ -129,17 +109,24 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
                 <AutoFormElement>
                   <Property name="name">productImg</Property>
                   <Property name="width">350</Property>
-                  <Property name="property">productImg</Property>
-                  <Editor/>
+                  <Editor>
+                    <Container layout="hbox">
+                      <Image id="imagePhoto">
+                        <Property name="height">128</Property>
+                        <Property name="width">128</Property>
+                      </Image>
+                      <Button id="buttonUpload">
+                        <ClientEvent name="onClick" signature="self,arg,autoformProduct,info">autoformProduct.refresh();&#xD;
+info.refresh();</ClientEvent>
+                        <Property name="caption">上传照片</Property>
+                        <Property name="action">uploadactionFile</Property>
+                      </Button>
+                    </Container>
+                  </Editor>
                 </AutoFormElement>
               </AutoForm>
             </Children>
           </FieldSet>
-          <DataPilot id="datapilotProduct">
-            <Property name="dataSet">dataProduct</Property>
-            <Property name="itemCodes">pages,pageSize,+,-,x</Property>
-            <Property name="dataPath">!CURRENT_PRODUCT.productSet</Property>
-          </DataPilot>
         </Container>
       </MainControl>
       <SideControl>
@@ -192,5 +179,16 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
         <Property name="dataSet">dataProduct</Property>
       </UpdateItem>
     </UpdateAction>
+    <UploadAction id="uploadactionFile">
+      <ClientEvent name="onFileUploaded" signature="self,arg,dataProduct,imagePhoto">var file = arg.file;&#xD;
+var name = file.name;&#xD;
+imagePhoto.set(&quot;image&quot;,$url(&quot;>images/&quot;+name));&#xD;
+var entity = dataProduct.get(&quot;data:#&quot;);&#xD;
+entity.set(&quot;productImg&quot;,name);&#xD;
+dorado.widget.NotifyTipManager.notify(entity&#xD;
+        .get(&quot;productName&quot;)+ &quot;的照片已经成功上传!&quot;);</ClientEvent>
+      <Property name="maxFileSize">10MB</Property>
+      <Filters/>
+    </UploadAction>
   </View>
 </ViewConfig>

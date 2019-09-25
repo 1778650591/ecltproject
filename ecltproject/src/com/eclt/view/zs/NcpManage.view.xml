@@ -26,7 +26,7 @@
   <View>
     <DataSet id="datasetNcp">
       <Property name="pageSize">5</Property>
-      <Property name="readOnly">true</Property>
+      <Property name="readOnly">false</Property>
       <Property name="dataProvider">ecNcpService#queryForCondition</Property>
       <Property name="dataType">[ECNcp]</Property>
     </DataSet>
@@ -41,14 +41,14 @@
         <Editor/>
       </AutoFormElement>
       <AutoFormElement>
-        <Property name="name">ncpImg</Property>
-        <Property name="label">认证图片</Property>
+        <Property name="name">ncpSort</Property>
+        <Property name="label">认证分类</Property>
         <Property name="width">250</Property>
         <Editor/>
       </AutoFormElement>
       <AutoFormElement>
-        <Property name="name">ncpSort</Property>
-        <Property name="label">认证分类</Property>
+        <Property name="name">ncpImg</Property>
+        <Property name="label">认证图片</Property>
         <Property name="width">250</Property>
         <Editor/>
       </AutoFormElement>
@@ -64,28 +64,35 @@ datasetNcp.set(&quot;parameter&quot;,entity).flushAsync();</ClientEvent>
       </ToolBarButton>
       <DataPilot id="datapilotNcp">
         <Property name="dataSet">datasetNcp</Property>
-        <Property name="itemCodes">pages,pageSize,+,-,x</Property>
+        <Property name="itemCodes">pages,pageSize</Property>
       </DataPilot>
-      <ToolBarButton id="buttonEdit">
-        <ClientEvent name="onClick" signature="self,arg,datasetNcp">datasetNcp.set(&quot;readOnly&quot;,false);&#xD;
-</ClientEvent>
-        <Property name="caption">编辑</Property>
-        <Property name="icon">url(>skin>common/icons.gif) -200px -0px</Property>
+      <ToolBarButton id="buttonAdd">
+        <ClientEvent name="onClick" signature="self,arg,datasetNcp,dialogEdit">datasetNcp.insert();&#xD;
+dialogEdit.show();</ClientEvent>
+        <Property name="caption">新增</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
       </ToolBarButton>
-      <ToolBarButton id="buttonSave">
-        <ClientEvent name="onClick" signature="self,arg,datasetNcp,updateactionSave">updateactionSave.execute(function(){&#xD;
-	datasetNcp.set(&quot;readOnly&quot;,true);&#xD;
-});&#xD;
-&#xD;
-</ClientEvent>
-        <Property name="caption">保存</Property>
-        <Property name="action">updateactionSave</Property>
-        <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
+      <ToolBarButton id="buttonEdit">
+        <ClientEvent name="onClick" signature="self,arg,dialogEdit">dialogEdit.show();</ClientEvent>
+        <Property name="caption">修改</Property>
+        <Property name="icon">	url(>skin>common/icons.gif) -200px -0px</Property>
+      </ToolBarButton>
+      <ToolBarButton id="buttonDel">
+        <ClientEvent name="onClick" signature="self,arg,datasetNcp,updateactionSave">var entity = datasetNcp.get(&quot;data:#&quot;);&#xD;
+if(entity){&#xD;
+    dorado.MessageBox.confirm(&quot;确认要删除记录吗？&quot;, function(){&#xD;
+        entity.remove();&#xD;
+        updateactionSave.execute();&#xD;
+    })&#xD;
+}</ClientEvent>
+        <Property name="caption">	删除并保存</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
       </ToolBarButton>
     </ToolBar>
     <DataGrid id="datagridNcp">
       <Property name="dataSet">datasetNcp</Property>
       <Property name="height">300</Property>
+      <Property name="readOnly">true</Property>
       <DataColumn name="ncpName">
         <Property name="property">ncpName</Property>
         <Property name="align">center</Property>
@@ -120,29 +127,6 @@ if(arg.data.get(&quot;ncpImg&quot;)){&#xD;
         <Property name="width">150</Property>
       </DataColumn>
     </DataGrid>
-    <AutoForm id="autoformNcp">
-      <Property name="cols">*,*,*</Property>
-      <Property name="dataSet">datasetNcp</Property>
-      <Property name="labelSeparator">:</Property>
-      <AutoFormElement>
-        <Property name="name">ncpName</Property>
-        <Property name="property">ncpName</Property>
-        <Property name="width">250</Property>
-        <Editor/>
-      </AutoFormElement>
-      <AutoFormElement>
-        <Property name="name">ncpImg</Property>
-        <Property name="property">ncpImg</Property>
-        <Property name="width">250</Property>
-        <Editor/>
-      </AutoFormElement>
-      <AutoFormElement>
-        <Property name="name">ncpSort</Property>
-        <Property name="property">ncpSort</Property>
-        <Property name="width">250</Property>
-        <Editor/>
-      </AutoFormElement>
-    </AutoForm>
     <UpdateAction id="updateactionSave">
       <Property name="successMessage">保存成功！</Property>
       <Property name="executingMessage">正在保存。。。</Property>
@@ -152,5 +136,83 @@ if(arg.data.get(&quot;ncpImg&quot;)){&#xD;
         <Property name="dataSet">datasetNcp</Property>
       </UpdateItem>
     </UpdateAction>
+    <Dialog id="dialogEdit">
+      <ClientEvent name="onShow" signature="self,arg,imagePhoto,datasetNcp">var image = datasetNcp.get(&quot;data:#&quot;).get(&quot;ncpImg&quot;);&#xD;
+if(image){&#xD;
+    //如果照片名不为空，则设置imagePhoto图片控件的属性，使之显示照片&#xD;
+    imagePhoto.set(&quot;image&quot;,$url(&quot;>images/&quot;+image));&#xD;
+}else{&#xD;
+    imagePhoto.set(&quot;image&quot;,null);&#xD;
+}</ClientEvent>
+      <ClientEvent name="onHide" signature="self,arg,datagridNcp">datagridNcp.refresh();</ClientEvent>
+      <Property name="caption">认证详情</Property>
+      <Property name="height">500</Property>
+      <Property name="width">500</Property>
+      <Buttons>
+        <Button id="buttonSave">
+          <ClientEvent name="onClick" signature="self,arg,dialogEdit,updateactionSave">updateactionSave.execute(function(){&#xD;
+    dialogEdit.hide();&#xD;
+})</ClientEvent>
+          <Property name="caption">保存</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
+        </Button>
+        <Button id="buttonCancel">
+          <ClientEvent name="onClick" signature="self,arg,datasetNcp,dialogEdit">datasetNcp.get(&quot;data:#&quot;).cancel();&#xD;
+dialogEdit.hide();</ClientEvent>
+          <Property name="caption">取消</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -280px -220px</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="autoformNcp">
+          <Property name="cols">*</Property>
+          <Property name="dataSet">datasetNcp</Property>
+          <Property name="labelSeparator">:</Property>
+          <AutoFormElement>
+            <Property name="name">ncpName</Property>
+            <Property name="property">ncpName</Property>
+            <Property name="width">400</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ncpSort</Property>
+            <Property name="property">ncpSort</Property>
+            <Property name="width">400</Property>
+            <Property name="editorType">TextArea</Property>
+            <Property name="height">200px</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ncpImg</Property>
+            <Property name="property">ncpImg</Property>
+            <Property name="width">250</Property>
+            <Editor>
+              <Container>
+                <Image id="imagePhoto">
+                  <Property name="height">128</Property>
+                  <Property name="width">128</Property>
+                </Image>
+                <Button id="buttonUpload">
+                  <Property name="caption">上传照片</Property>
+                  <Property name="action">uploadactionFile</Property>
+                </Button>
+              </Container>
+            </Editor>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <UploadAction id="uploadactionFile">
+      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhoto,datasetNcp">var file = arg.file;&#xD;
+var name = file.name;&#xD;
+imagePhoto.set(&quot;image&quot;,$url(&quot;>images/&quot;+name));&#xD;
+var entity = datasetNcp.get(&quot;data:#&quot;);&#xD;
+entity.set(&quot;ncpImg&quot;,name);&#xD;
+dorado.widget.NotifyTipManager.notify(entity&#xD;
+        .get(&quot;ncpName&quot;)+ &quot;的照片已经成功上传!&quot;);</ClientEvent>
+      <Property name="maxFileSize">10MB</Property>
+      <Filters/>
+    </UploadAction>
   </View>
 </ViewConfig>

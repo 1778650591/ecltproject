@@ -7,7 +7,7 @@
 	<bean class="com.bstek.dorado.uploader.DefaultUploadProcessor">
         <property name="uploadDir" value="{webapp.home}/images"></property>
     </bean>
-	<bean class="com.bstek.dorado.sample.standardlesson.service.MyUploadProcessor" />
+	<bean class="common.MyUploadProcessor" />
 	
 	<!-- 主页请求 -->
 	<bean parent="dorado.resolverRegister"> 
