@@ -88,7 +88,7 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
           </Container>
           <FieldSet>
             <Property name="caption">产品信息</Property>
-            <Property name="height">200</Property>
+            <Property name="height">300</Property>
             <Buttons/>
             <Children>
               <AutoForm id="autoformProduct">
@@ -106,12 +106,23 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
                   <Property name="width">350</Property>
                   <Editor/>
                 </AutoFormElement>
-                <AutoFormElement>
+                <AutoFormElement id="productImg">
                   <Property name="name">productImg</Property>
                   <Property name="width">350</Property>
                   <Editor/>
                 </AutoFormElement>
               </AutoForm>
+              <Container layout="hbox">
+                <Image id="imagePhoto">
+                  <Property name="height">128</Property>
+                  <Property name="width">128</Property>
+                </Image>
+                <Button id="buttonUpload">
+                  <ClientEvent name="onClick" signature="self,arg,autoformProduct">autoformProduct.refresh();</ClientEvent>
+                  <Property name="caption">上传图片</Property>
+                  <Property name="action">uploadactionFile</Property>
+                </Button>
+              </Container>
             </Children>
           </FieldSet>
         </Container>
@@ -124,6 +135,9 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
          top:arg.event.pageY&#xD;
      }&#xD;
 });</ClientEvent>
+          <ClientEvent name="onClick" signature="self,arg,imagePhoto">var imgpath=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productImg&quot;);&#xD;
+imagePhoto.set(&quot;image&quot;,&quot;images/&quot;+imgpath);&#xD;
+</ClientEvent>
           <Property name="dataSet">dataProduct</Property>
           <Property name="currentNodeDataPath">CURRENT_PRODUCT</Property>
           <BindingConfigs>
@@ -166,5 +180,16 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
         <Property name="dataSet">dataProduct</Property>
       </UpdateItem>
     </UpdateAction>
+    <UploadAction id="uploadactionFile">
+      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhoto,dataProduct">var file = arg.file;&#xD;
+var name = file.name;&#xD;
+imagePhoto.set(&quot;image&quot;,$url(&quot;>images/&quot;+name));&#xD;
+var entity = dataProduct.get(&quot;data:#&quot;);&#xD;
+entity.set(&quot;productImg&quot;,name);&#xD;
+dorado.widget.NotifyTipManager.notify(entity&#xD;
+        .get(&quot;productName&quot;)+ &quot;的照片已经成功上传!&quot;);</ClientEvent>
+      <Property name="maxFileSize">10MB</Property>
+      <Filters/>
+    </UploadAction>
   </View>
 </ViewConfig>
