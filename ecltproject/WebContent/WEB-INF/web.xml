@@ -20,12 +20,8 @@
         <filter-name>OpenSessionInViewFilter</filter-name>
         <url-pattern>/dorado/*</url-pattern>
     </filter-mapping>
-    <!-- 拦截以.do结尾的请求 -->
-    <filter-mapping>
-        <filter-name>OpenSessionInViewFilter</filter-name>
-        <url-pattern>*.do</url-pattern>
-    </filter-mapping>
-    
+
+
     <servlet>
         <servlet-name>doradoServlet</servlet-name>
         <servlet-class>com.bstek.dorado.web.servlet.DoradoServlet</servlet-class>
@@ -44,11 +40,22 @@
         <url-pattern>/dorado/*</url-pattern>
     </servlet-mapping>
     
-    <!-- html和do -->
-    <servlet-mapping>
-        <servlet-name>doradoServlet</servlet-name>
-        <url-pattern>*.do</url-pattern>
-    </servlet-mapping>
-    
-    
+   <!-- 配置SpringMVC前端控制器 -->
+ 	<servlet>
+ 		 <servlet-name>springmvc</servlet-name>
+ 		 <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  <!-- 指定SpringMVC配置文件 -->
+  <!-- SpringMVC的配置文件的默认路径是/WEB-INF/${servlet-name}-servlet.xml -->
+ 		 <init-param>
+ 			  <param-name>contextConfigLocation</param-name>
+ 			  <param-value>/WEB-INF/dorado-home/spring-mvc.xml</param-value>
+		  </init-param>
+ 	</servlet>
+
+
+ 	<servlet-mapping>
+ 		 <servlet-name>springmvc</servlet-name>
+ 		 <!-- 设置所有以do结尾的请求进入SpringMVC -->
+	     <url-pattern>*.do</url-pattern>
+ 	</servlet-mapping>
 </web-app>
