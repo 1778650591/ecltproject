@@ -1,6 +1,7 @@
 package com.eclt.service;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -50,6 +51,12 @@ public class EcNcpService {
 	@Transactional
 	public void saveAll(Collection<EcNcp> ecncp){
 		ecNcpDao.persistEntities(ecncp);
+	}
+	
+	//查询所有认证
+	public List<EcNcp> findNcpAll(){
+		List<EcNcp> list = ecNcpDao.getAll();
+		return list;
 	}
 }
 
