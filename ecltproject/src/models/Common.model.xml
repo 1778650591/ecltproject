@@ -7,19 +7,19 @@
       <Property name="label">案例id</Property>
     </PropertyDef>
     <PropertyDef name="caseName">
-      <Property/>
+      <Property></Property>
       <Property name="label">案例名称</Property>
     </PropertyDef>
     <PropertyDef name="caseInfo">
-      <Property/>
+      <Property></Property>
       <Property name="label">案例信息</Property>
     </PropertyDef>
     <PropertyDef name="caseImg">
-      <Property/>
+      <Property></Property>
       <Property name="label">案例图片</Property>
     </PropertyDef>
     <PropertyDef name="cPreset">
-      <Property/>
+      <Property></Property>
       <Property name="label">案例预设字段</Property>
     </PropertyDef>
   </DataType>
@@ -30,19 +30,19 @@
       <Property name="label">认证id</Property>
     </PropertyDef>
     <PropertyDef name="ncpName">
-      <Property/>
+      <Property></Property>
       <Property name="label">认证名称</Property>
     </PropertyDef>
     <PropertyDef name="ncpImg">
-      <Property/>
+      <Property></Property>
       <Property name="label">认证图片</Property>
     </PropertyDef>
     <PropertyDef name="ncpSort">
-      <Property/>
+      <Property></Property>
       <Property name="label">认证分类</Property>
     </PropertyDef>
     <PropertyDef name="nPreset">
-      <Property/>
+      <Property></Property>
       <Property name="label">认证预设字段</Property>
     </PropertyDef>
   </DataType>
@@ -67,6 +67,18 @@
     <PropertyDef name="pPreset">
       <Property></Property>
       <Property name="label">产品预设字段</Property>
+    </PropertyDef>
+    <PropertyDef name="productMinimg">
+      <Property/>
+      <Property name="label">缩微图</Property>
+    </PropertyDef>
+    <PropertyDef name="productMinname">
+      <Property/>
+      <Property name="label">产品简介</Property>
+    </PropertyDef>
+    <PropertyDef name="productMaxname">
+      <Property/>
+      <Property name="label">所属分类</Property>
     </PropertyDef>
   </DataType>
   <DataType name="ECUser">

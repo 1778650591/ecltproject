@@ -30,7 +30,7 @@
     <DataSet id="datasetCase">
       <Property name="dataType">[ECCase]</Property>
       <Property name="pageSize">5</Property>
-      <Property name="readOnly">true</Property>
+      <Property name="readOnly">false</Property>
       <Property name="dataProvider">ecCaseService#queryForCondition</Property>
     </DataSet>
     <AutoForm id="autoformCondition">
@@ -67,26 +67,35 @@ datasetCase.set(&quot;parameter&quot;,entity).flushAsync();</ClientEvent>
       </ToolBarButton>
       <DataPilot id="datapilotCase">
         <Property name="dataSet">datasetCase</Property>
-        <Property name="itemCodes">pages,pageSize,+,-,x</Property>
+        <Property name="itemCodes">pages,pageSize</Property>
       </DataPilot>
-      <ToolBarButton id="buttonEdit">
-        <ClientEvent name="onClick" signature="self,arg,datasetCase">datasetCase.set(&quot;readOnly&quot;,false);&#xD;
-</ClientEvent>
-        <Property name="caption">编辑</Property>
-        <Property name="icon">url(>skin>common/icons.gif) -200px -0px</Property>
+      <ToolBarButton id="buttonAdd">
+        <ClientEvent name="onClick" signature="self,arg,datasetCase,dialogEdit">datasetCase.insert();&#xD;
+dialogEdit.show();</ClientEvent>
+        <Property name="caption">新增</Property>
+        <Property name="icon">	url(>skin>common/icons.gif) -120px -0px</Property>
       </ToolBarButton>
-      <ToolBarButton id="buttonSave">
-        <ClientEvent name="onClick" signature="self,arg,updateactionSave,datasetCase">updateactionSave.execute(function(){&#xD;
-    datasetCase.set(&quot;readOnly&quot;,true);&#xD;
-});</ClientEvent>
-        <Property name="caption">保存</Property>
-        <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
-        <Property name="action">updateactionSave</Property>
+      <ToolBarButton id="buttonEdit">
+        <ClientEvent name="onClick" signature="self,arg,dialogEdit">dialogEdit.show();</ClientEvent>
+        <Property name="icon">url(>skin>common/icons.gif) -200px -0px</Property>
+        <Property name="caption">修改</Property>
+      </ToolBarButton>
+      <ToolBarButton id="buttonDel">
+        <ClientEvent name="onClick" signature="self,arg,datasetCase,updateactionSave">var entity = datasetCase.get(&quot;data:#&quot;);&#xD;
+if(entity){&#xD;
+    dorado.MessageBox.confirm(&quot;确认要删除记录吗？&quot;, function(){&#xD;
+        entity.remove();&#xD;
+        updateactionSave.execute();&#xD;
+    })&#xD;
+}</ClientEvent>
+        <Property name="caption">删除并保存</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
       </ToolBarButton>
     </ToolBar>
     <DataGrid id="datagridCase">
       <Property name="dataSet">datasetCase</Property>
       <Property name="height">300</Property>
+      <Property name="readOnly">true</Property>
       <DataColumn name="caseName">
         <Property name="property">caseName</Property>
         <Property name="width">200</Property>
@@ -120,29 +129,6 @@ datasetCase.set(&quot;parameter&quot;,entity).flushAsync();</ClientEvent>
         <Property name="width">150</Property>
       </DataColumn>
     </DataGrid>
-    <AutoForm id="autoformCase">
-      <Property name="cols">*,*,*</Property>
-      <Property name="dataSet">datasetCase</Property>
-      <Property name="labelSeparator">:</Property>
-      <AutoFormElement>
-        <Property name="name">caseName</Property>
-        <Property name="property">caseName</Property>
-        <Property name="width">250</Property>
-        <Editor/>
-      </AutoFormElement>
-      <AutoFormElement>
-        <Property name="name">caseInfo</Property>
-        <Property name="property">caseInfo</Property>
-        <Property name="width">250</Property>
-        <Editor/>
-      </AutoFormElement>
-      <AutoFormElement>
-        <Property name="name">caseImg</Property>
-        <Property name="property">caseImg</Property>
-        <Property name="width">250</Property>
-        <Editor/>
-      </AutoFormElement>
-    </AutoForm>
     <UpdateAction id="updateactionSave">
       <Property name="executingMessage">正在保存...</Property>
       <Property name="successMessage">保存成功！</Property>
@@ -152,5 +138,86 @@ datasetCase.set(&quot;parameter&quot;,entity).flushAsync();</ClientEvent>
         <Property name="dataSet">datasetCase</Property>
       </UpdateItem>
     </UpdateAction>
+    <Dialog id="dialogEdit">
+      <ClientEvent name="onShow" signature="self,arg,imagePhoto,datasetCase">//获取员工信息中的照片名&#xD;
+var image = datasetCase.get(&quot;data:#&quot;).get(&quot;caseImg&quot;);&#xD;
+if(image){&#xD;
+    //如果照片名不为空，则设置imagePhoto图片控件的属性，使之显示照片&#xD;
+    imagePhoto.set(&quot;image&quot;,$url(&quot;>images/&quot;+image));&#xD;
+}else{&#xD;
+    imagePhoto.set(&quot;image&quot;,null);&#xD;
+}</ClientEvent>
+      <ClientEvent name="onHide" signature="self,arg,datagridCase">datagridCase.refresh();</ClientEvent>
+      <Property name="caption">案例详情</Property>
+      <Property name="height">500</Property>
+      <Property name="width">500</Property>
+      <Buttons>
+        <Button id="buttonSave">
+          <ClientEvent name="onClick" signature="self,arg,dialogEdit,updateactionSave">updateactionSave.execute(function(){&#xD;
+    dialogEdit.hide();&#xD;
+})</ClientEvent>
+          <Property name="caption">保存</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -140px -20px</Property>
+        </Button>
+        <Button id="buttonCancel">
+          <ClientEvent name="onClick" signature="self,arg,datasetCase,dialogEdit">datasetCase.get(&quot;data:#&quot;).cancel();&#xD;
+dialogEdit.hide();</ClientEvent>
+          <Property name="caption">取消</Property>
+          <Property name="icon">url(>skin>common/icons.gif) -280px -220px	</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="autoformCase">
+          <Property name="cols">*</Property>
+          <Property name="dataSet">datasetCase</Property>
+          <Property name="labelSeparator">:</Property>
+          <AutoFormElement>
+            <Property name="name">caseName</Property>
+            <Property name="property">caseName</Property>
+            <Property name="width">250</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">caseInfo</Property>
+            <Property name="property">caseInfo</Property>
+            <Property name="width">500</Property>
+            <Property name="editorType">TextArea</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">caseImg</Property>
+            <Property name="property">caseImg</Property>
+            <Property name="width">350</Property>
+            <Editor>
+              <Container layout="hbox">
+                <Property name="height">200</Property>
+                <Property name="width">300</Property>
+                <Image id="imagePhoto">
+                  <Property name="height">128</Property>
+                  <Property name="width">128</Property>
+                </Image>
+                <Button id="buttonUpload">
+                  <Property name="caption">上传照片</Property>
+                  <Property name="action">uploadactionFile</Property>
+                </Button>
+              </Container>
+            </Editor>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <UploadAction id="uploadactionFile">
+      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhoto,datasetCase">//获得上传文件&#xD;
+var file = arg.file;&#xD;
+var name = file.name;&#xD;
+imagePhoto.set(&quot;image&quot;,$url(&quot;>images/&quot;+name));&#xD;
+var entity = datasetCase.get(&quot;data:#&quot;);&#xD;
+entity.set(&quot;caseImg&quot;,name);&#xD;
+dorado.widget.NotifyTipManager.notify(entity&#xD;
+        .get(&quot;caseName&quot;)+ &quot;的照片已经成功上传!&quot;);</ClientEvent>
+      <Property name="maxFileSize">10MB</Property>
+      <Filters/>
+    </UploadAction>
   </View>
 </ViewConfig>

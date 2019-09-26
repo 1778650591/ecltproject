@@ -35,6 +35,21 @@ public class EcProduct implements Serializable {
 	private String productImg;
 
 	/**
+	 * product_minimg:
+	 */
+	private String productMinimg;
+
+	/**
+	 * product_minname:
+	 */
+	private String productMinname;
+
+	/**
+	 * product_maxname:
+	 */
+	private String productMaxname;
+
+	/**
 	 * p_preset:
 	 */
 	private String pPreset;
@@ -54,13 +69,17 @@ public class EcProduct implements Serializable {
 	}
 
 	public EcProduct(int productId, String productName, String productInfo,
-			String productImg, String pPreset, EcProduct ecProduct,
+			String productImg, String productMinimg, String productMinname,
+			String productMaxname, String pPreset, EcProduct ecProduct,
 			Set<EcProduct> ecProductSet) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
 		this.productInfo = productInfo;
 		this.productImg = productImg;
+		this.productMinimg = productMinimg;
+		this.productMinname = productMinname;
+		this.productMaxname = productMaxname;
 		this.pPreset = pPreset;
 		this.ecProduct = ecProduct;
 		this.ecProductSet = ecProductSet;
@@ -104,6 +123,33 @@ public class EcProduct implements Serializable {
 		return productImg;
 	}
 
+	public void setProductMinimg(String productMinimg) {
+		this.productMinimg = productMinimg;
+	}
+
+	@Column(name = "product_minimg", length = 255)
+	public String getProductMinimg() {
+		return productMinimg;
+	}
+
+	public void setProductMinname(String productMinname) {
+		this.productMinname = productMinname;
+	}
+
+	@Column(name = "product_minname", length = 255)
+	public String getProductMinname() {
+		return productMinname;
+	}
+
+	public void setProductMaxname(String productMaxname) {
+		this.productMaxname = productMaxname;
+	}
+
+	@Column(name = "product_maxname", length = 255)
+	public String getProductMaxname() {
+		return productMaxname;
+	}
+
 	public void setPPreset(String pPreset) {
 		this.pPreset = pPreset;
 	}
@@ -135,7 +181,9 @@ public class EcProduct implements Serializable {
 	public String toString() {
 		return "EcProduct [productId=" + productId + ",productName="
 				+ productName + ",productInfo=" + productInfo + ",productImg="
-				+ productImg + ",pPreset=" + pPreset + ",ecProduct="
+				+ productImg + ",productMinimg=" + productMinimg
+				+ ",productMinname=" + productMinname + ",productMaxname="
+				+ productMaxname + ",pPreset=" + pPreset + ",ecProduct="
 				+ ecProduct + ",ecProductSet=" + ecProductSet + "]";
 	}
 

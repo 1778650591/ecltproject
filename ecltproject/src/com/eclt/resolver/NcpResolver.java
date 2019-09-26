@@ -26,8 +26,8 @@ public class NcpResolver extends AbstractController{
 //	@Autowired
 //	@Re
 //	private EcNcpService ecNcpService = new EcNcpService();
-//	@Resource
-	private EcNpcDao ecNcpDao = new EcNpcDao();
+	@Resource
+	private EcNpcDao ecNcpDao;
 	
 	
 	@Override
