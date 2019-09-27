@@ -14,7 +14,6 @@ import com.bstek.dorado.annotation.DataResolver;
 import com.bstek.dorado.data.provider.Page;
 import com.eclt.dao.EcCaseDao;
 import com.eclt.entity.EcCase;
-import com.eclt.entity.EcNcp;
 
 import org.hibernate.annotations.common.util.StringHelper;
 @Component
