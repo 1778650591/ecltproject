@@ -1,6 +1,7 @@
 package com.eclt.service;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -15,6 +16,7 @@ import com.eclt.dao.EcCaseDao;
 import com.eclt.entity.EcCase;
 import org.hibernate.annotations.common.util.StringHelper;
 @Component
+@Transactional
 public class EcCaseService {
 
 	@Resource
@@ -47,9 +49,16 @@ public class EcCaseService {
     }
 	
 	@DataResolver
-	@Transactional
 	public void saveAll(Collection<EcCase> cases){
 		ecCaseDao.persistEntities(cases);
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public List<EcCase> findCaseAll(){
+		return ecCaseDao.getAll();
 	}
 }
 

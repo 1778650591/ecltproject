@@ -157,71 +157,26 @@
 				<div class="renshlisrt">
 					 <!-- Swiper -->
 				  <div class="swiper-container">
-				    <div class="swiper-wrapper">
-				      <div class="swiper-slide">
+				    <div class="swiper-wrapper" >
+				    
+				      <div class="swiper-slide" v-for="(n,index) in ncpList">
 				      	<a href="###">
-				      		<div class="renzenbar">
-					      		<div class="renzfull_img"><img src="images/renzfull_img.jpg" alt=""></div>
-					      		<div class="renwzhi"><p>山东济宁理工学院项目{{ncpList}}</p></div>
+				      		<div class="renzenbar" >
+					      		<div class="renzfull_img"><img :src="n.ncpImg" alt=""></div>
+					      		<div class="renwzhi"><p>{{n.ncpName}}</p></div>
 					      	</div>
 				      	</a>
 				      </div>
-				      <div class="swiper-slide">
-				      	<a href="###">
-				      		<div class="renzenbar">
-					      		<div class="renzfull_img"><img src="images/renzfull_img.jpg" alt=""></div>
-					      		<div class="renwzhi"><p>山东济宁理工学院项目</p></div>
-					      	</div>
-				      	</a>
-				      </div>
-				      <div class="swiper-slide">
+				      <!-- <div class="swiper-slide">
 				      	<a href="###">
 				      		<div class="renzenbar">
 					      		<div class="renzfull_img"><img src="images/renzfull_img.jpg" alt=""></div>
 					      		<div class="renwzhi"><p>山东济宁理工学院项目</p></div>
 					      	</div>
 				      	</a>
-				      </div>
-				      <div class="swiper-slide">
-				      	<a href="###">
-				      		<div class="renzenbar">
-					      		<div class="renzfull_img"><img src="images/renzfull_img.jpg" alt=""></div>
-					      		<div class="renwzhi"><p>山东济宁理工学院项目</p></div>
-					      	</div>
-				      	</a>
-				      </div>
-				      <div class="swiper-slide">
-				      	<a href="###">
-				      		<div class="renzenbar">
-					      		<div class="renzfull_img"><img src="images/renzfull_img.jpg" alt=""></div>
-					      		<div class="renwzhi"><p>山东济宁理工学院项目</p></div>
-					      	</div>
-				      	</a>
-				      </div>
-				      <div class="swiper-slide">
-				      	<a href="###">
-				      		<div class="renzenbar">
-					      		<div class="renzfull_img"><img src="images/renzfull_img.jpg" alt=""></div>
-					      		<div class="renwzhi"><p>山东济宁理工学院项目</p></div>
-					      	</div>
-				      	</a>
-				      </div>
-				      <div class="swiper-slide">
-				      	<a href="###">
-				      		<div class="renzenbar">
-					      		<div class="renzfull_img"><img src="images/renzfull_img.jpg" alt=""></div>
-					      		<div class="renwzhi"><p>山东济宁理工学院项目</p></div>
-					      	</div>
-				      	</a>
-				      </div>
-				      <div class="swiper-slide">
-				      	<a href="###">
-				      		<div class="renzenbar">
-					      		<div class="renzfull_img"><img src="images/renzfull_img.jpg" alt=""></div>
-					      		<div class="renwzhi"><p>山东济宁理工学院项目</p></div>
-					      	</div>
-				      	</a>
-				      </div>
+				      </div> -->
+				      
+				      
 				    </div>
 				  </div>
 				</div>
@@ -307,6 +262,7 @@
 				axios.get(url).then(function (response) {
 	                console.log(response);
 	                _this.ncpList = response.data;
+	                _this.$forceUpdate(); 
 	            }).catch(function (err) {
 	                console.log(err)
 	            });
