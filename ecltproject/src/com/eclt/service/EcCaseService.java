@@ -18,6 +18,7 @@ import com.eclt.entity.EcNcp;
 
 import org.hibernate.annotations.common.util.StringHelper;
 @Component
+@Transactional
 public class EcCaseService {
 
 	@Resource
@@ -50,9 +51,16 @@ public class EcCaseService {
     }
 	
 	@DataResolver
-	@Transactional
 	public void saveAll(Collection<EcCase> cases){
 		ecCaseDao.persistEntities(cases);
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public List<EcCase> findCaseAll(){
+		return ecCaseDao.getAll();
 	}
 }
 

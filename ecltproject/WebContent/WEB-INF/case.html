@@ -118,55 +118,25 @@
 			<div class="inner">
 				<div class="Anlipagesvs">
 					<div class="Anlislider clearfix">
-						<ul>
-							<li>
+						<ul id="case">
+							<li v-for="(c,index) in caseList">
+								<a href="###">
+						      		<div class="renzenbar">
+							      		<div class="renzfull_img"><img :src="c.caseImg" alt=""></div>
+							      		<div class="renwzhi"><p>{{c.caseName}}</p></div>
+							      	</div>
+						      	</a>
+							</li>
+							
+							<!-- <li>
 								<a href="###">
 						      		<div class="renzenbar">
 							      		<div class="renzfull_img"><img src="images/anliimg.png" alt=""></div>
 							      		<div class="renwzhi"><p>山东济宁理工学院项目</p></div>
 							      	</div>
 						      	</a>
-							</li>
-							<li>
-								<a href="###">
-						      		<div class="renzenbar">
-							      		<div class="renzfull_img"><img src="images/anliimg.png" alt=""></div>
-							      		<div class="renwzhi"><p>山东济宁理工学院项目</p></div>
-							      	</div>
-						      	</a>
-							</li>
-							<li>
-								<a href="###">
-						      		<div class="renzenbar">
-							      		<div class="renzfull_img"><img src="images/anliimg.png" alt=""></div>
-							      		<div class="renwzhi"><p>山东济宁理工学院项目</p></div>
-							      	</div>
-						      	</a>
-							</li>
-							<li>
-								<a href="###">
-						      		<div class="renzenbar">
-							      		<div class="renzfull_img"><img src="images/anliimg.png" alt=""></div>
-							      		<div class="renwzhi"><p>山东济宁理工学院项目</p></div>
-							      	</div>
-						      	</a>
-							</li>
-							<li>
-								<a href="###">
-						      		<div class="renzenbar">
-							      		<div class="renzfull_img"><img src="images/anliimg.png" alt=""></div>
-							      		<div class="renwzhi"><p>山东济宁理工学院项目</p></div>
-							      	</div>
-						      	</a>
-							</li>
-							<li>
-								<a href="###">
-						      		<div class="renzenbar">
-							      		<div class="renzfull_img"><img src="images/anliimg.png" alt=""></div>
-							      		<div class="renwzhi"><p>山东济宁理工学院项目</p></div>
-							      	</div>
-						      	</a>
-							</li>
+							</li> -->
+							
 						</ul>
 					</div>
 				</div>
@@ -175,7 +145,7 @@
 
 		<!-- 翻页 -->
 
-		<div class="pages_nextmain">
+		<!-- <div class="pages_nextmain">
 			<div class="inner">
 				<span>首页</span>
 				<a href="javascript:;">1</a>
@@ -185,7 +155,7 @@
 				<a href="javascript:;">15</a>
 				<span>尾页</span>
 			</div>
-		</div>
+		</div> -->
 
 		<!-- 翻页 end -->
 	</div>
@@ -251,7 +221,33 @@
 		<div class="colse_mains"><a href="###"></a></div>
 	</div>
 	<!-- 弹窗 end -->
-
+<script src="js/vuejs-2.5.16.js"></script>
+<script src="js/axios-0.18.0.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:"#case",
+		data:{
+			caseList:[]
+		},
+		methods:{
+			findNcpAll:function(){
+				var url = "http://localhost:8080/ecltproject/findCaseAll.do";
+				var _this = this;
+				
+				axios.get(url).then(function (response) {
+	                console.log(response);
+	                _this.caseList = response.data;
+	                _this.$forceUpdate(); 
+	            }).catch(function (err) {
+	                console.log(err)
+	            });
+			}
+		},
+	    created(){
+	        this.findNcpAll();
+	    }
+	});
+</script>
 
 
 </body>

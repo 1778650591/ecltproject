@@ -16,6 +16,7 @@ import com.eclt.dao.EcNpcDao;
 import com.eclt.entity.EcNcp;
 import org.hibernate.annotations.common.util.StringHelper;
 @Component
+@Transactional
 public class EcNcpService {
 
 	@Resource
@@ -48,8 +49,10 @@ public class EcNcpService {
     }
 	
 	@DataResolver
-	@Transactional
 	public void saveAll(Collection<EcNcp> ecncp){
+		for(EcNcp ncp : ecncp){
+			ncp.setNcpImg("img/"+ncp.getNcpImg());
+		}
 		ecNcpDao.persistEntities(ecncp);
 	}
 	
