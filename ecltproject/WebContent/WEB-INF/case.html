@@ -235,7 +235,13 @@
 				var _this = this;
 				
 				axios.get(url).then(function (response) {
-	                console.log(response);
+	                //console.log(response);
+	                for(var i =0;i<response.data.length;i++){
+	                	//console.log(response.data[i]);
+	                	//修改图片路径
+	                	response.data[i].caseImg = "img/"+response.data[i].caseImg;
+	                	//console.log(response.data[i].ncpImg);
+	                }
 	                _this.caseList = response.data;
 	                _this.$forceUpdate(); 
 	            }).catch(function (err) {
