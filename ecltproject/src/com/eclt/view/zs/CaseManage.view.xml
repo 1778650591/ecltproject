@@ -211,7 +211,7 @@ dialogEdit.hide();</ClientEvent>
       <ClientEvent name="onFileUploaded" signature="self,arg,imagePhoto,datasetCase">//获得上传文件&#xD;
 var file = arg.file;&#xD;
 var name = file.name;&#xD;
-imagePhoto.set(&quot;image&quot;,$url(&quot;>images/&quot;+name));&#xD;
+imagePhoto.set(&quot;image&quot;,$url(&quot;>img/&quot;+name));&#xD;
 var entity = datasetCase.get(&quot;data:#&quot;);&#xD;
 entity.set(&quot;caseImg&quot;,name);&#xD;
 dorado.widget.NotifyTipManager.notify(entity&#xD;

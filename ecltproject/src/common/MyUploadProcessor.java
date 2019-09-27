@@ -1,5 +1,6 @@
 package common;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,10 +11,19 @@ import com.bstek.dorado.uploader.UploadProcessor;
 public class MyUploadProcessor implements UploadProcessor {
 
 	@Override
-	public Object process(MultipartFile arg0, HttpServletRequest arg1,
+	public String process(MultipartFile file, HttpServletRequest arg1,
 			HttpServletResponse arg2) {
+//		System.err.println("getOriginalFilename:"+file.getOriginalFilename());
+//		System.err.println("getName:"+file.getName());
+//		System.err.println("getContentType:"+file.getContentType());
+//		
+//		try {
+//			file.transferTo(new File("./target/upload/"+file.getOriginalFilename()));
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		System.out.println("图片上传成功！");
-		return null;
+		return file.getName();
 	}
 
 }

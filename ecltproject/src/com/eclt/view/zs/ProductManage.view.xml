@@ -22,19 +22,19 @@
         <Property name="parameter">$${this.productId}</Property>
       </Reference>
       <PropertyDef name="productMinimg">
-        <Property/>
+        <Property></Property>
         <Property name="label">缩微图</Property>
       </PropertyDef>
       <PropertyDef name="productMinname">
-        <Property/>
+        <Property></Property>
         <Property name="label">产品简介</Property>
       </PropertyDef>
       <PropertyDef name="productMaxname">
-        <Property/>
+        <Property></Property>
         <Property name="label">所属分类</Property>
       </PropertyDef>
       <PropertyDef name="pPreset">
-        <Property/>
+        <Property></Property>
       </PropertyDef>
     </DataType>
   </Model>
@@ -226,20 +226,27 @@ imagePhotoMin.set(&quot;image&quot;,&quot;images/&quot;+imgpathmin);</ClientEven
       </UpdateItem>
     </UpdateAction>
     <UploadAction id="uploadactionFile">
-      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhoto,dataProduct">var file = arg.file;&#xD;
+      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhoto,dataProduct">//var file = arg.file;&#xD;
+//var name = new Date();&#xD;
+//imagePhoto.set(&quot;image&quot;,$url(&quot;>img/&quot;+name));&#xD;
+//var entity = dataProduct.get(&quot;data:#&quot;);&#xD;
+//entity.set(&quot;productImg&quot;,name);&#xD;
+//dorado.widget.NotifyTipManager.notify(entity&#xD;
+//        .get(&quot;productName&quot;)+ &quot;的照片已经成功上传!&quot;);&#xD;
+		&#xD;
+var file = arg.file;&#xD;
 var name = file.name;&#xD;
-imagePhoto.set(&quot;image&quot;,$url(&quot;>images/&quot;+name));&#xD;
-var entity = dataProduct.get(&quot;data:#&quot;);&#xD;
-entity.set(&quot;productImg&quot;,name);&#xD;
-dorado.widget.NotifyTipManager.notify(entity&#xD;
-        .get(&quot;productName&quot;)+ &quot;的照片已经成功上传!&quot;);</ClientEvent>
+imagePhoto.set(&quot;image&quot;,$url(&quot;>img/&quot;+name));&#xD;
+var autop=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).set(&quot;productImg&quot;,name);&#xD;
+var destName=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productName&quot;);&#xD;
+dorado.widget.NotifyTipManager.notify(destName + &quot;的照片已经成功上传!&quot;);</ClientEvent>
       <Property name="maxFileSize">10MB</Property>
       <Filters/>
     </UploadAction>
     <UploadAction id="uploadactionFileMin">
       <ClientEvent name="onFileUploaded" signature="self,arg,imagePhotoMin">var file = arg.file;&#xD;
 var name = file.name;&#xD;
-imagePhotoMin.set(&quot;image&quot;,$url(&quot;>images/&quot;+name));&#xD;
+imagePhotoMin.set(&quot;image&quot;,$url(&quot;>img/&quot;+name));&#xD;
 var autop=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).set(&quot;productMinimg&quot;,name);&#xD;
 var destName=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productName&quot;);&#xD;
 dorado.widget.NotifyTipManager.notify(destName + &quot;的照片已经成功上传!&quot;);</ClientEvent>
