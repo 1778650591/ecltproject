@@ -50,9 +50,6 @@ public class EcNcpService {
 	
 	@DataResolver
 	public void saveAll(Collection<EcNcp> ecncp){
-		for(EcNcp ncp : ecncp){
-			ncp.setNcpImg("img/"+ncp.getNcpImg());
-		}
 		ecNcpDao.persistEntities(ecncp);
 	}
 	
