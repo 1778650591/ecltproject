@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.eclt.entity.EcCase;
 import com.eclt.service.EcCaseService;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * 案例
@@ -26,6 +27,12 @@ public class CaseController {
 	@ResponseBody
 	public List<EcCase> findCaseAll(){
 		return caseService.findCaseAll();
+	}
+	
+	@RequestMapping("/getCaseById")
+	@ResponseBody
+	public EcCase getCaseById(Integer id){
+		return caseService.getCaseById(id);
 	}
 	
 }

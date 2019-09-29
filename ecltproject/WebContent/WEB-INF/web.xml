@@ -20,6 +20,10 @@
         <filter-name>OpenSessionInViewFilter</filter-name>
         <url-pattern>/dorado/*</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>OpenSessionInViewFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
 
 
     <servlet>

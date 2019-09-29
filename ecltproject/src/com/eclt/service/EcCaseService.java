@@ -1,5 +1,6 @@
 package com.eclt.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -60,6 +61,11 @@ public class EcCaseService {
 	 */
 	public List<EcCase> findCaseAll(){
 		return ecCaseDao.getAll();
+	}
+	
+	
+	public EcCase getCaseById(Integer id){
+		return ecCaseDao.get(id);
 	}
 }
 

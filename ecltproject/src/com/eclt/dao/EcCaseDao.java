@@ -6,6 +6,6 @@ import com.bstek.dorado.hibernate.HibernateDao;
 import com.eclt.entity.EcCase;
 
 @Repository
-public class EcCaseDao extends HibernateDao<EcCase, Long> {
+public class EcCaseDao extends HibernateDao<EcCase, Integer> {
 
 }
