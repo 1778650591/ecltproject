@@ -6,6 +6,6 @@ import com.bstek.dorado.hibernate.HibernateDao;
 import com.eclt.entity.EcProduct;
 
 @Repository
-public class EcProductDao extends HibernateDao<EcProduct, Long> {
+public class EcProductDao extends HibernateDao<EcProduct, Integer> {
 
 }

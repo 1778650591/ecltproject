@@ -2,6 +2,9 @@ package com.eclt.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,6 +13,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "ec_product")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class EcProduct implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -173,7 +177,7 @@ public class EcProduct implements Serializable {
 		this.ecProductSet = ecProductSet;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ecProduct")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "ecProduct")
 	public Set<EcProduct> getEcProductSet() {
 		return ecProductSet;
 	}
@@ -183,8 +187,7 @@ public class EcProduct implements Serializable {
 				+ productName + ",productInfo=" + productInfo + ",productImg="
 				+ productImg + ",productMinimg=" + productMinimg
 				+ ",productMinname=" + productMinname + ",productMaxname="
-				+ productMaxname + ",pPreset=" + pPreset + ",ecProduct="
-				+ ecProduct + ",ecProductSet=" + ecProductSet + "]";
+				+ productMaxname + ",pPreset=" + pPreset + " ]";
 	}
 
 }

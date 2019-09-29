@@ -230,8 +230,7 @@
 		data:{
 			caseList:[],
 			Case:{},
-			visb:"",
-			
+			visb:""
 		},
 		methods:{
 			findNcpAll:function(){
@@ -248,7 +247,6 @@
 	                	//console.log(response.data[i].ncpImg);
 	                }
 	                _this.caseList = response.data;
-	                _this.$forceUpdate(); 
 	            }).catch(function (err) {
 	                console.log(err)
 	            });

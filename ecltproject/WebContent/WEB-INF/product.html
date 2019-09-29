@@ -103,32 +103,32 @@
 	</div>
 	
 	<!--banner End!-->
-
+	
 	<!--main Start!-->
-
+	<div id="product">
 	<div class="main_randcp">
 		<div class="Topslidebg">
 			<div class="inner">
 				<div class="fenlbar_bank clearfix">
 					<ul>
-						<li class="active">
+						<li class="active" >
 							<a href="javascript:;">
 								<div class="cb">
 									<div class="xiansfel xiansfel_1"></div>
 									<div class="feleidfc">
-										<div class="felsbanimg"><img src="images/fel_1.png" alt=""></div>
-										<div class="feltitle"><p>超五类</p></div>
+										<div class="felsbanimg"><img @mouseover="findTxdlAll(1)" src="images/fel_1.png" alt=""></div>
+										<div class="feltitle"><p>数据电缆</p></div>
 									</div>
 								</div>
 							</a>
 						</li>
-						<li>
+						<li >
 							<a href="javascript:;">
 								<div class="cb">
 									<div class="xiansfel xiansfel_2"></div>
 									<div class="feleidfc">
-										<div class="felsbanimg"><img src="images/fel_2.png" alt=""></div>
-										<div class="feltitle"><p>超五类</p></div>
+										<div class="felsbanimg"><img @mouseover="findTxdlAll(2)" src="images/fel_2.png" alt=""></div>
+										<div class="feltitle"><p>通讯光缆</p></div>
 									</div>
 								</div>
 							</a>
@@ -139,8 +139,8 @@
 								<div class="cb">
 									<div class="xiansfel xiansfel_3"></div>
 									<div class="feleidfc">
-										<div class="felsbanimg"><img src="images/fel_3.png" alt=""></div>
-										<div class="feltitle"><p>超五类</p></div>
+										<div class="felsbanimg"><img @mouseover="findSjzxAll(3)" src="images/fel_3.png" alt=""></div>
+										<div class="feltitle"><p>数据中心</p></div>
 									</div>
 								</div>
 							</a>
@@ -151,8 +151,8 @@
 								<div class="cb">
 									<div class="xiansfel xiansfel_4"></div>
 									<div class="feleidfc">
-										<div class="felsbanimg"><img src="images/fel_4.png" alt=""></div>
-										<div class="feltitle"><p>超五类</p></div>
+										<div class="felsbanimg"><img @mouseover="findYwbxAll(4)" src="images/fel_4.png" alt=""></div>
+										<div class="feltitle"><p>易维布线</p></div>
 									</div>
 								</div>
 							</a>
@@ -163,8 +163,8 @@
 								<div class="cb">
 									<div class="xiansfel xiansfel_5"></div>
 									<div class="feleidfc">
-										<div class="felsbanimg"><img src="images/fel_5.png" alt=""></div>
-										<div class="feltitle"><p>超五类</p></div>
+										<div class="felsbanimg"><img @mouseover="findZnywAll(5)" src="images/fel_5.png" alt=""></div>
+										<div class="feltitle"><p>智能运维</p></div>
 									</div>
 								</div>
 							</a>
@@ -183,19 +183,19 @@
 					<!-- 切换1 -->
 					<div class="felrandbar active clearfix">
 						<ul>
-							<li>
+							<li v-for="(p,index) in sjdlList">
 								<a href="javascript:;">
 									<div class="cb feltopbar feltopbar_bg1">
 										<div class="feltextbar">
-											<h3>11111超五类</h3>
-											<p>XXXXXXXXXX</p>
+											<h3>{{p.productMinname}}</h3>
+											<p>{{p.productMaxname}}</p>
 										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
+										<div class="felimgbar"><img :src="p.productMinimg" alt=""></div>
 									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
+									<div class="felminzhi"><p>{{p.productName}}</p></div>
 								</a>
 							</li>
-							<li>
+							<!-- <li>
 								<a href="javascript:;">
 									<div class="cb feltopbar feltopbar_bg2">
 										<div class="feltextbar">
@@ -207,71 +207,12 @@
 									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
 								</a>
 							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg3">
-										<div class="feltextbar">
-											<h3>1111超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg4">
-										<div class="feltextbar">
-											<h3>11111超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg1">
-										<div class="feltextbar">
-											<h3>超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg2">
-										<div class="feltextbar">
-											<h3>超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg3">
-										<div class="feltextbar">
-											<h3>超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
+							
 							<li class="kaifa">
 								<a href="javascript:;">
 									<div class="fecksifas">更多...</div>
 								</a>
-							</li>
+							</li> -->
 						</ul>
 					</div>
 					<!-- 切换1 end -->
@@ -280,19 +221,19 @@
 
 					<div class="felrandbar clearfix">
 						<ul>
-							<li>
+							<li v-for="(p,index) in txdlList">
 								<a href="javascript:;">
 									<div class="cb feltopbar feltopbar_bg1">
 										<div class="feltextbar">
-											<h3>222222222超五类</h3>
-											<p>XXXXXXXXXX</p>
+											<h3>{{p.productMinname}}</h3>
+											<p>{{p.productMaxname}}</p>
 										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
+										<div class="felimgbar"><img :src="p.productMinimg" alt=""></div>
 									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
+									<div class="felminzhi"><p>{{p.productName}}</p></div>
 								</a>
 							</li>
-							<li>
+							<!-- <li>
 								<a href="javascript:;">
 									<div class="cb feltopbar feltopbar_bg2">
 										<div class="feltextbar">
@@ -304,71 +245,12 @@
 									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
 								</a>
 							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg3">
-										<div class="feltextbar">
-											<h3>超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg4">
-										<div class="feltextbar">
-											<h3>超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg1">
-										<div class="feltextbar">
-											<h3>22222超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg2">
-										<div class="feltextbar">
-											<h3>超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg3">
-										<div class="feltextbar">
-											<h3>超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
+							
 							<li class="kaifa">
 								<a href="javascript:;">
 									<div class="fecksifas">更多...</div>
 								</a>
-							</li>
+							</li> -->
 						</ul>
 					</div>
 					<!-- 切换2 end -->
@@ -377,19 +259,19 @@
 
 					<div class="felrandbar clearfix">
 						<ul>
-							<li>
+							<li v-for="(p,index) in sjzxList">
 								<a href="javascript:;">
 									<div class="cb feltopbar feltopbar_bg1">
 										<div class="feltextbar">
-											<h3>333333333超五类</h3>
-											<p>XXXXXXXXXX</p>
+											<h3>{{p.productMinname}}</h3>
+											<p>{{p.productMaxname}}</p>
 										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
+										<div class="felimgbar"><img :src="p.productMinimg" alt=""></div>
 									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
+									<div class="felminzhi"><p>{{p.productName}}</p></div>
 								</a>
 							</li>
-							<li>
+							<!-- <li>
 								<a href="javascript:;">
 									<div class="cb feltopbar feltopbar_bg2">
 										<div class="feltextbar">
@@ -401,71 +283,12 @@
 									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
 								</a>
 							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg3">
-										<div class="feltextbar">
-											<h3>3333超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg4">
-										<div class="feltextbar">
-											<h3>超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg1">
-										<div class="feltextbar">
-											<h3>超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg2">
-										<div class="feltextbar">
-											<h3>超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg3">
-										<div class="feltextbar">
-											<h3>超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
+							
 							<li class="kaifa">
 								<a href="javascript:;">
 									<div class="fecksifas">更多...</div>
 								</a>
-							</li>
+							</li> -->
 						</ul>
 					</div>
 					<!-- 切换3 end -->
@@ -474,19 +297,19 @@
 
 					<div class="felrandbar clearfix">
 						<ul>
-							<li>
+							<li v-for="(p,index) in ywbxList">
 								<a href="javascript:;">
 									<div class="cb feltopbar feltopbar_bg1">
 										<div class="feltextbar">
-											<h3>44444超五类</h3>
-											<p>XXXXXXXXXX</p>
+											<h3>{{p.productMinname}}</h3>
+											<p>{{p.productMaxname}}</p>
 										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
+										<div class="felimgbar"><img :src="p.productMinimg" alt=""></div>
 									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
+									<div class="felminzhi"><p>{{p.productName}}</p></div>
 								</a>
 							</li>
-							<li>
+							<!-- <li>
 								<a href="javascript:;">
 									<div class="cb feltopbar feltopbar_bg2">
 										<div class="feltextbar">
@@ -498,71 +321,12 @@
 									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
 								</a>
 							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg3">
-										<div class="feltextbar">
-											<h3>44444超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg4">
-										<div class="feltextbar">
-											<h3>444444超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg1">
-										<div class="feltextbar">
-											<h3>超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg2">
-										<div class="feltextbar">
-											<h3>超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg3">
-										<div class="feltextbar">
-											<h3>超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
+							
 							<li class="kaifa">
 								<a href="javascript:;">
 									<div class="fecksifas">更多...</div>
 								</a>
-							</li>
+							</li> -->
 						</ul>
 					</div>
 					<!-- 切换4 end -->
@@ -571,19 +335,19 @@
 
 					<div class="felrandbar clearfix">
 						<ul>
-							<li>
+							<li v-for="(p,index) in znywList">
 								<a href="javascript:;">
 									<div class="cb feltopbar feltopbar_bg1">
 										<div class="feltextbar">
-											<h3>5555555超五类</h3>
-											<p>XXXXXXXXXX</p>
+											<h3>{{p.productMinname}}</h3>
+											<p>{{p.productMaxname}}</p>
 										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
+										<div class="felimgbar"><img :src="p.productMinimg" alt=""></div>
 									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
+									<div class="felminzhi"><p>{{p.productName}}</p></div>
 								</a>
 							</li>
-							<li>
+							<!-- <li>
 								<a href="javascript:;">
 									<div class="cb feltopbar feltopbar_bg2">
 										<div class="feltextbar">
@@ -595,71 +359,12 @@
 									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
 								</a>
 							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg3">
-										<div class="feltextbar">
-											<h3>55555超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg4">
-										<div class="feltextbar">
-											<h3>5555555超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg1">
-										<div class="feltextbar">
-											<h3>555555超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg2">
-										<div class="feltextbar">
-											<h3>超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
-							<li>
-								<a href="javascript:;">
-									<div class="cb feltopbar feltopbar_bg3">
-										<div class="feltextbar">
-											<h3>超五类</h3>
-											<p>XXXXXXXXXX</p>
-										</div>
-										<div class="felimgbar"><img src="images/felimgbar.png" alt=""></div>
-									</div>
-									<div class="felminzhi"><p>易维-拉杆跳线</p></div>
-								</a>
-							</li>
+							
 							<li class="kaifa">
 								<a href="javascript:;">
 									<div class="fecksifas">更多...</div>
 								</a>
-							</li>
+							</li> -->
 						</ul>
 					</div>
 					<!-- 切换5 end -->
@@ -747,8 +452,143 @@
 		</div>
 		<div class="colse_mains"><a href="javascript:;"></a></div>
 	</div>
+	</div>
 	<!-- 弹窗 end -->
-
+<script src="js/vuejs-2.5.16.js"></script>
+<script src="js/axios-0.18.0.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:"#product",
+		data:{
+			sjdlList:[],
+			txdlList:[],
+			sjzxList:[],
+			ywbxList:[],
+			znywList:[],
+			visb:""
+		},
+		methods:{
+			findSjdlAll:function(productId){
+				var url = "http://localhost:8080/ecltproject/getProductById.do";
+				var _this = this;
+				
+				axios.get(url,{
+					params:{
+						id:productId
+					}
+				}).then(function (response) {
+					//console.log(response);
+					for(var i =0;i<response.data.length;i++){
+	                	//console.log(response.data[i]);
+	                	//修改图片路径
+	                	response.data[i].productImg = "img/"+response.data[i].productImg;
+	                	response.data[i].productMinimg = "img/"+response.data[i].productMinimg;
+	                	//console.log(response.data[i].ncpImg);
+	                }
+					//response.data.caseImg = "img/"+response.data.caseImg;
+	                _this.sjdlList = response.data;
+	            }).catch(function (err) {
+	                console.log(err)
+	            });
+			},
+			findTxdlAll:function(productId){
+				var url = "http://localhost:8080/ecltproject/getProductById.do";
+				var _this = this;
+				
+				axios.get(url,{
+					params:{
+						id:productId
+					}
+				}).then(function (response) {
+					//console.log(response);
+					for(var i =0;i<response.data.length;i++){
+	                	//console.log(response.data[i]);
+	                	//修改图片路径
+	                	response.data[i].productImg = "img/"+response.data[i].productImg;
+	                	response.data[i].productMinimg = "img/"+response.data[i].productMinimg;
+	                	//console.log(response.data[i].ncpImg);
+	                }
+					//response.data.caseImg = "img/"+response.data.caseImg;
+	                _this.txdlList = response.data;
+	            }).catch(function (err) {
+	                console.log(err)
+	            });
+			},
+			findSjzxAll:function(productId){
+				var url = "http://localhost:8080/ecltproject/getProductById.do";
+				var _this = this;
+				
+				axios.get(url,{
+					params:{
+						id:productId
+					}
+				}).then(function (response) {
+					//console.log(response);
+					for(var i =0;i<response.data.length;i++){
+	                	//console.log(response.data[i]);
+	                	//修改图片路径
+	                	response.data[i].productImg = "img/"+response.data[i].productImg;
+	                	response.data[i].productMinimg = "img/"+response.data[i].productMinimg;
+	                	//console.log(response.data[i].ncpImg);
+	                }
+					//response.data.caseImg = "img/"+response.data.caseImg;
+	                _this.sjzxList = response.data;
+	            }).catch(function (err) {
+	                console.log(err)
+	            });
+			},
+			findYwbxAll:function(productId){
+				var url = "http://localhost:8080/ecltproject/getProductById.do";
+				var _this = this;
+				
+				axios.get(url,{
+					params:{
+						id:productId
+					}
+				}).then(function (response) {
+					//console.log(response);
+					for(var i =0;i<response.data.length;i++){
+	                	//console.log(response.data[i]);
+	                	//修改图片路径
+	                	response.data[i].productImg = "img/"+response.data[i].productImg;
+	                	response.data[i].productMinimg = "img/"+response.data[i].productMinimg;
+	                	//console.log(response.data[i].ncpImg);
+	                }
+					//response.data.caseImg = "img/"+response.data.caseImg;
+	                _this.ywbxList = response.data;
+	            }).catch(function (err) {
+	                console.log(err)
+	            });
+			},
+			findZnywAll:function(productId){
+				var url = "http://localhost:8080/ecltproject/getProductById.do";
+				var _this = this;
+				
+				axios.get(url,{
+					params:{
+						id:productId
+					}
+				}).then(function (response) {
+					//console.log(response);
+					for(var i =0;i<response.data.length;i++){
+	                	//console.log(response.data[i]);
+	                	//修改图片路径
+	                	response.data[i].productImg = "img/"+response.data[i].productImg;
+	                	response.data[i].productMinimg = "img/"+response.data[i].productMinimg;
+	                	//console.log(response.data[i].ncpImg);
+	                }
+					//response.data.caseImg = "img/"+response.data.caseImg;
+	                _this.znywList = response.data;
+	            }).catch(function (err) {
+	                console.log(err)
+	            });
+			}
+		},
+	    created(){
+	        this.findSjdlAll(1);
+	    }
+	});
+</script>
 
 </body>
 <script type="text/javascript" src="js/jquery.min.js" ></script>
