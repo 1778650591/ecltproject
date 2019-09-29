@@ -180,9 +180,9 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
      }&#xD;
 });</ClientEvent>
           <ClientEvent name="onClick" signature="self,arg,imagePhoto,imagePhotoMin">var imgpath=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productImg&quot;);&#xD;
-imagePhoto.set(&quot;image&quot;,&quot;images/&quot;+imgpath);&#xD;
+imagePhoto.set(&quot;image&quot;,&quot;img/&quot;+imgpath);&#xD;
 var imgpathmin=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productMinimg&quot;);&#xD;
-imagePhotoMin.set(&quot;image&quot;,&quot;images/&quot;+imgpathmin);</ClientEvent>
+imagePhotoMin.set(&quot;image&quot;,&quot;img/&quot;+imgpathmin);</ClientEvent>
           <Property name="dataSet">dataProduct</Property>
           <Property name="currentNodeDataPath">CURRENT_PRODUCT</Property>
           <BindingConfigs>
@@ -226,15 +226,7 @@ imagePhotoMin.set(&quot;image&quot;,&quot;images/&quot;+imgpathmin);</ClientEven
       </UpdateItem>
     </UpdateAction>
     <UploadAction id="uploadactionFile">
-      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhoto,dataProduct">//var file = arg.file;&#xD;
-//var name = new Date();&#xD;
-//imagePhoto.set(&quot;image&quot;,$url(&quot;>img/&quot;+name));&#xD;
-//var entity = dataProduct.get(&quot;data:#&quot;);&#xD;
-//entity.set(&quot;productImg&quot;,name);&#xD;
-//dorado.widget.NotifyTipManager.notify(entity&#xD;
-//        .get(&quot;productName&quot;)+ &quot;的照片已经成功上传!&quot;);&#xD;
-		&#xD;
-var file = arg.file;&#xD;
+      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhoto,dataProduct">var file = arg.file;&#xD;
 var name = file.name;&#xD;
 imagePhoto.set(&quot;image&quot;,$url(&quot;>img/&quot;+name));&#xD;
 var autop=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).set(&quot;productImg&quot;,name);&#xD;

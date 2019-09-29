@@ -2,6 +2,7 @@ package com.eclt.service;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -11,10 +12,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bstek.dorado.annotation.DataProvider;
 import com.bstek.dorado.annotation.DataResolver;
+import com.eclt.dao.EcCaseDao;
 import com.eclt.dao.EcProductDao;
+import com.eclt.entity.EcCase;
 import com.eclt.entity.EcProduct;
 
 @Component
+@Transactional
 public class EcProductService {
 
 	@Resource
@@ -38,14 +42,12 @@ public class EcProductService {
     }
 	
 	@DataResolver
-	@Transactional
 	public void saveAll(Collection<EcProduct> products){
 		for(EcProduct product:products){
 			ecProductDao.persistEntity(product);
             Collection<EcProduct> childs = product.getEcProductSet();
             if(!(childs ==  null)){
                 for(EcProduct child:childs){
-                    //ά��������ϵ
                     child.setEcProduct(product);
                 }
                 ecProductDao.persistEntities(childs);
@@ -53,4 +55,30 @@ public class EcProductService {
             }
         }
 	}
+	//获取五类
+	public Collection<EcProduct> findAll(){
+		return ecProductDao.getAll();
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
