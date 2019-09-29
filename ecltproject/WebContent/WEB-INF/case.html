@@ -199,7 +199,7 @@
 			<div class="main_xqiang">
 				<!-- <div class="zuobgs"></div> -->
 				<div class="inner clearfix">
-					<div class="xiangimg_ls"><img :src="Case.caseImg" alt=""></div>
+					<div class="xiangimg_ls"><img :src="Case.caseMaximg" alt=""></div>
 					<div class="xiangqpages">
 						<div class="mainswals">
 							<p>{{Case.caseName}}</p>
@@ -244,6 +244,7 @@
 	                	//console.log(response.data[i]);
 	                	//修改图片路径
 	                	response.data[i].caseImg = "img/"+response.data[i].caseImg;
+	                	response.data[i].caseMaximg = "img/"+response.data[i].caseMaximg;
 	                	//console.log(response.data[i].ncpImg);
 	                }
 	                _this.caseList = response.data;
@@ -263,6 +264,7 @@
 				}).then(function (response) {
 					//console.log(response);
 					response.data.caseImg = "img/"+response.data.caseImg;
+					response.data.caseMaximg = "img/"+response.data.caseMaximg;
 	                _this.Case = response.data;
 	                _this.visb = "visibility:visible";
 	            }).catch(function (err) {
