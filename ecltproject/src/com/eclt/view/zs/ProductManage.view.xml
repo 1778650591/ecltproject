@@ -27,11 +27,11 @@
       </PropertyDef>
       <PropertyDef name="productMinname">
         <Property></Property>
-        <Property name="label">产品简介</Property>
+        <Property name="label">小标题</Property>
       </PropertyDef>
       <PropertyDef name="productMaxname">
         <Property></Property>
-        <Property name="label">所属分类</Property>
+        <Property name="label">大标题</Property>
       </PropertyDef>
       <PropertyDef name="pPreset">
         <Property></Property>
