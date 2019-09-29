@@ -4,6 +4,7 @@
     <listener>
             <listener-class>com.bstek.dorado.web.servlet.SpringContextLoaderListener</listener-class>
     </listener>
+    
     <filter>
         <filter-name>OpenSessionInViewFilter</filter-name>  
                 <filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
@@ -22,6 +23,7 @@
     </filter-mapping>
 
 
+	
     <servlet>
         <servlet-name>doradoServlet</servlet-name>
         <servlet-class>com.bstek.dorado.web.servlet.DoradoServlet</servlet-class>
