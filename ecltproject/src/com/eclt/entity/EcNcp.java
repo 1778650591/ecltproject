@@ -28,6 +28,11 @@ public class EcNcp implements Serializable {
 	private String ncpImg;
 
 	/**
+	 * ncp_maximg:
+	 */
+	private String ncpMaximg;
+
+	/**
 	 * ncp_sort:
 	 */
 	private String ncpSort;
@@ -41,12 +46,13 @@ public class EcNcp implements Serializable {
 		super();
 	}
 
-	public EcNcp(int ncpId, String ncpName, String ncpImg, String ncpSort,
-			String nPreset) {
+	public EcNcp(int ncpId, String ncpName, String ncpImg, String ncpMaximg,
+			String ncpSort, String nPreset) {
 		super();
 		this.ncpId = ncpId;
 		this.ncpName = ncpName;
 		this.ncpImg = ncpImg;
+		this.ncpMaximg = ncpMaximg;
 		this.ncpSort = ncpSort;
 		this.nPreset = nPreset;
 	}
@@ -80,6 +86,15 @@ public class EcNcp implements Serializable {
 		return ncpImg;
 	}
 
+	public void setNcpMaximg(String ncpMaximg) {
+		this.ncpMaximg = ncpMaximg;
+	}
+
+	@Column(name = "ncp_maximg", length = 255)
+	public String getNcpMaximg() {
+		return ncpMaximg;
+	}
+
 	public void setNcpSort(String ncpSort) {
 		this.ncpSort = ncpSort;
 	}
@@ -100,7 +115,8 @@ public class EcNcp implements Serializable {
 
 	public String toString() {
 		return "EcNcp [ncpId=" + ncpId + ",ncpName=" + ncpName + ",ncpImg="
-				+ ncpImg + ",ncpSort=" + ncpSort + ",nPreset=" + nPreset + "]";
+				+ ncpImg + ",ncpMaximg=" + ncpMaximg + ",ncpSort=" + ncpSort
+				+ ",nPreset=" + nPreset + "]";
 	}
 
 }
