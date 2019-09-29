@@ -105,7 +105,7 @@
 	<!--banner End!-->
 
 	<!--main Start!-->
-	
+	<div id="case">
 	<div class="renspages">
 		<div class="Topbuells">
 			<div class="inner">
@@ -118,7 +118,7 @@
 			<div class="inner">
 				<div class="Anlipagesvs">
 					<div class="Anlislider clearfix">
-						<ul id="case">
+						<ul >
 							<li v-for="(c,index) in caseList">
 								<a href="###">
 						      		<div class="renzenbar" v-on:click="getCaseById(c.caseId)">
@@ -136,6 +136,7 @@
 							      	</div>
 						      	</a>
 							</li> -->
+							
 							
 						</ul>
 					</div>
@@ -192,35 +193,35 @@
 	</div>
 	
 	<!--底部 End!-->
-
 	<!-- 弹窗 -->
-	<div class="findextanc">
+	<div class="findextanc" :style="visb">
 		<div class="Molisertbank">
 			<div class="main_xqiang">
 				<!-- <div class="zuobgs"></div> -->
 				<div class="inner clearfix">
-					<div class="xiangimg_ls"><img src="images/xiangimg_ls.png" alt=""></div>
+					<div class="xiangimg_ls"><img :src="Case.caseImg" alt=""></div>
 					<div class="xiangqpages">
 						<div class="mainswals">
-							<p>山东济宁理工学院项目</p>
+							<p>{{Case.caseName}}</p>
+							<p> {{Case.caseInfo}}</p>
+							<!-- <p> XXXXXXXXXXXXXXXXXXX</p>
 							<p> XXXXXXXXXXXXXXXXXXX</p>
 							<p> XXXXXXXXXXXXXXXXXXX</p>
-							<p> XXXXXXXXXXXXXXXXXXX</p>
-							<p> XXXXXXXXXXXXXXXXXXX</p>
-							<p> XXXXXXXXXXXXXXXXXXX</p>
+							<p> XXXXXXXXXXXXXXXXXXX</p> -->
 						</div>
 						<div class="mainswals">
 							<h3>ECLT</h3>
-							<h4>山东济宁理工学院项目</h4>
+							<h4>{{Case.caseName}}</h4>
 						</div>
 					</div>
 				</div>
 				
 			</div>
 		</div>
-		<div class="colse_mains"><a href="###"></a></div>
+		<div class="colse_mains" v-on:click="hiddenDiv()"><a href="###"></a></div>
 	</div>
 	<!-- 弹窗 end -->
+	</div>
 <script src="js/vuejs-2.5.16.js"></script>
 <script src="js/axios-0.18.0.js"></script>
 <script type="text/javascript">
@@ -228,7 +229,9 @@
 		el:"#case",
 		data:{
 			caseList:[],
-			Case:{}
+			Case:{},
+			visb:"",
+			
 		},
 		methods:{
 			findNcpAll:function(){
@@ -258,11 +261,17 @@
 						id:caseId
 					}
 				}).then(function (response) {
-					console.log(response);
-	                //_this.Case = response.data;
+					//console.log(response);
+					response.data.caseImg = "img/"+response.data.caseImg;
+	                _this.Case = response.data;
+	                _this.visb = "visibility:visible";
 	            }).catch(function (err) {
 	                console.log(err)
 	            });
+			},
+			hiddenDiv:function(){
+				var _this = this;
+				_this.visb = "";
 			}
 		},
 	    created(){

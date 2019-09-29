@@ -538,7 +538,7 @@ body{overflow-x: hidden;}
 .colse_mains{text-align: center;padding:0px 0;position: absolute;width:100%;left:0;bottom:30px;z-index:99;}
 .colse_mains a{display: inline-block;width:40px;height:40px;background:url(../images/colsebtns.png) no-repeat;}
 .colse_mains a:hover{background:url(../images/colsebtns_hover.png) no-repeat;}
-.findextanc{width:100%;height:100%;background:#131218;position: fixed;left: 0;top:0;z-index:99999;visibility: hidden;}
+.findextanc{width:100%;height:100%;background:#131218;position: fixed;left: 0;top:0;z-index:99999;visibility:hidden;}
 .findextanc.cur{width:100%;height:100%;background:rgba(0,0,0,0.9);position: fixed;left: 0;top:0;z-index:99999;visibility: hidden;}
 .findextanc.cur .Renzrooms_xqiang{background: none;/*height:90vh;*/}
 /*.findextanc.cur .Renzrooms_xqiang .chanpxq_bars{height:85vh;}*/
