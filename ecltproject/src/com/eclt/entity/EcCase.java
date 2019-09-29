@@ -3,11 +3,18 @@ package com.eclt.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * ec_case:
  */
 @Entity
 @Table(name = "ec_case")
+//TODO 报错记录
+//问题在于实体被惰性加载并且在完全加载之前发生序列化。
+// No serializer found for class org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) ) (through reference chain: java.util.A
+//添加下面代码
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class EcCase implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -15,7 +22,7 @@ public class EcCase implements Serializable {
 	/**
 	 * case_id:
 	 */
-	private int caseId;
+	private Integer caseId;
 
 	/**
 	 * case_name:
@@ -41,7 +48,7 @@ public class EcCase implements Serializable {
 		super();
 	}
 
-	public EcCase(int caseId, String caseName, String caseInfo, String caseImg,
+	public EcCase(Integer caseId, String caseName, String caseInfo, String caseImg,
 			String cPreset) {
 		super();
 		this.caseId = caseId;
@@ -51,14 +58,14 @@ public class EcCase implements Serializable {
 		this.cPreset = cPreset;
 	}
 
-	public void setCaseId(int caseId) {
+	public void setCaseId(Integer caseId) {
 		this.caseId = caseId;
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "case_id", nullable = false)
-	public int getCaseId() {
+	public Integer getCaseId() {
 		return caseId;
 	}
 

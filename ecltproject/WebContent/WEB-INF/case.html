@@ -121,7 +121,7 @@
 						<ul id="case">
 							<li v-for="(c,index) in caseList">
 								<a href="###">
-						      		<div class="renzenbar">
+						      		<div class="renzenbar" v-on:click="getCaseById(c.caseId)">
 							      		<div class="renzfull_img"><img :src="c.caseImg" alt=""></div>
 							      		<div class="renwzhi"><p>{{c.caseName}}</p></div>
 							      	</div>
@@ -227,7 +227,8 @@
 	var vm = new Vue({
 		el:"#case",
 		data:{
-			caseList:[]
+			caseList:[],
+			Case:{}
 		},
 		methods:{
 			findNcpAll:function(){
@@ -244,6 +245,21 @@
 	                }
 	                _this.caseList = response.data;
 	                _this.$forceUpdate(); 
+	            }).catch(function (err) {
+	                console.log(err)
+	            });
+			},
+			getCaseById:function(caseId){
+				var url = "http://localhost:8080/ecltproject/getCaseById.do";
+				var _this = this;
+				
+				axios.get(url,{
+					params:{
+						id:caseId
+					}
+				}).then(function (response) {
+					console.log(response);
+	                //_this.Case = response.data;
 	            }).catch(function (err) {
 	                console.log(err)
 	            });
