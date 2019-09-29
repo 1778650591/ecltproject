@@ -102,19 +102,18 @@ if(entity){&#xD;
         <Property name="property">ncpSort</Property>
       </DataColumn>
       <DataColumn name="ncpImg">
-        <ClientEvent name="onRenderCell">&#xD;
-if(arg.data.get(&quot;ncpImg&quot;)){&#xD;
+        <ClientEvent name="onRenderCell">if(arg.data.get(&quot;ncpImg&quot;)){&#xD;
     $(arg.dom).empty().xCreate(&#xD;
     {&#xD;
         tagName : &quot;IMG&quot;,&#xD;
-        src : $url(&quot;>images/&quot;+ arg.data.get(&quot;ncpImg&quot;)),&#xD;
+        src : $url(&quot;>img/&quot;+ arg.data.get(&quot;ncpImg&quot;)),&#xD;
         style : &quot;width: 20px; height: 20px; margin: 2px&quot;&#xD;
     });&#xD;
     //初始化Tip控件，在控件中显示图片&#xD;
     dorado.TipManager.initTip(arg.dom.parentNode, {&#xD;
         content : {&#xD;
             tagName : &quot;IMG&quot;,&#xD;
-            src : $url(&quot;>images/&quot;+ arg.data.get(&quot;ncpImg&quot;)),&#xD;
+            src : $url(&quot;>img/&quot;+ arg.data.get(&quot;ncpImg&quot;)),&#xD;
             style : &quot;width: 128px; height: 128px; margin: 8px&quot;&#xD;
         },&#xD;
         arrowDirection : &quot;top&quot;,&#xD;
@@ -185,9 +184,9 @@ dialogEdit.hide();</ClientEvent>
           <AutoFormElement>
             <Property name="name">ncpImg</Property>
             <Property name="property">ncpImg</Property>
-            <Property name="width">250</Property>
+            <Property name="width">350</Property>
             <Editor>
-              <Container>
+              <Container layout="hbox">
                 <Image id="imagePhoto">
                   <Property name="height">128</Property>
                   <Property name="width">128</Property>

@@ -14,6 +14,8 @@
 <link rel="stylesheet" type="text/css" href="css/animate.css" />
 <link rel="stylesheet" type="text/css" href="css/swiper.min.css" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
+<script src="js/vuejs-2.5.16.js"></script>
+<script src="js/axios-0.18.0.js"></script>
 <style>
     .swiper-container {
       width: 100%;
@@ -50,6 +52,9 @@
 		height:495px;
 		top: 0;
 		margin-top: 0;
+	}
+	.renzenbar{
+	
 	}
   </style>
 </head>
@@ -160,11 +165,11 @@
 				    <div class="swiper-wrapper" >
 				    
 				      <div class="swiper-slide" v-for="(n,index) in ncpList">
-				      	<a href="###">
-				      		<div class="renzenbar" >
+				      	<a href="">
+				      	 	<div class="renzenbar" > 
 					      		<div class="renzfull_img"><img :src="n.ncpImg" alt=""></div>
 					      		<div class="renwzhi"><p>{{n.ncpName}}</p></div>
-					      	</div>
+					       	</div>  
 				      	</a>
 				      </div>
 				      <!-- <div class="swiper-slide">
@@ -246,38 +251,6 @@
 	</div>
 	<!-- 弹窗 end -->
 	
-<script src="js/vuejs-2.5.16.js"></script>
-<script src="js/axios-0.18.0.js"></script>
-<script type="text/javascript">
-	var vm = new Vue({
-		el:"#ncp",
-		data:{
-			ncpList:[]
-		},
-		methods:{
-			findNcpAll:function(){
-				var url = "http://localhost:8080/ecltproject/findNcpAll.do";
-				var _this = this;
-				
-				axios.get(url).then(function (response) {
-	                //console.log(response.data.length);
-	                for(var i =0;i<response.data.length;i++){
-	                	//console.log(response.data[i]);
-	                	//修改图片路径
-	                	response.data[i].ncpImg = "img/"+response.data[i].ncpImg;
-	                	//console.log(response.data[i].ncpImg);
-	                }
-	                _this.ncpList = response.data;
-	            }).catch(function (err) {
-	                console.log(err)
-	            });
-			}
-		},
-	    created(){
-	        this.findNcpAll();
-	    }
-	});
-</script>
 
 
 </body>
@@ -287,6 +260,7 @@
 <script type="text/javascript" src="js/index.js"></script>
 </html>
 <script>
+
 
 $(function(){
 
@@ -360,4 +334,59 @@ $(function(){
 
 });
 
+window.onload=function(){
+	////////////////////////////////////////////////////////////
+var vm = new Vue({
+	el:"#ncp",
+	data:{
+		ncpList:[]
+	},
+	methods:{
+		findNcpAll:function(){
+			var url = "http://localhost:8080/ecltproject/findNcpAll.do";
+			var _this = this;
+			
+			axios.get(url).then(function (response) {
+                for(var i =0;i<response.data.length;i++){
+                	//修改图片路径
+                	response.data[i].ncpImg = "img/"+response.data[i].ncpImg;
+                }
+                _this.ncpList = response.data;
+            }).catch(function (err) {
+                console.log(err)
+            });
+		}
+	},
+    created(){
+        this.findNcpAll();
+    }
+});
+//////////////////////////////////////////////////////////////////
+	 
+};  
+
+
+
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
