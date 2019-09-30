@@ -10,9 +10,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Product implements Serializable{
 
+	
+
 	public Product(int productId, String productName, String productInfo,
 			String productImg, String productMinimg, String productMinname,
-			String productMaxname, String pPreset) {
+			String productMaxname, String productMaximg2,
+			String productMaximg3, String pPreset) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
@@ -21,6 +24,8 @@ public class Product implements Serializable{
 		this.productMinimg = productMinimg;
 		this.productMinname = productMinname;
 		this.productMaxname = productMaxname;
+		this.productMaximg2 = productMaximg2;
+		this.productMaximg3 = productMaximg3;
 		this.pPreset = pPreset;
 	}
 
@@ -62,6 +67,16 @@ public class Product implements Serializable{
 	 * product_maxname:
 	 */
 	private String productMaxname;
+	
+	/**
+	 * product_maximg2:
+	 */
+	private String productMaximg2;
+
+	/**
+	 * product_maximg3:
+	 */
+	private String productMaximg3;
 
 	/**
 	 * p_preset:
@@ -124,6 +139,22 @@ public class Product implements Serializable{
 		this.productMaxname = productMaxname;
 	}
 
+	public String getProductMaximg2() {
+		return productMaximg2;
+	}
+
+	public void setProductMaximg2(String productMaximg2) {
+		this.productMaximg2 = productMaximg2;
+	}
+
+	public String getProductMaximg3() {
+		return productMaximg3;
+	}
+
+	public void setProductMaximg3(String productMaximg3) {
+		this.productMaximg3 = productMaximg3;
+	}
+
 	public String getpPreset() {
 		return pPreset;
 	}
@@ -138,9 +169,12 @@ public class Product implements Serializable{
 				+ productName + ", productInfo=" + productInfo
 				+ ", productImg=" + productImg + ", productMinimg="
 				+ productMinimg + ", productMinname=" + productMinname
-				+ ", productMaxname=" + productMaxname + ", pPreset=" + pPreset
-				+ "]";
+				+ ", productMaxname=" + productMaxname + ", productMaximg2="
+				+ productMaximg2 + ", productMaximg3=" + productMaximg3
+				+ ", pPreset=" + pPreset + "]";
 	}
+
+	
 	
 	
 	

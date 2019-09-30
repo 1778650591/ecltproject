@@ -421,10 +421,10 @@
 						      	<div class="chanpxq_imgs"><img :src="product.productImg" alt=""></div>
 						      </div>
 						      <div class="swiper-slide">
-						      	<div class="chanpxq_imgs"><img :src="product.productImg" alt=""></div>
+						      	<div class="chanpxq_imgs"><img :src="product.productMaximg2" alt=""></div>
 						      </div>
 						      <div class="swiper-slide">
-						      	<div class="chanpxq_imgs"><img :src="product.productImg" alt=""></div>
+						      	<div class="chanpxq_imgs"><img :src="product.productMaximg3" alt=""></div>
 						      </div>
 						    </div>
 						    <!-- Add Pagination -->
@@ -476,7 +476,7 @@
 					for(var i =0;i<response.data.length;i++){
 	                	//console.log(response.data[i]);
 	                	//修改图片路径
-	                	response.data[i].productImg = "img/"+response.data[i].productImg;
+	                	//response.data[i].productImg = "img/"+response.data[i].productImg;
 	                	response.data[i].productMinimg = "img/"+response.data[i].productMinimg;
 	                	//console.log(response.data[i].ncpImg);
 	                }
@@ -514,7 +514,9 @@
 				}).then(function (response) {
 					//console.log(response);
 					response.data.productImg = "img/"+response.data.productImg;
-		            response.data.productMinimg = "img/"+response.data.productMinimg;
+					response.data.productMaximg2 = "img/"+response.data.productMaximg2;
+					response.data.productMaximg3 = "img/"+response.data.productMaximg3;
+		            //response.data.productMinimg = "img/"+response.data.productMinimg;
 	                _this.product = response.data;
 	                _this.visb = "visibility:visible";
 	            }).catch(function (err) {

@@ -79,6 +79,8 @@ public class EcProductService {
 			pro.setProductMaxname(product.getProductMaxname());
 			pro.setProductMinimg(product.getProductMinimg());
 			pro.setProductMinname(product.getProductMinname());
+			pro.setProductMaximg2(product.getProductMaximg2());
+			pro.setProductMaximg3(product.getProductMaximg3());
 			pro.setpPreset(product.getPPreset());
 			products.add(pro);
 		}
@@ -97,8 +99,9 @@ public class EcProductService {
 		pro.setProductMaxname(ecProduct.getProductMaxname());
 		pro.setProductMinimg(ecProduct.getProductMinimg());
 		pro.setProductMinname(ecProduct.getProductMinname());
+		pro.setProductMaximg2(ecProduct.getProductMaximg2());
+		pro.setProductMaximg3(ecProduct.getProductMaximg3());
 		pro.setpPreset(ecProduct.getPPreset());
-		Collection<EcProduct> products;
 		return pro;
 	}
 	
