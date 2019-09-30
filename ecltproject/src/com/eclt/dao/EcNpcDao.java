@@ -6,6 +6,6 @@ import com.bstek.dorado.hibernate.HibernateDao;
 import com.eclt.entity.EcNcp;
 
 @Repository
-public class EcNpcDao extends HibernateDao<EcNcp, Long> {
+public class EcNpcDao extends HibernateDao<EcNcp, Integer> {
 
 }

@@ -146,7 +146,7 @@
 	</div>
 	
 	<!--banner End!-->
-
+	<div id="ncp">
 	<!--main Start!-->
 	
 	<div class="renspages">
@@ -161,11 +161,11 @@
 			<div class="inner">
 				<div class="renshlisrt">
 					 <!-- Swiper -->
-				  <div class="swiper-container" id="ncp">
+				  <div class="swiper-container" >
 				    <div class="swiper-wrapper" >
 				     
 				      <div class="swiper-slide" v-for="n in ncpList">
-				      	<a href="" >
+				      	<a href="javascript:;" v-on:click="getNcpById(n.ncpId)">
 				      	 	<div class="renzenbar">
 					      		<div class="renzfull_img"><img :src="n.ncpImg"></div>
 					      		<div class="renwzhi"><p>{{n.ncpName}}</p></div>
@@ -216,19 +216,19 @@
 	<!--底部 End!-->
 
 			<!-- 弹窗 -->
-	<div class="findextanc">
+	<div class="findextanc" :style="visb">
 		<div class="">
 			<div class="Renzrooms_xqiang">
 			<div class="zuobgs"></div>
 			<div class="inner clearfix">
-				<div class="Renzrooms_bar"><h3>埃克森特（ECLT）外观专利证11</h3></div>
+				<div class="Renzrooms_bar"><h3>{{ncp.ncpName}}</h3></div>
 				<div class="Renzrooms_swiper">
 				  <div class="swiper-container">
 				    <div class="swiper-wrapper">
-				      <div class="swiper-slide"><img src="images/zhuanli.jpg" alt=""></div>
-				      <div class="swiper-slide"><img src="images/zhuanli.jpg" alt=""></div>
-				      <div class="swiper-slide"><img src="images/zhuanli.jpg" alt=""></div>
-				      <div class="swiper-slide"><img src="images/zhuanli.jpg" alt=""></div>
+				      <div class="swiper-slide"><img :src="ncp.ncpMaximg" alt=""></div>
+				      <div class="swiper-slide"><img :src="ncp.ncpMaximg" alt=""></div>
+				      <!--<div class="swiper-slide"><img :src="Case.caseMaximg" alt=""></div>
+				      <div class="swiper-slide"><img :src="Case.caseMaximg" alt=""></div> -->
 				    </div>
 					<div class="swiper-button-next"></div>
 					<div class="swiper-button-prev"></div>
@@ -238,12 +238,12 @@
 			
 		</div>
 		</div>
-		<div class="colse_mains"><a href="###"></a></div>
+		<div class="colse_mains" v-on:click="hiddenDiv()"><a href="###"></a></div>
 	</div>
 	<!-- 弹窗 end -->
 	
 	<button id="btn">sssss</button>
-
+	</div>
 </body>
 <script type="text/javascript" src="js/jquery.min.js" ></script>
 <script type="text/javascript" src="js/swiper.min.js"></script>
@@ -331,7 +331,9 @@ $(function(){
 var vm = new Vue({
 	el:"#ncp",
 	data:{
-		ncpList:[]
+		ncpList:[],
+		ncp:{},
+		visb:""
 	},
 	methods:{
 		findNcpAll:function(){
@@ -347,6 +349,28 @@ var vm = new Vue({
             }).catch(function (err) {
                 //console.log(err)
             });
+		},
+		getNcpById:function(ncpId){
+			var url = "http://localhost:8080/ecltproject/getNcpById.do";
+			var _this = this;
+			
+			axios.get(url,{
+				params:{
+					id:ncpId
+				}
+			}).then(function (response) {
+				//console.log(response);
+				response.data.ncpImg = "img/"+response.data.ncpImg;
+				response.data.ncpMaximg = "img/"+response.data.ncpMaximg;
+                _this.ncp = response.data;
+                _this.visb = "visibility:visible";
+            }).catch(function (err) {
+                console.log(err)
+            });
+		},
+		hiddenDiv:function(){
+			var _this = this;
+			_this.visb = "";
 		}
 	},
     created(){
@@ -355,10 +379,10 @@ var vm = new Vue({
 });
 //////////////////////////////////////////////////////////////////
 
-window.onload=function(){
+/* window.onload=function(){
 	
 	 
-};  
+};   */
 
 
 

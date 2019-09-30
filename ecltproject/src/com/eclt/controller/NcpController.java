@@ -32,5 +32,11 @@ public class NcpController {
 		return ecNcpService.findNcpAll();
 	}
 	
+	@RequestMapping("/getNcpById.do")
+	@ResponseBody
+	public EcNcp getNcpById(Integer id){
+		return ecNcpService.getNcpById(id);
+	}
+	
 	
 }

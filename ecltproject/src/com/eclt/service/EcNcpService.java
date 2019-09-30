@@ -58,6 +58,10 @@ public class EcNcpService {
 		List<EcNcp> list = ecNcpDao.getAll();
 		return list;
 	}
+	
+	public EcNcp getNcpById(Integer id){
+		return ecNcpDao.get(id);
+	}
 }
 
 
