@@ -2,9 +2,6 @@ package com.eclt.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,7 +10,6 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "ec_product")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class EcProduct implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -54,6 +50,16 @@ public class EcProduct implements Serializable {
 	private String productMaxname;
 
 	/**
+	 * product_maximg2:
+	 */
+	private String productMaximg2;
+
+	/**
+	 * product_maximg3:
+	 */
+	private String productMaximg3;
+
+	/**
 	 * p_preset:
 	 */
 	private String pPreset;
@@ -74,7 +80,8 @@ public class EcProduct implements Serializable {
 
 	public EcProduct(int productId, String productName, String productInfo,
 			String productImg, String productMinimg, String productMinname,
-			String productMaxname, String pPreset, EcProduct ecProduct,
+			String productMaxname, String productMaximg2,
+			String productMaximg3, String pPreset, EcProduct ecProduct,
 			Set<EcProduct> ecProductSet) {
 		super();
 		this.productId = productId;
@@ -84,6 +91,8 @@ public class EcProduct implements Serializable {
 		this.productMinimg = productMinimg;
 		this.productMinname = productMinname;
 		this.productMaxname = productMaxname;
+		this.productMaximg2 = productMaximg2;
+		this.productMaximg3 = productMaximg3;
 		this.pPreset = pPreset;
 		this.ecProduct = ecProduct;
 		this.ecProductSet = ecProductSet;
@@ -154,6 +163,24 @@ public class EcProduct implements Serializable {
 		return productMaxname;
 	}
 
+	public void setProductMaximg2(String productMaximg2) {
+		this.productMaximg2 = productMaximg2;
+	}
+
+	@Column(name = "product_maximg2", length = 255)
+	public String getProductMaximg2() {
+		return productMaximg2;
+	}
+
+	public void setProductMaximg3(String productMaximg3) {
+		this.productMaximg3 = productMaximg3;
+	}
+
+	@Column(name = "product_maximg3", length = 255)
+	public String getProductMaximg3() {
+		return productMaximg3;
+	}
+
 	public void setPPreset(String pPreset) {
 		this.pPreset = pPreset;
 	}
@@ -177,7 +204,7 @@ public class EcProduct implements Serializable {
 		this.ecProductSet = ecProductSet;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "ecProduct")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ecProduct")
 	public Set<EcProduct> getEcProductSet() {
 		return ecProductSet;
 	}
@@ -187,7 +214,10 @@ public class EcProduct implements Serializable {
 				+ productName + ",productInfo=" + productInfo + ",productImg="
 				+ productImg + ",productMinimg=" + productMinimg
 				+ ",productMinname=" + productMinname + ",productMaxname="
-				+ productMaxname + ",pPreset=" + pPreset + " ]";
+				+ productMaxname + ",productMaximg2=" + productMaximg2
+				+ ",productMaximg3=" + productMaximg3 + ",pPreset=" + pPreset
+				+ ",ecProduct=" + ecProduct + ",ecProductSet=" + ecProductSet
+				+ "]";
 	}
 
 }

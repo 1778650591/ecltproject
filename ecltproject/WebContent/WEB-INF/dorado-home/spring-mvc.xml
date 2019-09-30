@@ -21,4 +21,11 @@
 		<property name="suffix" value=".html" />
 	</bean>
 
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path=""/>
+			<mvc:exclude-mapping path="/login.d"/>
+			<bean class="common.UserInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>

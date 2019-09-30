@@ -23,7 +23,7 @@
       <Property name="label">认证预设字段</Property>
     </PropertyDef>
     <PropertyDef name="ncpMaximg">
-      <Property/>
+      <Property></Property>
       <Property name="label">认证预览图</Property>
     </PropertyDef>
   </DataType>
@@ -50,7 +50,7 @@
       <Property name="label">案例预设字段</Property>
     </PropertyDef>
     <PropertyDef name="caseMaximg">
-      <Property/>
+      <Property></Property>
       <Property name="label">案例预览图</Property>
     </PropertyDef>
   </DataType>
@@ -86,7 +86,15 @@
     </PropertyDef>
     <PropertyDef name="productMaxname">
       <Property></Property>
-      <Property name="label">所属分类</Property>
+      <Property name="label">预览图1</Property>
+    </PropertyDef>
+    <PropertyDef name="productMaximg2">
+      <Property/>
+      <Property name="label">预览图2</Property>
+    </PropertyDef>
+    <PropertyDef name="productMaximg3">
+      <Property/>
+      <Property name="label">预览图3</Property>
     </PropertyDef>
   </DataType>
   <DataType name="ECUser">

@@ -128,194 +128,14 @@
       </column>
    </table>
    <table id="8">
-      <x>457</x>
-      <y>22</y>
-      <width>400</width>
-      <height>257</height>
-      <name>ec_product</name>
-      <label>ec_product</label>
-      <comment/>
-      <column id="9">
-         <x>0</x>
-         <y>0</y>
-         <width>350</width>
-         <height>130</height>
-         <pk>true</pk>
-         <fk>false</fk>
-         <autoIncrement>true</autoIncrement>
-         <name>product_id</name>
-         <label>product_id</label>
-         <type>INT</type>
-         <length>10</length>
-         <decimalLength/>
-         <defaultValue/>
-         <notNull>true</notNull>
-         <unique>false</unique>
-         <defaultValue/>
-         <comment/>
-      </column>
-      <column id="10">
-         <x>0</x>
-         <y>0</y>
-         <width>350</width>
-         <height>130</height>
-         <pk>false</pk>
-         <fk>false</fk>
-         <autoIncrement>false</autoIncrement>
-         <name>product_name</name>
-         <label>product_name</label>
-         <type>VARCHAR</type>
-         <length>40</length>
-         <decimalLength/>
-         <defaultValue/>
-         <notNull>true</notNull>
-         <unique>false</unique>
-         <defaultValue/>
-         <comment/>
-      </column>
-      <column id="11">
-         <x>0</x>
-         <y>0</y>
-         <width>350</width>
-         <height>130</height>
-         <pk>false</pk>
-         <fk>true</fk>
-         <autoIncrement>false</autoIncrement>
-         <name>parent_id</name>
-         <label>parent_id</label>
-         <type>INT</type>
-         <length>10</length>
-         <decimalLength/>
-         <defaultValue/>
-         <notNull>false</notNull>
-         <unique>false</unique>
-         <defaultValue/>
-         <comment/>
-      </column>
-      <column id="12">
-         <x>0</x>
-         <y>0</y>
-         <width>350</width>
-         <height>130</height>
-         <pk>false</pk>
-         <fk>false</fk>
-         <autoIncrement>false</autoIncrement>
-         <name>product_info</name>
-         <label>product_info</label>
-         <type>VARCHAR</type>
-         <length>255</length>
-         <decimalLength/>
-         <defaultValue/>
-         <notNull>false</notNull>
-         <unique>false</unique>
-         <defaultValue/>
-         <comment/>
-      </column>
-      <column id="13">
-         <x>0</x>
-         <y>0</y>
-         <width>350</width>
-         <height>130</height>
-         <pk>false</pk>
-         <fk>false</fk>
-         <autoIncrement>false</autoIncrement>
-         <name>product_img</name>
-         <label>product_img</label>
-         <type>VARCHAR</type>
-         <length>255</length>
-         <decimalLength/>
-         <defaultValue/>
-         <notNull>false</notNull>
-         <unique>false</unique>
-         <defaultValue/>
-         <comment/>
-      </column>
-      <column id="14">
-         <x>0</x>
-         <y>0</y>
-         <width>350</width>
-         <height>130</height>
-         <pk>false</pk>
-         <fk>false</fk>
-         <autoIncrement>false</autoIncrement>
-         <name>product_minimg</name>
-         <label>product_minimg</label>
-         <type>VARCHAR</type>
-         <length>255</length>
-         <decimalLength/>
-         <defaultValue/>
-         <notNull>false</notNull>
-         <unique>false</unique>
-         <defaultValue/>
-         <comment/>
-      </column>
-      <column id="15">
-         <x>0</x>
-         <y>0</y>
-         <width>350</width>
-         <height>130</height>
-         <pk>false</pk>
-         <fk>false</fk>
-         <autoIncrement>false</autoIncrement>
-         <name>product_minname</name>
-         <label>product_minname</label>
-         <type>VARCHAR</type>
-         <length>255</length>
-         <decimalLength/>
-         <defaultValue/>
-         <notNull>false</notNull>
-         <unique>false</unique>
-         <defaultValue/>
-         <comment/>
-      </column>
-      <column id="16">
-         <x>0</x>
-         <y>0</y>
-         <width>350</width>
-         <height>130</height>
-         <pk>false</pk>
-         <fk>false</fk>
-         <autoIncrement>false</autoIncrement>
-         <name>product_maxname</name>
-         <label>product_maxname</label>
-         <type>VARCHAR</type>
-         <length>255</length>
-         <decimalLength/>
-         <defaultValue/>
-         <notNull>false</notNull>
-         <unique>false</unique>
-         <defaultValue/>
-         <comment/>
-      </column>
-      <column id="17">
-         <x>0</x>
-         <y>0</y>
-         <width>350</width>
-         <height>130</height>
-         <pk>false</pk>
-         <fk>false</fk>
-         <autoIncrement>false</autoIncrement>
-         <name>p_preset</name>
-         <label>p_preset</label>
-         <type>VARCHAR</type>
-         <length>20</length>
-         <decimalLength/>
-         <defaultValue/>
-         <notNull>false</notNull>
-         <unique>false</unique>
-         <defaultValue/>
-         <comment/>
-      </column>
-   </table>
-   <table id="18">
-      <x>5</x>
-      <y>5</y>
+      <x>32</x>
+      <y>503</y>
       <width>350</width>
       <height>173</height>
       <name>ec_case</name>
       <label>ec_case</label>
       <comment/>
-      <column id="19">
+      <column id="9">
          <x>0</x>
          <y>0</y>
          <width>350</width>
@@ -334,7 +154,7 @@
          <defaultValue/>
          <comment/>
       </column>
-      <column id="20">
+      <column id="10">
          <x>0</x>
          <y>0</y>
          <width>350</width>
@@ -353,7 +173,7 @@
          <defaultValue/>
          <comment/>
       </column>
-      <column id="21">
+      <column id="11">
          <x>0</x>
          <y>0</y>
          <width>350</width>
@@ -372,7 +192,7 @@
          <defaultValue/>
          <comment/>
       </column>
-      <column id="22">
+      <column id="12">
          <x>0</x>
          <y>0</y>
          <width>350</width>
@@ -391,7 +211,7 @@
          <defaultValue/>
          <comment/>
       </column>
-      <column id="23">
+      <column id="13">
          <x>0</x>
          <y>0</y>
          <width>350</width>
@@ -410,7 +230,7 @@
          <defaultValue/>
          <comment/>
       </column>
-      <column id="24">
+      <column id="14">
          <x>0</x>
          <y>0</y>
          <width>350</width>
@@ -430,15 +250,15 @@
          <comment/>
       </column>
    </table>
-   <table id="25">
-      <x>395</x>
-      <y>5</y>
+   <table id="15">
+      <x>57</x>
+      <y>280</y>
       <width>350</width>
       <height>173</height>
       <name>ec_ncp</name>
       <label>ec_ncp</label>
       <comment/>
-      <column id="26">
+      <column id="16">
          <x>0</x>
          <y>0</y>
          <width>350</width>
@@ -457,7 +277,7 @@
          <defaultValue/>
          <comment/>
       </column>
-      <column id="27">
+      <column id="17">
          <x>0</x>
          <y>0</y>
          <width>350</width>
@@ -476,7 +296,7 @@
          <defaultValue/>
          <comment/>
       </column>
-      <column id="28">
+      <column id="18">
          <x>0</x>
          <y>0</y>
          <width>350</width>
@@ -495,7 +315,7 @@
          <defaultValue/>
          <comment/>
       </column>
-      <column id="29">
+      <column id="19">
          <x>0</x>
          <y>0</y>
          <width>350</width>
@@ -514,7 +334,7 @@
          <defaultValue/>
          <comment/>
       </column>
-      <column id="30">
+      <column id="20">
          <x>0</x>
          <y>0</y>
          <width>350</width>
@@ -533,7 +353,7 @@
          <defaultValue/>
          <comment/>
       </column>
-      <column id="31">
+      <column id="21">
          <x>0</x>
          <y>0</y>
          <width>350</width>
@@ -553,29 +373,247 @@
          <comment/>
       </column>
    </table>
+   <table id="22">
+      <x>5</x>
+      <y>5</y>
+      <width>350</width>
+      <height>313</height>
+      <name>ec_product</name>
+      <label>ec_product</label>
+      <comment/>
+      <column id="23">
+         <x>0</x>
+         <y>0</y>
+         <width>350</width>
+         <height>130</height>
+         <pk>true</pk>
+         <fk>false</fk>
+         <autoIncrement>true</autoIncrement>
+         <name>product_id</name>
+         <label>product_id</label>
+         <type>INT</type>
+         <length>10</length>
+         <decimalLength/>
+         <defaultValue/>
+         <notNull>true</notNull>
+         <unique>false</unique>
+         <defaultValue/>
+         <comment/>
+      </column>
+      <column id="24">
+         <x>0</x>
+         <y>0</y>
+         <width>350</width>
+         <height>130</height>
+         <pk>false</pk>
+         <fk>false</fk>
+         <autoIncrement>false</autoIncrement>
+         <name>product_name</name>
+         <label>product_name</label>
+         <type>VARCHAR</type>
+         <length>40</length>
+         <decimalLength/>
+         <defaultValue/>
+         <notNull>true</notNull>
+         <unique>false</unique>
+         <defaultValue/>
+         <comment/>
+      </column>
+      <column id="25">
+         <x>0</x>
+         <y>0</y>
+         <width>350</width>
+         <height>130</height>
+         <pk>false</pk>
+         <fk>true</fk>
+         <autoIncrement>false</autoIncrement>
+         <name>parent_id</name>
+         <label>parent_id</label>
+         <type>INT</type>
+         <length>10</length>
+         <decimalLength/>
+         <defaultValue/>
+         <notNull>false</notNull>
+         <unique>false</unique>
+         <defaultValue/>
+         <comment/>
+      </column>
+      <column id="26">
+         <x>0</x>
+         <y>0</y>
+         <width>350</width>
+         <height>130</height>
+         <pk>false</pk>
+         <fk>false</fk>
+         <autoIncrement>false</autoIncrement>
+         <name>product_info</name>
+         <label>product_info</label>
+         <type>VARCHAR</type>
+         <length>255</length>
+         <decimalLength/>
+         <defaultValue/>
+         <notNull>false</notNull>
+         <unique>false</unique>
+         <defaultValue/>
+         <comment/>
+      </column>
+      <column id="27">
+         <x>0</x>
+         <y>0</y>
+         <width>350</width>
+         <height>130</height>
+         <pk>false</pk>
+         <fk>false</fk>
+         <autoIncrement>false</autoIncrement>
+         <name>product_img</name>
+         <label>product_img</label>
+         <type>VARCHAR</type>
+         <length>255</length>
+         <decimalLength/>
+         <defaultValue/>
+         <notNull>false</notNull>
+         <unique>false</unique>
+         <defaultValue/>
+         <comment/>
+      </column>
+      <column id="28">
+         <x>0</x>
+         <y>0</y>
+         <width>350</width>
+         <height>130</height>
+         <pk>false</pk>
+         <fk>false</fk>
+         <autoIncrement>false</autoIncrement>
+         <name>product_minimg</name>
+         <label>product_minimg</label>
+         <type>VARCHAR</type>
+         <length>255</length>
+         <decimalLength/>
+         <defaultValue/>
+         <notNull>false</notNull>
+         <unique>false</unique>
+         <defaultValue/>
+         <comment/>
+      </column>
+      <column id="29">
+         <x>0</x>
+         <y>0</y>
+         <width>350</width>
+         <height>130</height>
+         <pk>false</pk>
+         <fk>false</fk>
+         <autoIncrement>false</autoIncrement>
+         <name>product_minname</name>
+         <label>product_minname</label>
+         <type>VARCHAR</type>
+         <length>255</length>
+         <decimalLength/>
+         <defaultValue/>
+         <notNull>false</notNull>
+         <unique>false</unique>
+         <defaultValue/>
+         <comment/>
+      </column>
+      <column id="30">
+         <x>0</x>
+         <y>0</y>
+         <width>350</width>
+         <height>130</height>
+         <pk>false</pk>
+         <fk>false</fk>
+         <autoIncrement>false</autoIncrement>
+         <name>product_maxname</name>
+         <label>product_maxname</label>
+         <type>VARCHAR</type>
+         <length>255</length>
+         <decimalLength/>
+         <defaultValue/>
+         <notNull>false</notNull>
+         <unique>false</unique>
+         <defaultValue/>
+         <comment/>
+      </column>
+      <column id="31">
+         <x>0</x>
+         <y>0</y>
+         <width>350</width>
+         <height>130</height>
+         <pk>false</pk>
+         <fk>false</fk>
+         <autoIncrement>false</autoIncrement>
+         <name>product_maximg2</name>
+         <label>product_maximg2</label>
+         <type>VARCHAR</type>
+         <length>255</length>
+         <decimalLength/>
+         <defaultValue/>
+         <notNull>false</notNull>
+         <unique>false</unique>
+         <defaultValue/>
+         <comment/>
+      </column>
+      <column id="32">
+         <x>0</x>
+         <y>0</y>
+         <width>350</width>
+         <height>130</height>
+         <pk>false</pk>
+         <fk>false</fk>
+         <autoIncrement>false</autoIncrement>
+         <name>product_maximg3</name>
+         <label>product_maximg3</label>
+         <type>VARCHAR</type>
+         <length>255</length>
+         <decimalLength/>
+         <defaultValue/>
+         <notNull>false</notNull>
+         <unique>false</unique>
+         <defaultValue/>
+         <comment/>
+      </column>
+      <column id="33">
+         <x>0</x>
+         <y>0</y>
+         <width>350</width>
+         <height>130</height>
+         <pk>false</pk>
+         <fk>false</fk>
+         <autoIncrement>false</autoIncrement>
+         <name>p_preset</name>
+         <label>p_preset</label>
+         <type>VARCHAR</type>
+         <length>20</length>
+         <decimalLength/>
+         <defaultValue/>
+         <notNull>false</notNull>
+         <unique>false</unique>
+         <defaultValue/>
+         <comment/>
+      </column>
+   </table>
    <connection>
       <type>一对多</type>
       <constraintName>fk_productId_id</constraintName>
-      <source>8</source>
-      <target>8</target>
-      <pk>9</pk>
-      <fk>11</fk>
+      <source>22</source>
+      <target>22</target>
+      <pk>23</pk>
+      <fk>25</fk>
       <bendpoint>
          <dx1>0</dx1>
-         <dy1>-191</dy1>
+         <dy1>-186</dy1>
          <dx2>0</dx2>
-         <dy2>-191</dy2>
+         <dy2>-186</dy2>
       </bendpoint>
       <bendpoint>
-         <dx1>230</dx1>
-         <dy1>-191</dy1>
-         <dx2>230</dx2>
-         <dy2>-191</dy2>
+         <dx1>205</dx1>
+         <dy1>-186</dy1>
+         <dx2>205</dx2>
+         <dy2>-186</dy2>
       </bendpoint>
       <bendpoint>
-         <dx1>230</dx1>
+         <dx1>205</dx1>
          <dy1>0</dy1>
-         <dx2>230</dx2>
+         <dx2>205</dx2>
          <dy2>0</dy2>
       </bendpoint>
    </connection>
