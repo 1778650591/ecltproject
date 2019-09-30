@@ -21,11 +21,14 @@
 		<property name="suffix" value=".html" />
 	</bean>
 
-	<mvc:interceptors>
+	<!-- <mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path=""/>
+			<mvc:mapping path="/**/*.d"/>
 			<mvc:exclude-mapping path="/login.d"/>
 			<bean class="common.UserInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
+	<mvc:default-servlet-handler/> -->
+
+
 </beans>

@@ -25,8 +25,16 @@
         <filter-name>OpenSessionInViewFilter</filter-name>
         <url-pattern>*.do</url-pattern>
     </filter-mapping>
-
-
+	
+	<!-- 用户拦截 -->
+	<filter>
+		<filter-name>filterView</filter-name>
+		<filter-class>com.eclt.filter.UserFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>filterView</filter-name>
+		<url-pattern>*.d</url-pattern>
+	</filter-mapping>
 	
     <servlet>
         <servlet-name>doradoServlet</servlet-name>
