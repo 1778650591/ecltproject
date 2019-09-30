@@ -23,12 +23,16 @@ public class ProductController {
 	private EcProductService productService;
 	
 	
-	@RequestMapping("/getProductById")
+	@RequestMapping("/getProductListById")
 	@ResponseBody
-	public List<Product> getProductById(Integer id){
-		return productService.getProductById(id);
+	public List<Product> getProductListById(Integer id){
+		return productService.getProductListById(id);
 	}
 	
-	
+	@RequestMapping("/getProductById")
+	@ResponseBody
+	public Product getProductById(Integer id){
+		return productService.getProductById(id);
+	}
 	
 }

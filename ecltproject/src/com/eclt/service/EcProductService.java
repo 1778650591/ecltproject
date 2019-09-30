@@ -63,7 +63,7 @@ public class EcProductService {
         }
 	}
 	
-	public List<Product> getProductById(Integer id){
+	public List<Product> getProductListById(Integer id){
 		String sql = "select * from ec_product WHERE parent_id = ?";
 		SQLQuery query = ecProductDao.getSession().createSQLQuery(sql).addEntity(EcProduct.class);
 		query.setInteger(0, id);
@@ -84,6 +84,22 @@ public class EcProductService {
 		}
 		//System.out.println(products);
 		return products;
+	}
+	
+	
+	public Product getProductById(Integer id){
+		EcProduct ecProduct = ecProductDao.get(id);
+		Product pro = new Product();
+		pro.setProductId(ecProduct.getProductId());
+		pro.setProductName(ecProduct.getProductName());
+		pro.setProductImg(ecProduct.getProductImg());
+		pro.setProductInfo(ecProduct.getProductInfo());
+		pro.setProductMaxname(ecProduct.getProductMaxname());
+		pro.setProductMinimg(ecProduct.getProductMinimg());
+		pro.setProductMinname(ecProduct.getProductMinname());
+		pro.setpPreset(ecProduct.getPPreset());
+		Collection<EcProduct> products;
+		return pro;
 	}
 	
 	

@@ -116,7 +116,7 @@
 								<div class="cb">
 									<div class="xiansfel xiansfel_1"></div>
 									<div class="feleidfc">
-										<div class="felsbanimg"><img @mouseover="findTxdlAll(1)" src="images/fel_1.png" alt=""></div>
+										<div class="felsbanimg"><img @mouseover="findProductAll(1)" src="images/fel_1.png" alt=""></div>
 										<div class="feltitle"><p>数据电缆</p></div>
 									</div>
 								</div>
@@ -127,7 +127,7 @@
 								<div class="cb">
 									<div class="xiansfel xiansfel_2"></div>
 									<div class="feleidfc">
-										<div class="felsbanimg"><img @mouseover="findTxdlAll(2)" src="images/fel_2.png" alt=""></div>
+										<div class="felsbanimg"><img @mouseover="findProductAll(2)" src="images/fel_2.png" alt=""></div>
 										<div class="feltitle"><p>通讯光缆</p></div>
 									</div>
 								</div>
@@ -139,7 +139,7 @@
 								<div class="cb">
 									<div class="xiansfel xiansfel_3"></div>
 									<div class="feleidfc">
-										<div class="felsbanimg"><img @mouseover="findSjzxAll(3)" src="images/fel_3.png" alt=""></div>
+										<div class="felsbanimg"><img @mouseover="findProductAll(3)" src="images/fel_3.png" alt=""></div>
 										<div class="feltitle"><p>数据中心</p></div>
 									</div>
 								</div>
@@ -151,7 +151,7 @@
 								<div class="cb">
 									<div class="xiansfel xiansfel_4"></div>
 									<div class="feleidfc">
-										<div class="felsbanimg"><img @mouseover="findYwbxAll(4)" src="images/fel_4.png" alt=""></div>
+										<div class="felsbanimg"><img @mouseover="findProductAll(4)" src="images/fel_4.png" alt=""></div>
 										<div class="feltitle"><p>易维布线</p></div>
 									</div>
 								</div>
@@ -163,7 +163,7 @@
 								<div class="cb">
 									<div class="xiansfel xiansfel_5"></div>
 									<div class="feleidfc">
-										<div class="felsbanimg"><img @mouseover="findZnywAll(5)" src="images/fel_5.png" alt=""></div>
+										<div class="felsbanimg"><img @mouseover="findProductAll(5)" src="images/fel_5.png" alt=""></div>
 										<div class="feltitle"><p>智能运维</p></div>
 									</div>
 								</div>
@@ -183,8 +183,8 @@
 					<!-- 切换1 -->
 					<div class="felrandbar active clearfix">
 						<ul>
-							<li v-for="(p,index) in sjdlList">
-								<a href="javascript:;">
+							<li v-for="(p,index) in productList.sjdlList">
+								<a href="javascript:;" v-on:click="getProductById(p.productId)">
 									<div class="cb feltopbar feltopbar_bg1">
 										<div class="feltextbar">
 											<h3>{{p.productMinname}}</h3>
@@ -221,8 +221,8 @@
 
 					<div class="felrandbar clearfix">
 						<ul>
-							<li v-for="(p,index) in txdlList">
-								<a href="javascript:;">
+							<li v-for="(p,index) in productList.txdlList">
+								<a href="javascript:;" v-on:click="getProductById(p.productId)">
 									<div class="cb feltopbar feltopbar_bg1">
 										<div class="feltextbar">
 											<h3>{{p.productMinname}}</h3>
@@ -259,8 +259,8 @@
 
 					<div class="felrandbar clearfix">
 						<ul>
-							<li v-for="(p,index) in sjzxList">
-								<a href="javascript:;">
+							<li v-for="(p,index) in productList.sjzxList">
+								<a href="javascript:;" v-on:click="getProductById(p.productId)">
 									<div class="cb feltopbar feltopbar_bg1">
 										<div class="feltextbar">
 											<h3>{{p.productMinname}}</h3>
@@ -297,8 +297,8 @@
 
 					<div class="felrandbar clearfix">
 						<ul>
-							<li v-for="(p,index) in ywbxList">
-								<a href="javascript:;">
+							<li v-for="(p,index) in productList.ywbxList">
+								<a href="javascript:;" v-on:click="getProductById(p.productId)">
 									<div class="cb feltopbar feltopbar_bg1">
 										<div class="feltextbar">
 											<h3>{{p.productMinname}}</h3>
@@ -335,8 +335,8 @@
 
 					<div class="felrandbar clearfix">
 						<ul>
-							<li v-for="(p,index) in znywList">
-								<a href="javascript:;">
+							<li v-for="(p,index) in productList.znywList">
+								<a href="javascript:;" v-on:click="getProductById(p.productId)">
 									<div class="cb feltopbar feltopbar_bg1">
 										<div class="feltextbar">
 											<h3>{{p.productMinname}}</h3>
@@ -406,7 +406,7 @@
 	<!--底部 End!-->
 
 		<!-- 弹窗 -->
-	<div class="findextanc cur">
+	<div class="findextanc cur" :style="visb">
 		<div class="Renzrooms_xqiang">
 			<div class="inner">
 			<!-- <div class="zuobgs"></div> -->
@@ -418,13 +418,13 @@
 						  <div class="swiper-container">
 						    <div class="swiper-wrapper">
 						      <div class="swiper-slide">
-						      	<div class="chanpxq_imgs"><img src="images/chanpxq.png" alt=""></div>
+						      	<div class="chanpxq_imgs"><img :src="product.productImg" alt=""></div>
 						      </div>
 						      <div class="swiper-slide">
-						      	<div class="chanpxq_imgs"><img src="images/chanpxq.png" alt=""></div>
+						      	<div class="chanpxq_imgs"><img :src="product.productImg" alt=""></div>
 						      </div>
 						      <div class="swiper-slide">
-						      	<div class="chanpxq_imgs"><img src="images/chanpxq.png" alt=""></div>
+						      	<div class="chanpxq_imgs"><img :src="product.productImg" alt=""></div>
 						      </div>
 						    </div>
 						    <!-- Add Pagination -->
@@ -434,23 +434,15 @@
 				</div>
 				<div class="chanpxq_fulls">
 					<h3>产品信息</h3>
-					<h4>产品</h4>
-					<p> XXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXX</p>
-					<p> XXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXX</p>
-					<p> XXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXX</p>
-					<p> XXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXX</p>
-					<p> XXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXX</p>
-					<p> XXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXX</p>
-					<p> XXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXX</p>
-					<p> XXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXX</p>
-					<p> XXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXX</p>
-					<p> XXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXX</p>
+					<h4>{{product.productName}}</h4>
+					<p>{{product.productInfo}}</p>
+					<!-- <p> XXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXX</p> -->
 				</div>
 			</div>
 			
 		</div>
 		</div>
-		<div class="colse_mains"><a href="javascript:;"></a></div>
+		<div class="colse_mains" v-on:click="hiddenDiv()"><a href="javascript:;"></a></div>
 	</div>
 	</div>
 	<!-- 弹窗 end -->
@@ -460,16 +452,19 @@
 	var vm = new Vue({
 		el:"#product",
 		data:{
-			sjdlList:[],
-			txdlList:[],
-			sjzxList:[],
-			ywbxList:[],
-			znywList:[],
+			productList:{
+				sjdlList:[],
+				txdlList:[],
+				sjzxList:[],
+				ywbxList:[],
+				znywList:[]
+			},
+			product:{},
 			visb:""
 		},
 		methods:{
-			findSjdlAll:function(productId){
-				var url = "http://localhost:8080/ecltproject/getProductById.do";
+			findProductAll:function(productId){
+				var url = "http://localhost:8080/ecltproject/getProductListById.do";
 				var _this = this;
 				
 				axios.get(url,{
@@ -486,12 +481,29 @@
 	                	//console.log(response.data[i].ncpImg);
 	                }
 					//response.data.caseImg = "img/"+response.data.caseImg;
-	                _this.sjdlList = response.data;
+					switch(productId) {
+					     case 1:
+					    	 _this.productList.sjdlList = response.data;
+					        break;
+					     case 2:
+					    	 _this.productList.txdlList = response.data;
+					        break;
+					     case 3:
+					    	 _this.productList.sjzxList = response.data;
+					        break;
+					     case 4:
+					    	 _this.productList.ywbxList = response.data;
+					        break;
+					     case 5:
+					    	 _this.productList.znywList = response.data;
+						    break;
+					} 
+	                
 	            }).catch(function (err) {
 	                console.log(err)
 	            });
 			},
-			findTxdlAll:function(productId){
+			getProductById:function(productId){
 				var url = "http://localhost:8080/ecltproject/getProductById.do";
 				var _this = this;
 				
@@ -501,91 +513,21 @@
 					}
 				}).then(function (response) {
 					//console.log(response);
-					for(var i =0;i<response.data.length;i++){
-	                	//console.log(response.data[i]);
-	                	//修改图片路径
-	                	response.data[i].productImg = "img/"+response.data[i].productImg;
-	                	response.data[i].productMinimg = "img/"+response.data[i].productMinimg;
-	                	//console.log(response.data[i].ncpImg);
-	                }
-					//response.data.caseImg = "img/"+response.data.caseImg;
-	                _this.txdlList = response.data;
+					response.data.productImg = "img/"+response.data.productImg;
+		            response.data.productMinimg = "img/"+response.data.productMinimg;
+	                _this.product = response.data;
+	                _this.visb = "visibility:visible";
 	            }).catch(function (err) {
 	                console.log(err)
 	            });
 			},
-			findSjzxAll:function(productId){
-				var url = "http://localhost:8080/ecltproject/getProductById.do";
+			hiddenDiv:function(){
 				var _this = this;
-				
-				axios.get(url,{
-					params:{
-						id:productId
-					}
-				}).then(function (response) {
-					//console.log(response);
-					for(var i =0;i<response.data.length;i++){
-	                	//console.log(response.data[i]);
-	                	//修改图片路径
-	                	response.data[i].productImg = "img/"+response.data[i].productImg;
-	                	response.data[i].productMinimg = "img/"+response.data[i].productMinimg;
-	                	//console.log(response.data[i].ncpImg);
-	                }
-					//response.data.caseImg = "img/"+response.data.caseImg;
-	                _this.sjzxList = response.data;
-	            }).catch(function (err) {
-	                console.log(err)
-	            });
-			},
-			findYwbxAll:function(productId){
-				var url = "http://localhost:8080/ecltproject/getProductById.do";
-				var _this = this;
-				
-				axios.get(url,{
-					params:{
-						id:productId
-					}
-				}).then(function (response) {
-					//console.log(response);
-					for(var i =0;i<response.data.length;i++){
-	                	//console.log(response.data[i]);
-	                	//修改图片路径
-	                	response.data[i].productImg = "img/"+response.data[i].productImg;
-	                	response.data[i].productMinimg = "img/"+response.data[i].productMinimg;
-	                	//console.log(response.data[i].ncpImg);
-	                }
-					//response.data.caseImg = "img/"+response.data.caseImg;
-	                _this.ywbxList = response.data;
-	            }).catch(function (err) {
-	                console.log(err)
-	            });
-			},
-			findZnywAll:function(productId){
-				var url = "http://localhost:8080/ecltproject/getProductById.do";
-				var _this = this;
-				
-				axios.get(url,{
-					params:{
-						id:productId
-					}
-				}).then(function (response) {
-					//console.log(response);
-					for(var i =0;i<response.data.length;i++){
-	                	//console.log(response.data[i]);
-	                	//修改图片路径
-	                	response.data[i].productImg = "img/"+response.data[i].productImg;
-	                	response.data[i].productMinimg = "img/"+response.data[i].productMinimg;
-	                	//console.log(response.data[i].ncpImg);
-	                }
-					//response.data.caseImg = "img/"+response.data.caseImg;
-	                _this.znywList = response.data;
-	            }).catch(function (err) {
-	                console.log(err)
-	            });
+				_this.visb = "";
 			}
 		},
 	    created(){
-	        this.findSjdlAll(1);
+	        this.findProductAll(1);
 	    }
 	});
 </script>
