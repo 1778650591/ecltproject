@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Model>
+  <DataType name="ECNcp">
+    <Property name="matchType">com.eclt.entity.EcNcp</Property>
+    <PropertyDef name="ncpId">
+      <Property name="dataType">int</Property>
+      <Property name="label">认证id</Property>
+    </PropertyDef>
+    <PropertyDef name="ncpName">
+      <Property></Property>
+      <Property name="label">认证名称</Property>
+    </PropertyDef>
+    <PropertyDef name="ncpImg">
+      <Property></Property>
+      <Property name="label">认证图片</Property>
+    </PropertyDef>
+    <PropertyDef name="ncpSort">
+      <Property></Property>
+      <Property name="label">认证分类</Property>
+    </PropertyDef>
+    <PropertyDef name="nPreset">
+      <Property></Property>
+      <Property name="label">认证预设字段</Property>
+    </PropertyDef>
+    <PropertyDef name="ncpMaximg">
+      <Property></Property>
+      <Property name="label">认证预览图</Property>
+    </PropertyDef>
+  </DataType>
   <DataType name="ECCase">
     <Property name="matchType">com.eclt.entity.EcCase</Property>
     <PropertyDef name="caseId">
@@ -22,28 +49,9 @@
       <Property></Property>
       <Property name="label">案例预设字段</Property>
     </PropertyDef>
-  </DataType>
-  <DataType name="ECNcp">
-    <Property name="matchType">com.eclt.entity.EcNcp</Property>
-    <PropertyDef name="ncpId">
-      <Property name="dataType">int</Property>
-      <Property name="label">认证id</Property>
-    </PropertyDef>
-    <PropertyDef name="ncpName">
+    <PropertyDef name="caseMaximg">
       <Property></Property>
-      <Property name="label">认证名称</Property>
-    </PropertyDef>
-    <PropertyDef name="ncpImg">
-      <Property></Property>
-      <Property name="label">认证图片</Property>
-    </PropertyDef>
-    <PropertyDef name="ncpSort">
-      <Property></Property>
-      <Property name="label">认证分类</Property>
-    </PropertyDef>
-    <PropertyDef name="nPreset">
-      <Property></Property>
-      <Property name="label">认证预设字段</Property>
+      <Property name="label">案例预览图</Property>
     </PropertyDef>
   </DataType>
   <DataType name="ECProduct">
@@ -69,16 +77,24 @@
       <Property name="label">产品预设字段</Property>
     </PropertyDef>
     <PropertyDef name="productMinimg">
-      <Property/>
+      <Property></Property>
       <Property name="label">缩微图</Property>
     </PropertyDef>
     <PropertyDef name="productMinname">
-      <Property/>
+      <Property></Property>
       <Property name="label">产品简介</Property>
     </PropertyDef>
     <PropertyDef name="productMaxname">
+      <Property></Property>
+      <Property name="label">预览图1</Property>
+    </PropertyDef>
+    <PropertyDef name="productMaximg2">
       <Property/>
-      <Property name="label">所属分类</Property>
+      <Property name="label">预览图2</Property>
+    </PropertyDef>
+    <PropertyDef name="productMaximg3">
+      <Property/>
+      <Property name="label">预览图3</Property>
     </PropertyDef>
   </DataType>
   <DataType name="ECUser">

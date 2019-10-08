@@ -24,6 +24,9 @@
         <Property></Property>
         <Property name="label">案例图片</Property>
       </PropertyDef>
+      <PropertyDef name="caseMaximg">
+        <Property></Property>
+      </PropertyDef>
     </DataType>
   </Model>
   <View>
@@ -128,6 +131,30 @@ if(entity){&#xD;
         <Property name="align">center</Property>
         <Property name="width">150</Property>
       </DataColumn>
+      <DataColumn name="caseMaximg">
+        <ClientEvent name="onRenderCell">if(arg.data.get(&quot;caseMaximg&quot;)){&#xD;
+    $(arg.dom).empty().xCreate(&#xD;
+    {&#xD;
+        tagName : &quot;IMG&quot;,&#xD;
+        src : $url(&quot;>img/&quot;+ arg.data.get(&quot;caseMaximg&quot;)),&#xD;
+        style : &quot;width: 20px; height: 20px; margin: 2px&quot;&#xD;
+    });&#xD;
+    //初始化Tip控件，在控件中显示图片&#xD;
+    dorado.TipManager.initTip(arg.dom.parentNode, {&#xD;
+        content : {&#xD;
+            tagName : &quot;IMG&quot;,&#xD;
+            src : $url(&quot;>img/&quot;+ arg.data.get(&quot;caseMaximg&quot;)),&#xD;
+            style : &quot;width: 128px; height: 128px; margin: 8px&quot;&#xD;
+        },&#xD;
+        arrowDirection : &quot;top&quot;,&#xD;
+        arrowAlign : &quot;left&quot;&#xD;
+    });    &#xD;
+}</ClientEvent>
+        <Property name="property">caseMaximg</Property>
+        <Property name="align">center</Property>
+        <Property name="caption">案例预览图</Property>
+        <Property name="width">150</Property>
+      </DataColumn>
     </DataGrid>
     <UpdateAction id="updateactionSave">
       <Property name="executingMessage">正在保存...</Property>
@@ -203,6 +230,24 @@ dialogEdit.hide();</ClientEvent>
               </Container>
             </Editor>
           </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">casemaximg</Property>
+            <Property name="width">350</Property>
+            <Property name="property">casemaximg</Property>
+            <Property name="label">案例预览图</Property>
+            <Editor>
+              <Container layout="hbox">
+                <Image id="imageMax">
+                  <Property name="height">128</Property>
+                  <Property name="width">128</Property>
+                </Image>
+                <Button id="buttonUploadMax">
+                  <Property name="caption">上传预览图</Property>
+                  <Property name="action">uploadactionMax</Property>
+                </Button>
+              </Container>
+            </Editor>
+          </AutoFormElement>
         </AutoForm>
       </Children>
       <Tools/>
@@ -211,9 +256,21 @@ dialogEdit.hide();</ClientEvent>
       <ClientEvent name="onFileUploaded" signature="self,arg,imagePhoto,datasetCase">//获得上传文件&#xD;
 var file = arg.file;&#xD;
 var name = file.name;&#xD;
-imagePhoto.set(&quot;image&quot;,$url(&quot;>images/&quot;+name));&#xD;
+imagePhoto.set(&quot;image&quot;,$url(&quot;>img/&quot;+name));&#xD;
 var entity = datasetCase.get(&quot;data:#&quot;);&#xD;
 entity.set(&quot;caseImg&quot;,name);&#xD;
+dorado.widget.NotifyTipManager.notify(entity&#xD;
+        .get(&quot;caseName&quot;)+ &quot;的照片已经成功上传!&quot;);</ClientEvent>
+      <Property name="maxFileSize">10MB</Property>
+      <Filters/>
+    </UploadAction>
+    <UploadAction id="uploadactionMax">
+      <ClientEvent name="onFileUploaded" signature="self,arg,imageMax,datasetCase">//获得上传文件&#xD;
+var file = arg.file;&#xD;
+var name = file.name;&#xD;
+imageMax.set(&quot;image&quot;,$url(&quot;>img/&quot;+name));&#xD;
+var entity = datasetCase.get(&quot;data:#&quot;);&#xD;
+entity.set(&quot;caseMaximg&quot;,name);&#xD;
 dorado.widget.NotifyTipManager.notify(entity&#xD;
         .get(&quot;caseName&quot;)+ &quot;的照片已经成功上传!&quot;);</ClientEvent>
       <Property name="maxFileSize">10MB</Property>

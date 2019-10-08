@@ -14,13 +14,36 @@
         <Property name="label">产品信息</Property>
       </PropertyDef>
       <PropertyDef name="productImg">
-        <Property name="label">产品图片</Property>
+        <Property name="label">预览图1</Property>
       </PropertyDef>
       <Reference name="ecProductSet">
         <Property name="dataType">[SELF]</Property>
         <Property name="dataProvider">ecProductService#getProductByParentId</Property>
         <Property name="parameter">$${this.productId}</Property>
       </Reference>
+      <PropertyDef name="productMinimg">
+        <Property></Property>
+        <Property name="label">产品图片</Property>
+      </PropertyDef>
+      <PropertyDef name="productMinname">
+        <Property></Property>
+        <Property name="label">小标题</Property>
+      </PropertyDef>
+      <PropertyDef name="productMaxname">
+        <Property></Property>
+        <Property name="label">大标题</Property>
+      </PropertyDef>
+      <PropertyDef name="productMaximg2">
+        <Property/>
+        <Property name="label">预览图2</Property>
+      </PropertyDef>
+      <PropertyDef name="productMaximg3">
+        <Property/>
+        <Property name="label">预览图3</Property>
+      </PropertyDef>
+      <PropertyDef name="pPreset">
+        <Property></Property>
+      </PropertyDef>
     </DataType>
   </Model>
   <View>
@@ -88,14 +111,14 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
           </Container>
           <FieldSet>
             <Property name="caption">产品信息</Property>
-            <Property name="height">300</Property>
+            <Property name="height">500</Property>
             <Buttons/>
             <Children>
               <AutoForm id="autoformProduct">
                 <Property name="dataPath">!CURRENT_PRODUCT</Property>
                 <Property name="labelSeparator">:</Property>
-                <Property name="dataSet">dataProduct</Property>
                 <Property name="cols">*</Property>
+                <Property name="dataSet">dataProduct</Property>
                 <AutoFormElement>
                   <Property name="name">productName</Property>
                   <Property name="width">350</Property>
@@ -106,23 +129,84 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
                   <Property name="width">350</Property>
                   <Editor/>
                 </AutoFormElement>
-                <AutoFormElement id="productImg">
-                  <Property name="name">productImg</Property>
+                <AutoFormElement>
+                  <Property name="name">productMinname</Property>
+                  <Property name="property">productMinname</Property>
                   <Property name="width">350</Property>
                   <Editor/>
                 </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">productMaxname</Property>
+                  <Property name="property">productMaxname</Property>
+                  <Property name="width">350</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement id="productMinimg">
+                  <Property name="name">productMinimg</Property>
+                  <Property name="width">350</Property>
+                  <Editor>
+                    <Container layout="hbox">
+                      <Image id="imagePhotoMin">
+                        <Property name="height">128</Property>
+                        <Property name="width">128</Property>
+                      </Image>
+                      <Button id="buttonUploadMin">
+                        <Property name="caption">上传图片</Property>
+                        <Property name="action">uploadactionFileMin</Property>
+                      </Button>
+                    </Container>
+                  </Editor>
+                </AutoFormElement>
+                <AutoFormElement id="productImg">
+                  <Property name="name">productImg</Property>
+                  <Property name="width">350</Property>
+                  <Editor>
+                    <Container layout="hbox">
+                      <Image id="imagePhoto">
+                        <Property name="height">128</Property>
+                        <Property name="width">128</Property>
+                      </Image>
+                      <Button id="buttonUpload">
+                        <ClientEvent name="onClick" signature="self,arg,autoformProduct">autoformProduct.refresh();</ClientEvent>
+                        <Property name="caption">上传图片</Property>
+                        <Property name="action">uploadactionFile</Property>
+                      </Button>
+                    </Container>
+                  </Editor>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">productMaximg2</Property>
+                  <Property name="property">productMaximg2</Property>
+                  <Editor>
+                    <Container layout="hbox">
+                      <Image id="imagePhotoMax2">
+                        <Property name="height">128</Property>
+                        <Property name="width">128</Property>
+                      </Image>
+                      <Button id="buttonUploadMax2">
+                        <Property name="caption">上传图片</Property>
+                        <Property name="action">uploadactionMax2</Property>
+                      </Button>
+                    </Container>
+                  </Editor>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">productMaximg3</Property>
+                  <Property name="property">productMaximg3</Property>
+                  <Editor>
+                    <Container layout="hbox">
+                      <Image id="imagePhotoMax3">
+                        <Property name="height">128</Property>
+                        <Property name="width">128</Property>
+                      </Image>
+                      <Button id="buttonUploadMax3">
+                        <Property name="caption">上传图片</Property>
+                        <Property name="action">uploadactionMax3</Property>
+                      </Button>
+                    </Container>
+                  </Editor>
+                </AutoFormElement>
               </AutoForm>
-              <Container layout="hbox">
-                <Image id="imagePhoto">
-                  <Property name="height">128</Property>
-                  <Property name="width">128</Property>
-                </Image>
-                <Button id="buttonUpload">
-                  <ClientEvent name="onClick" signature="self,arg,autoformProduct">autoformProduct.refresh();</ClientEvent>
-                  <Property name="caption">上传图片</Property>
-                  <Property name="action">uploadactionFile</Property>
-                </Button>
-              </Container>
             </Children>
           </FieldSet>
         </Container>
@@ -135,9 +219,15 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
          top:arg.event.pageY&#xD;
      }&#xD;
 });</ClientEvent>
-          <ClientEvent name="onClick" signature="self,arg,imagePhoto">var imgpath=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productImg&quot;);&#xD;
-imagePhoto.set(&quot;image&quot;,&quot;images/&quot;+imgpath);&#xD;
-</ClientEvent>
+          <ClientEvent name="onClick" signature="self,arg,imagePhoto,imagePhotoMin,imagePhotoMax2,imagePhotoMax3">var imgpath=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productImg&quot;);&#xD;
+imagePhoto.set(&quot;image&quot;,&quot;img/&quot;+imgpath);&#xD;
+var imgpathmin=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productMinimg&quot;);&#xD;
+imagePhotoMin.set(&quot;image&quot;,&quot;img/&quot;+imgpathmin);&#xD;
+&#xD;
+var img2=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productMaximg2&quot;);&#xD;
+imagePhotoMax2.set(&quot;image&quot;,&quot;img/&quot;+img2);&#xD;
+var img3=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productMaximg3&quot;);&#xD;
+imagePhotoMax3.set(&quot;image&quot;,&quot;img/&quot;+img3);</ClientEvent>
           <Property name="dataSet">dataProduct</Property>
           <Property name="currentNodeDataPath">CURRENT_PRODUCT</Property>
           <BindingConfigs>
@@ -183,12 +273,39 @@ imagePhoto.set(&quot;image&quot;,&quot;images/&quot;+imgpath);&#xD;
     <UploadAction id="uploadactionFile">
       <ClientEvent name="onFileUploaded" signature="self,arg,imagePhoto,dataProduct">var file = arg.file;&#xD;
 var name = file.name;&#xD;
-imagePhoto.set(&quot;image&quot;,$url(&quot;>images/&quot;+name));&#xD;
-var entity = dataProduct.get(&quot;data:#&quot;);&#xD;
-entity.set(&quot;productImg&quot;,name);&#xD;
-dorado.widget.NotifyTipManager.notify(entity&#xD;
-        .get(&quot;productName&quot;)+ &quot;的照片已经成功上传!&quot;);</ClientEvent>
+imagePhoto.set(&quot;image&quot;,$url(&quot;>img/&quot;+name));&#xD;
+var autop=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).set(&quot;productImg&quot;,name);&#xD;
+var destName=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productName&quot;);&#xD;
+dorado.widget.NotifyTipManager.notify(destName + &quot;的照片已经成功上传!&quot;);</ClientEvent>
       <Property name="maxFileSize">10MB</Property>
+      <Filters/>
+    </UploadAction>
+    <UploadAction id="uploadactionFileMin">
+      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhotoMin">var file = arg.file;&#xD;
+var name = file.name;&#xD;
+imagePhotoMin.set(&quot;image&quot;,$url(&quot;>img/&quot;+name));&#xD;
+var autop=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).set(&quot;productMinimg&quot;,name);&#xD;
+var destName=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productName&quot;);&#xD;
+dorado.widget.NotifyTipManager.notify(destName + &quot;的照片已经成功上传!&quot;);</ClientEvent>
+      <Property name="maxFileSize">10MB</Property>
+      <Filters/>
+    </UploadAction>
+    <UploadAction id="uploadactionMax2">
+      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhotoMax2">var file = arg.file;&#xD;
+var name = file.name;&#xD;
+imagePhotoMax2.set(&quot;image&quot;,$url(&quot;>img/&quot;+name));&#xD;
+var autop=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).set(&quot;productMaximg2&quot;,name);&#xD;
+var destName=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productName&quot;);&#xD;
+dorado.widget.NotifyTipManager.notify(destName + &quot;的照片已经成功上传!&quot;);</ClientEvent>
+      <Filters/>
+    </UploadAction>
+    <UploadAction id="uploadactionMax3">
+      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhotoMax3">var file = arg.file;&#xD;
+var name = file.name;&#xD;
+imagePhotoMax3.set(&quot;image&quot;,$url(&quot;>img/&quot;+name));&#xD;
+var autop=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).set(&quot;productMaximg3&quot;,name);&#xD;
+var destName=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productName&quot;);&#xD;
+dorado.widget.NotifyTipManager.notify(destName + &quot;的照片已经成功上传!&quot;);</ClientEvent>
       <Filters/>
     </UploadAction>
   </View>

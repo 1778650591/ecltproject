@@ -21,6 +21,10 @@
         <Property></Property>
         <Property name="label">认证分类</Property>
       </PropertyDef>
+      <PropertyDef name="ncpMaximg">
+        <Property/>
+        <Property name="label">大图</Property>
+      </PropertyDef>
     </DataType>
   </Model>
   <View>
@@ -102,19 +106,18 @@ if(entity){&#xD;
         <Property name="property">ncpSort</Property>
       </DataColumn>
       <DataColumn name="ncpImg">
-        <ClientEvent name="onRenderCell">&#xD;
-if(arg.data.get(&quot;ncpImg&quot;)){&#xD;
+        <ClientEvent name="onRenderCell">if(arg.data.get(&quot;ncpImg&quot;)){&#xD;
     $(arg.dom).empty().xCreate(&#xD;
     {&#xD;
         tagName : &quot;IMG&quot;,&#xD;
-        src : $url(&quot;>images/&quot;+ arg.data.get(&quot;ncpImg&quot;)),&#xD;
+        src : $url(&quot;>img/&quot;+ arg.data.get(&quot;ncpImg&quot;)),&#xD;
         style : &quot;width: 20px; height: 20px; margin: 2px&quot;&#xD;
     });&#xD;
     //初始化Tip控件，在控件中显示图片&#xD;
     dorado.TipManager.initTip(arg.dom.parentNode, {&#xD;
         content : {&#xD;
             tagName : &quot;IMG&quot;,&#xD;
-            src : $url(&quot;>images/&quot;+ arg.data.get(&quot;ncpImg&quot;)),&#xD;
+            src : $url(&quot;>img/&quot;+ arg.data.get(&quot;ncpImg&quot;)),&#xD;
             style : &quot;width: 128px; height: 128px; margin: 8px&quot;&#xD;
         },&#xD;
         arrowDirection : &quot;top&quot;,&#xD;
@@ -124,6 +127,30 @@ if(arg.data.get(&quot;ncpImg&quot;)){&#xD;
         <Property name="property">ncpImg</Property>
         <Property name="caption">认证图片</Property>
         <Property name="align">center</Property>
+        <Property name="width">150</Property>
+      </DataColumn>
+      <DataColumn name="ncpMaximg">
+        <ClientEvent name="onRenderCell">if(arg.data.get(&quot;ncpMaximg&quot;)){&#xD;
+    $(arg.dom).empty().xCreate(&#xD;
+    {&#xD;
+        tagName : &quot;IMG&quot;,&#xD;
+        src : $url(&quot;>img/&quot;+ arg.data.get(&quot;ncpMaximg&quot;)),&#xD;
+        style : &quot;width: 20px; height: 20px; margin: 2px&quot;&#xD;
+    });&#xD;
+    //初始化Tip控件，在控件中显示图片&#xD;
+    dorado.TipManager.initTip(arg.dom.parentNode, {&#xD;
+        content : {&#xD;
+            tagName : &quot;IMG&quot;,&#xD;
+            src : $url(&quot;>img/&quot;+ arg.data.get(&quot;ncpMaximg&quot;)),&#xD;
+            style : &quot;width: 128px; height: 128px; margin: 8px&quot;&#xD;
+        },&#xD;
+        arrowDirection : &quot;top&quot;,&#xD;
+        arrowAlign : &quot;left&quot;&#xD;
+    });    &#xD;
+}</ClientEvent>
+        <Property name="property">ncpMaximg</Property>
+        <Property name="align">center</Property>
+        <Property name="caption">认证预览图</Property>
         <Property name="width">150</Property>
       </DataColumn>
     </DataGrid>
@@ -137,12 +164,15 @@ if(arg.data.get(&quot;ncpImg&quot;)){&#xD;
       </UpdateItem>
     </UpdateAction>
     <Dialog id="dialogEdit">
-      <ClientEvent name="onShow" signature="self,arg,imagePhoto,datasetNcp">var image = datasetNcp.get(&quot;data:#&quot;).get(&quot;ncpImg&quot;);&#xD;
+      <ClientEvent name="onShow" signature="self,arg,imagePhoto,datasetNcp,imagePhotoMax">var image = datasetNcp.get(&quot;data:#&quot;).get(&quot;ncpImg&quot;);&#xD;
+var imageMax = datasetNcp.get(&quot;data:#&quot;).get(&quot;ncpMaximg&quot;);&#xD;
 if(image){&#xD;
     //如果照片名不为空，则设置imagePhoto图片控件的属性，使之显示照片&#xD;
-    imagePhoto.set(&quot;image&quot;,$url(&quot;>images/&quot;+image));&#xD;
+    imagePhoto.set(&quot;image&quot;,$url(&quot;>img/&quot;+image));&#xD;
+	imagePhotoMax.set(&quot;image&quot;,$url(&quot;>img/&quot;+imageMax));&#xD;
 }else{&#xD;
     imagePhoto.set(&quot;image&quot;,null);&#xD;
+	imagePhotoMax.set(&quot;image&quot;,null);&#xD;
 }</ClientEvent>
       <ClientEvent name="onHide" signature="self,arg,datagridNcp">datagridNcp.refresh();</ClientEvent>
       <Property name="caption">认证详情</Property>
@@ -185,9 +215,9 @@ dialogEdit.hide();</ClientEvent>
           <AutoFormElement>
             <Property name="name">ncpImg</Property>
             <Property name="property">ncpImg</Property>
-            <Property name="width">250</Property>
+            <Property name="width">350</Property>
             <Editor>
-              <Container>
+              <Container layout="hbox">
                 <Image id="imagePhoto">
                   <Property name="height">128</Property>
                   <Property name="width">128</Property>
@@ -199,6 +229,23 @@ dialogEdit.hide();</ClientEvent>
               </Container>
             </Editor>
           </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ncpMaximg</Property>
+            <Property name="property">ncpMaximg</Property>
+            <Property name="width">350</Property>
+            <Editor>
+              <Container layout="hbox">
+                <Image id="imagePhotoMax">
+                  <Property name="height">128</Property>
+                  <Property name="width">128</Property>
+                </Image>
+                <Button id="buttonUploadMax">
+                  <Property name="action">uploadactionMax</Property>
+                  <Property name="caption">上传缩微图</Property>
+                </Button>
+              </Container>
+            </Editor>
+          </AutoFormElement>
         </AutoForm>
       </Children>
       <Tools/>
@@ -206,9 +253,20 @@ dialogEdit.hide();</ClientEvent>
     <UploadAction id="uploadactionFile">
       <ClientEvent name="onFileUploaded" signature="self,arg,imagePhoto,datasetNcp">var file = arg.file;&#xD;
 var name = file.name;&#xD;
-imagePhoto.set(&quot;image&quot;,$url(&quot;>images/&quot;+name));&#xD;
+imagePhoto.set(&quot;image&quot;,$url(&quot;>img/&quot;+name));&#xD;
 var entity = datasetNcp.get(&quot;data:#&quot;);&#xD;
 entity.set(&quot;ncpImg&quot;,name);&#xD;
+dorado.widget.NotifyTipManager.notify(entity&#xD;
+        .get(&quot;ncpName&quot;)+ &quot;的照片已经成功上传!&quot;);</ClientEvent>
+      <Property name="maxFileSize">10MB</Property>
+      <Filters/>
+    </UploadAction>
+    <UploadAction id="uploadactionMax">
+      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhotoMax,datasetNcp">var file = arg.file;&#xD;
+var name = file.name;&#xD;
+imagePhotoMax.set(&quot;image&quot;,$url(&quot;>img/&quot;+name));&#xD;
+var entity = datasetNcp.get(&quot;data:#&quot;);&#xD;
+entity.set(&quot;ncpMaximg&quot;,name);&#xD;
 dorado.widget.NotifyTipManager.notify(entity&#xD;
         .get(&quot;ncpName&quot;)+ &quot;的照片已经成功上传!&quot;);</ClientEvent>
       <Property name="maxFileSize">10MB</Property>
