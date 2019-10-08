@@ -3,7 +3,9 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.annotations.common.util.StringHelper;
 import com.bstek.dorado.web.DoradoContext;
 
+import java.text.ParseException;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,12 +29,11 @@ public class EcUserService {
 	@Resource
 	private EcUserDao ecUserDao;
 	
-	//��½����
+	//登陆
 	@Expose
     public Map<String, Object> doLogin(String username, String password) {
     Map<String, Object> result = new HashMap();
     if (isValid(username,password)) {
-        //������֤�ɹ���Ҫ��ת��ҳ��
         result.put("url", "com.eclt.view.main.main.d");
         result.put("result", true);
         return result;
@@ -44,7 +45,7 @@ public class EcUserService {
     }
 }
 	
-	 //��֤�û�����
+	 //判定用户名密码
     public boolean isValid(String username, String password) {
         DetachedCriteria dc = DetachedCriteria.forClass(EcUser.class);
         if (username != null && !"".equals(username)) {
@@ -54,7 +55,7 @@ public class EcUserService {
         if (users.size() > 0) {
         	EcUser user = users.get(0);
             if (password.equals(user.getPassword())) {
-                // ��֤�ɹ����û���Ϣ����session��
+                //存入session
                 DoradoContext ctx = DoradoContext.getCurrent();
                 HttpServletRequest request = ctx.getRequest();
                 request.getSession().setAttribute("user", user);
@@ -66,7 +67,7 @@ public class EcUserService {
             return false;
         }
     }
-    //��ѯ�û���Ϣ
+    //查询用户
     @DataProvider
     public void queryForCondition(Page<EcUser> page, Map<String, Object> params) {
         if (null != params) {
@@ -90,14 +91,23 @@ public class EcUserService {
         	ecUserDao.getAll(page);
     }
     
-    //�����û���Ϣ
+    //保存
     @DataResolver
     @Transactional
-    public void saveAll(Collection<EcUser> user){
-    	ecUserDao.persistEntities(user);
+    public void saveAll(Collection<EcUser> user) throws ParseException{
+    	Collection<EcUser> co=user;
+    	for(EcUser u:user){
+    		if(u.getCreateTime() != null){
+    			u.setUpdateTime(new Date());
+    		}else{
+    			u.setCreateTime(new Date());
+    			u.setUpdateTime(new Date());
+    		}
+    	}
+    	ecUserDao.persistEntities(co);
     }
     
-    //�ǳ�����
+    //退出
     @Expose
     public Map<String, Object> doLogout() {
         DoradoContext ctx = DoradoContext.getCurrent();

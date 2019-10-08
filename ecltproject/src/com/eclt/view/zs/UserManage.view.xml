@@ -108,6 +108,7 @@ updateactionSave.execute(function(){&#xD;
         <Property name="property">userId</Property>
         <Property name="align">center</Property>
         <Property name="width">100</Property>
+        <Property name="readOnly">true</Property>
       </DataColumn>
       <DataColumn name="username">
         <Property name="property">username</Property>
@@ -120,10 +121,16 @@ updateactionSave.execute(function(){&#xD;
       <DataColumn name="createTime">
         <Property name="property">createTime</Property>
         <Property name="align">center</Property>
+        <Property name="dataType">DateTime</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="displayFormat">Y年m月d日 H点i分s秒</Property>
       </DataColumn>
       <DataColumn name="updateTime">
         <Property name="property">updateTime</Property>
         <Property name="align">center</Property>
+        <Property name="dataType">DateTime</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="displayFormat">Y年m月d日 H点i分s秒</Property>
       </DataColumn>
     </DataGrid>
     <AutoForm id="autoformUser">
