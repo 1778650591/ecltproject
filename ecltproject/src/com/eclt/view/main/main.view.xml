@@ -4,14 +4,21 @@
   <Context/>
   <Model/>
   <View>
-    <Label id="lableMain" layoutConstraint="padding:5">
-      <Property name="text">埃克森特后台管理系统</Property>
-      <Property name="style">
-        <Property name="font-size">24px</Property>
-        <Property name="text-align">center</Property>
-      </Property>
-      <Property name="height">40</Property>
-    </Label>
+    <Container layout="hbox">
+      <Image id="logo">
+        <Property name="height">80</Property>
+        <Property name="width">140</Property>
+        <Property name="image">images/adminlogo.png</Property>
+      </Image>
+      <Label id="lableMain" layoutConstraint="padding:5">
+        <Property name="text">埃克森特后台管理系统</Property>
+        <Property name="style">
+          <Property name="font-size">24px</Property>
+          <Property name="text-align">center</Property>
+        </Property>
+        <Property name="height">40</Property>
+      </Label>
+    </Container>
     <ToolBar>
       <ToolBarButton>
         <ClientEvent name="onClick" signature="self,arg,iframeMain">iframeMain.set(&quot;path&quot;,&quot;com.eclt.view.zs.ProductManage.d&quot;);</ClientEvent>

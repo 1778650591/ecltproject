@@ -7,10 +7,10 @@
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driver}" />
         <property name="url" value="${jdbc.url}?useUnicode=true&amp;characterEncoding=utf8"/>
-        <property name="username" value="${jdbc.userName}" />
-        <property name="password" value="${jdbc.password}" />
-        <property name="minIdle" value="${jdbc.minIdle}" />
-        <property name="maxActive" value="${jdbc.maxActive}" />
+        <property name="username" value="${jdbc.userName}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="minIdle" value="${jdbc.minIdle}"/>
+        <property name="maxActive" value="${jdbc.maxActive}"/>
     </bean>
       
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
