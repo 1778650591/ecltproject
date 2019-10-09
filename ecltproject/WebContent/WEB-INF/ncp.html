@@ -191,17 +191,17 @@
 	<div class="footer">
 		<div class="inner clearfix">
 			<div class="footer_items">
-				<h3>埃克森特科技发展有限公司</h3>     
-				<p>地址：北京市海淀区清华东路17-2号</p>
-				<p>邮编：100083</p>
-				<p>传真：010-62397466、62397481 -8008</p>
+				<h3>{{Company.coName}}</h3>     
+				<p>地址：{{Company.coAddress}}</p>
+				<p>邮编：{{Company.coPostcode}}</p>
+				<p>传真：{{Company.coFax}}</p>
 				<p>内容版权归作者及本网站所有</p>
 			</div>  
 			<div class="footer_items cur">
-				<p>电话：62397466、62397481---8006</p>     
-				<p>手机：13911801866</p>
-				<p>业务合作：liuxiao@itexcel</p>
-				<p>网站备案号：110108007166号</p>
+				<p>电话：{{Company.coContact}}</p>     
+				<p>手机：{{Company.coMobile}}</p>
+				<p>业务合作：{{Company.coCooperate}}</p>
+				<p>网站备案号：{{Company.coWebsitenum}}</p>
 			</div>
 			<div class="footer_fenx">
 				<p>分享链接</p>
@@ -336,6 +336,7 @@ var vm = new Vue({
 	data:{
 		ncpList:[],
 		ncp:{},
+		Company:{},
 		visb:""
 	},
 	methods:{
@@ -374,10 +375,27 @@ var vm = new Vue({
 		hiddenDiv:function(){
 			var _this = this;
 			_this.visb = "";
+		},
+		getCompanyById:function(companyid){
+			var url = "http://localhost:8080/ecltproject/getCompanyById.do";
+			var _this = this;
+			
+			axios.get(url,{
+				params:{
+					id:companyid
+				}
+			}).then(function (response) {
+				console.log(response.data);
+                _this.Company = response.data;
+                
+            }).catch(function (err) {
+                console.log(err);
+            });
 		}
 	},
     created(){
         this.findNcpAll();
+        this.getCompanyById(1);
     }
 });
 //////////////////////////////////////////////////////////////////

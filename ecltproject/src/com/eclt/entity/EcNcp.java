@@ -3,11 +3,14 @@ package com.eclt.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * ec_ncp:
  */
 @Entity
 @Table(name = "ec_ncp")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class EcNcp implements Serializable {
 
 	private static final long serialVersionUID = 1L;

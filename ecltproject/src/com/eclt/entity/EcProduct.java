@@ -2,6 +2,9 @@ package com.eclt.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,6 +13,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "ec_product")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class EcProduct implements Serializable {
 
 	private static final long serialVersionUID = 1L;

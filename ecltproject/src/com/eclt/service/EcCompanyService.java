@@ -28,4 +28,8 @@ public class EcCompanyService {
 	public void saveAll(Collection<EcCompany> company){
 		ecCompanyDao.persistEntities(company);
 	}
+	
+	public EcCompany getCompanyById(Integer id){
+		return ecCompanyDao.get(id);
+	}
 }
