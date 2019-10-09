@@ -284,7 +284,7 @@
 						id:companyid
 					}
 				}).then(function (response) {
-					console.log(response.data);
+					//console.log(response.data);
 	                _this.Company = response.data;
 	                
 	            }).catch(function (err) {
@@ -297,6 +297,7 @@
 	        this.getCompanyById(1);
 	    }
 	});
+	Vue.config.productionTip = false;
 </script>
 
 
