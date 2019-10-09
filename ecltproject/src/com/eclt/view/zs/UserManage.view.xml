@@ -43,12 +43,6 @@
       <Property name="createPrivateDataSet">true</Property>
       <Property name="labelSeparator">:</Property>
       <AutoFormElement>
-        <Property name="name">userId</Property>
-        <Property name="label">管理员id</Property>
-        <Property name="width">250</Property>
-        <Editor/>
-      </AutoFormElement>
-      <AutoFormElement>
         <Property name="name">username</Property>
         <Property name="label">管理员名称</Property>
         <Property name="width">250</Property>
@@ -63,12 +57,6 @@
       <AutoFormElement>
         <Property name="name">createTime</Property>
         <Property name="label">创建时间</Property>
-        <Property name="width">250</Property>
-        <Editor/>
-      </AutoFormElement>
-      <AutoFormElement>
-        <Property name="name">updateTime</Property>
-        <Property name="label">修改时间</Property>
         <Property name="width">250</Property>
         <Editor/>
       </AutoFormElement>
@@ -104,6 +92,9 @@ updateactionSave.execute(function(){&#xD;
     <DataGrid id="datagridUser">
       <Property name="dataSet">datasetUser</Property>
       <Property name="height">300</Property>
+      <Property name="style">
+        <Property name="background-color">#D8D8D8</Property>
+      </Property>
       <DataColumn name="userId">
         <Property name="property">userId</Property>
         <Property name="align">center</Property>

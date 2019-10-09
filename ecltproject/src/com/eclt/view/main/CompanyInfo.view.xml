@@ -9,11 +9,11 @@
         <Property name="label">id</Property>
       </PropertyDef>
       <PropertyDef name="coName">
-        <Property/>
+        <Property></Property>
         <Property name="label">公司名称</Property>
       </PropertyDef>
       <PropertyDef name="coAddress">
-        <Property/>
+        <Property></Property>
         <Property name="label">地址</Property>
       </PropertyDef>
       <PropertyDef name="coPostcode">
@@ -21,11 +21,11 @@
         <Property name="label">邮编</Property>
       </PropertyDef>
       <PropertyDef name="coFax">
-        <Property/>
+        <Property></Property>
         <Property name="label">传真</Property>
       </PropertyDef>
       <PropertyDef name="coContact">
-        <Property/>
+        <Property></Property>
         <Property name="label">电话</Property>
       </PropertyDef>
       <PropertyDef name="coMobile">
@@ -33,19 +33,19 @@
         <Property name="label">手机</Property>
       </PropertyDef>
       <PropertyDef name="coCooperate">
-        <Property/>
+        <Property></Property>
         <Property name="label">业务合作</Property>
       </PropertyDef>
       <PropertyDef name="coWebsitenum">
-        <Property/>
+        <Property></Property>
         <Property name="label">网站备案号</Property>
       </PropertyDef>
       <PropertyDef name="coMail">
-        <Property/>
+        <Property></Property>
         <Property name="label">邮箱</Property>
       </PropertyDef>
       <PropertyDef name="coPreset">
-        <Property/>
+        <Property></Property>
         <Property name="label">预设字段</Property>
       </PropertyDef>
     </DataType>
@@ -125,6 +125,8 @@
         <Property name="caption">编辑</Property>
       </Button>
       <Button id="buttonSave">
+        <ClientEvent name="onClick" signature="self,arg,datasetCompany">datasetCompany.set(&quot;readOnly&quot;,true);&#xD;
+</ClientEvent>
         <Property name="caption">保存</Property>
         <Property name="action">updateactionSave</Property>
         <Property name="tip">使用Ctrl+s快捷键保存</Property>

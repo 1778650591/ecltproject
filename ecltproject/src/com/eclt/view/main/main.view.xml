@@ -18,6 +18,7 @@
         <Property name="style">
           <Property name="font-size">24px</Property>
           <Property name="text-align">center</Property>
+          <Property name="color">#FFFFFF</Property>
         </Property>
         <Property name="height">40</Property>
       </Label>
