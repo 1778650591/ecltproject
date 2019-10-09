@@ -436,7 +436,7 @@
 				<div class="chanpxq_fulls">
 					<h3>产品信息</h3>
 					<h4>{{product.productName}}</h4>
-					<p>{{product.productInfo}}</p>
+					<p v-for="i in infos">{{i}}</p>
 					<!-- <p> XXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXX</p> -->
 				</div>
 			</div>
@@ -461,6 +461,7 @@
 				znywList:[]
 			},
 			product:{},
+			infos:[],
 			visb:""
 		},
 		methods:{
@@ -501,7 +502,7 @@
 					} 
 	                
 	            }).catch(function (err) {
-	                console.log(err)
+	                console.log(err);
 	            });
 			},
 			getProductById:function(productId){
@@ -520,8 +521,11 @@
 		            //response.data.productMinimg = "img/"+response.data.productMinimg;
 	                _this.product = response.data;
 	                _this.visb = "visibility:visible";
+	                _this.infos = _this.product.productInfo!=null?_this.product.productInfo.split("|"):[];
+	                //console.log(_this.infos);
+	                
 	            }).catch(function (err) {
-	                console.log(err)
+	                console.log(err);
 	            });
 			},
 			hiddenDiv:function(){
