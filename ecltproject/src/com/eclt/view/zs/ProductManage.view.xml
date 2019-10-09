@@ -131,6 +131,7 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
                 <AutoFormElement>
                   <Property name="name">productInfo</Property>
                   <Property name="width">350</Property>
+                  <Property name="editorType">TextArea</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
