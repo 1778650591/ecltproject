@@ -66,7 +66,7 @@
       </ToolBarButton>
       <ToolBarButton>
         <ClientEvent name="onClick" signature="self,arg,iframeMain">iframeMain.set(&quot;path&quot;,&quot;com.eclt.view.main.CompanyInfo.d&quot;);</ClientEvent>
-        <Property name="caption">系统信息</Property>
+        <Property name="caption">公司信息</Property>
         <Property name="width">150</Property>
         <Property name="icon">url(>skin>common/icons.gif) -260px -60px</Property>
         <Property name="style">
