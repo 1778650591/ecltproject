@@ -34,11 +34,11 @@
         <Property name="label">大标题</Property>
       </PropertyDef>
       <PropertyDef name="productMaximg2">
-        <Property/>
+        <Property></Property>
         <Property name="label">预览图2</Property>
       </PropertyDef>
       <PropertyDef name="productMaximg3">
-        <Property/>
+        <Property></Property>
         <Property name="label">预览图3</Property>
       </PropertyDef>
       <PropertyDef name="pPreset">
@@ -111,7 +111,11 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
           </Container>
           <FieldSet>
             <Property name="caption">产品信息</Property>
-            <Property name="height">500</Property>
+            <Property name="height">450</Property>
+            <Property name="width">800</Property>
+            <Property name="style">
+              <Property name="background-color">#D8D8D8</Property>
+            </Property>
             <Buttons/>
             <Children>
               <AutoForm id="autoformProduct">
@@ -153,6 +157,9 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
                       <Button id="buttonUploadMin">
                         <Property name="caption">上传图片</Property>
                         <Property name="action">uploadactionFileMin</Property>
+                        <Property name="style">
+                          <Property name="background-color">#FFFFFF</Property>
+                        </Property>
                       </Button>
                     </Container>
                   </Editor>
@@ -170,6 +177,9 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
                         <ClientEvent name="onClick" signature="self,arg,autoformProduct">autoformProduct.refresh();</ClientEvent>
                         <Property name="caption">上传图片</Property>
                         <Property name="action">uploadactionFile</Property>
+                        <Property name="style">
+                          <Property name="background-color">#FFFFFF</Property>
+                        </Property>
                       </Button>
                     </Container>
                   </Editor>
@@ -186,6 +196,9 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
                       <Button id="buttonUploadMax2">
                         <Property name="caption">上传图片</Property>
                         <Property name="action">uploadactionMax2</Property>
+                        <Property name="style">
+                          <Property name="background-color">#FFFFFF</Property>
+                        </Property>
                       </Button>
                     </Container>
                   </Editor>
@@ -202,6 +215,9 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
                       <Button id="buttonUploadMax3">
                         <Property name="caption">上传图片</Property>
                         <Property name="action">uploadactionMax3</Property>
+                        <Property name="style">
+                          <Property name="background-color">#FFFFFF</Property>
+                        </Property>
                       </Button>
                     </Container>
                   </Editor>

@@ -2,18 +2,133 @@
 <ViewConfig>
   <Arguments/>
   <Context/>
-  <Model/>
+  <Model>
+    <DataType name="ECCompany" parent="global:ECCompany">
+      <PropertyDef name="coId">
+        <Property name="dataType">int</Property>
+        <Property name="label">id</Property>
+      </PropertyDef>
+      <PropertyDef name="coName">
+        <Property/>
+        <Property name="label">公司名称</Property>
+      </PropertyDef>
+      <PropertyDef name="coAddress">
+        <Property/>
+        <Property name="label">地址</Property>
+      </PropertyDef>
+      <PropertyDef name="coPostcode">
+        <Property name="dataType">int</Property>
+        <Property name="label">邮编</Property>
+      </PropertyDef>
+      <PropertyDef name="coFax">
+        <Property/>
+        <Property name="label">传真</Property>
+      </PropertyDef>
+      <PropertyDef name="coContact">
+        <Property/>
+        <Property name="label">电话</Property>
+      </PropertyDef>
+      <PropertyDef name="coMobile">
+        <Property name="dataType">long</Property>
+        <Property name="label">手机</Property>
+      </PropertyDef>
+      <PropertyDef name="coCooperate">
+        <Property/>
+        <Property name="label">业务合作</Property>
+      </PropertyDef>
+      <PropertyDef name="coWebsitenum">
+        <Property/>
+        <Property name="label">网站备案号</Property>
+      </PropertyDef>
+      <PropertyDef name="coMail">
+        <Property/>
+        <Property name="label">邮箱</Property>
+      </PropertyDef>
+      <PropertyDef name="coPreset">
+        <Property/>
+        <Property name="label">预设字段</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
   <View>
-    <Label>
-      <Property name="text">公司名称：埃克森特科技发展有限公司&#xD;
-公司地址：北京市海淀区清华东路17-2号&#xD;
-邮政编码：100083&#xD;
-    传真   ：010-62397466、62397481 -8008&#xD;
-联系方式：62397466、62397481---8006&#xD;
-    手机   ：13911801866&#xD;
-业务合作：liuxiao@itexcel&#xD;
-网站备案号：110108007166号&#xD;
-企业邮箱：@eclt.com</Property>
-    </Label>
+    <DataSet id="datasetCompany">
+      <Property name="dataProvider">ecCompanyService#getAll</Property>
+      <Property name="dataType">[ECCompany]</Property>
+      <Property name="readOnly">true</Property>
+    </DataSet>
+    <AutoForm id="autoformCompany">
+      <Property name="cols">*</Property>
+      <Property name="dataSet">datasetCompany</Property>
+      <Property name="width">350</Property>
+      <Property name="labelSeparator">:</Property>
+      <AutoFormElement>
+        <Property name="name">coName</Property>
+        <Property name="property">coName</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">coAddress</Property>
+        <Property name="property">coAddress</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">coPostcode</Property>
+        <Property name="property">coPostcode</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">coFax</Property>
+        <Property name="property">coFax</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">coContact</Property>
+        <Property name="property">coContact</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">coMobile</Property>
+        <Property name="property">coMobile</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">coCooperate</Property>
+        <Property name="property">coCooperate</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">coWebsitenum</Property>
+        <Property name="property">coWebsitenum</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">coMail</Property>
+        <Property name="property">coMail</Property>
+        <Editor/>
+      </AutoFormElement>
+    </AutoForm>
+    <UpdateAction id="updateactionSave">
+      <Property name="executingMessage">正在保存。。。</Property>
+      <Property name="successMessage">保存成功！</Property>
+      <Property name="hotkey">ctrl+s</Property>
+      <Property name="dataResolver">ecCompanyService#saveAll</Property>
+      <UpdateItem>
+        <Property name="dataSet">datasetCompany</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <Container layout="hbox">
+      <Property name="height">50</Property>
+      <Property name="width">500</Property>
+      <Button id="buttonEdit">
+        <ClientEvent name="onClick" signature="self,arg,datasetCompany">datasetCompany.set(&quot;readOnly&quot;,false);&#xD;
+</ClientEvent>
+        <Property name="caption">编辑</Property>
+      </Button>
+      <Button id="buttonSave">
+        <Property name="caption">保存</Property>
+        <Property name="action">updateactionSave</Property>
+        <Property name="tip">使用Ctrl+s快捷键保存</Property>
+      </Button>
+    </Container>
   </View>
 </ViewConfig>

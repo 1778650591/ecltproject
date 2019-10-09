@@ -99,6 +99,9 @@ if(entity){&#xD;
       <Property name="dataSet">datasetCase</Property>
       <Property name="height">300</Property>
       <Property name="readOnly">true</Property>
+      <Property name="style">
+        <Property name="background-color">#A8A8A8</Property>
+      </Property>
       <DataColumn name="caseName">
         <Property name="property">caseName</Property>
         <Property name="width">200</Property>

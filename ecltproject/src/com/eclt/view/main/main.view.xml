@@ -5,6 +5,9 @@
   <Model/>
   <View>
     <Container layout="hbox">
+      <Property name="style">
+        <Property name="background-color">#3EAAC0</Property>
+      </Property>
       <Image id="logo">
         <Property name="height">80</Property>
         <Property name="width">140</Property>
@@ -27,6 +30,7 @@
         <Property name="icon">url(>skin>common/icons.gif) -60px -20px</Property>
         <Property name="style">
           <Property name="border">1px solid #000</Property>
+          <Property name="border-radius">6px</Property>
         </Property>
       </ToolBarButton>
       <ToolBarButton>
@@ -36,6 +40,7 @@
         <Property name="icon">url(>skin>common/icons.gif) -20px -60px</Property>
         <Property name="style">
           <Property name="border">1px solid #000</Property>
+          <Property name="border-radius">6px</Property>
         </Property>
       </ToolBarButton>
       <ToolBarButton>
@@ -45,6 +50,7 @@
         <Property name="icon">url(>skin>common/icons.gif) -180px -140px</Property>
         <Property name="style">
           <Property name="border">1px solid #000</Property>
+          <Property name="border-radius">6px</Property>
         </Property>
       </ToolBarButton>
       <ToolBarButton>
@@ -54,6 +60,7 @@
         <Property name="icon">url(>skin>common/icons.gif) -160px -100px</Property>
         <Property name="style">
           <Property name="border">1px solid #000</Property>
+          <Property name="border-radius">6px</Property>
         </Property>
       </ToolBarButton>
       <ToolBarButton>
@@ -63,6 +70,7 @@
         <Property name="icon">url(>skin>common/icons.gif) -260px -60px</Property>
         <Property name="style">
           <Property name="border">1px solid #000</Property>
+          <Property name="border-radius">6px</Property>
         </Property>
       </ToolBarButton>
       <Fill/>
