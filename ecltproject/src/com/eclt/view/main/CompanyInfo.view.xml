@@ -125,8 +125,6 @@
         <Property name="caption">编辑</Property>
       </Button>
       <Button id="buttonSave">
-        <ClientEvent name="onClick" signature="self,arg,datasetCompany">datasetCompany.set(&quot;readOnly&quot;,true);&#xD;
-</ClientEvent>
         <Property name="caption">保存</Property>
         <Property name="action">updateactionSave</Property>
         <Property name="tip">使用Ctrl+s快捷键保存</Property>
