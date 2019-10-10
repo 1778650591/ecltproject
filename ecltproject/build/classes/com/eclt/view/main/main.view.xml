@@ -4,14 +4,25 @@
   <Context/>
   <Model/>
   <View>
-    <Label id="lableMain" layoutConstraint="padding:5">
-      <Property name="text">埃克森特后台管理系统</Property>
+    <Container layout="hbox">
       <Property name="style">
-        <Property name="font-size">24px</Property>
-        <Property name="text-align">center</Property>
+        <Property name="background-color">#3EAAC0</Property>
       </Property>
-      <Property name="height">40</Property>
-    </Label>
+      <Image id="logo">
+        <Property name="height">80</Property>
+        <Property name="width">140</Property>
+        <Property name="image">images/adminlogo.png</Property>
+      </Image>
+      <Label id="lableMain" layoutConstraint="padding:5">
+        <Property name="text">埃克森特后台管理系统</Property>
+        <Property name="style">
+          <Property name="font-size">24px</Property>
+          <Property name="text-align">center</Property>
+          <Property name="color">#FFFFFF</Property>
+        </Property>
+        <Property name="height">40</Property>
+      </Label>
+    </Container>
     <ToolBar>
       <ToolBarButton>
         <ClientEvent name="onClick" signature="self,arg,iframeMain">iframeMain.set(&quot;path&quot;,&quot;com.eclt.view.zs.ProductManage.d&quot;);</ClientEvent>
@@ -20,6 +31,7 @@
         <Property name="icon">url(>skin>common/icons.gif) -60px -20px</Property>
         <Property name="style">
           <Property name="border">1px solid #000</Property>
+          <Property name="border-radius">6px</Property>
         </Property>
       </ToolBarButton>
       <ToolBarButton>
@@ -29,6 +41,7 @@
         <Property name="icon">url(>skin>common/icons.gif) -20px -60px</Property>
         <Property name="style">
           <Property name="border">1px solid #000</Property>
+          <Property name="border-radius">6px</Property>
         </Property>
       </ToolBarButton>
       <ToolBarButton>
@@ -38,6 +51,7 @@
         <Property name="icon">url(>skin>common/icons.gif) -180px -140px</Property>
         <Property name="style">
           <Property name="border">1px solid #000</Property>
+          <Property name="border-radius">6px</Property>
         </Property>
       </ToolBarButton>
       <ToolBarButton>
@@ -47,15 +61,17 @@
         <Property name="icon">url(>skin>common/icons.gif) -160px -100px</Property>
         <Property name="style">
           <Property name="border">1px solid #000</Property>
+          <Property name="border-radius">6px</Property>
         </Property>
       </ToolBarButton>
       <ToolBarButton>
         <ClientEvent name="onClick" signature="self,arg,iframeMain">iframeMain.set(&quot;path&quot;,&quot;com.eclt.view.main.CompanyInfo.d&quot;);</ClientEvent>
-        <Property name="caption">系统信息</Property>
+        <Property name="caption">公司信息</Property>
         <Property name="width">150</Property>
         <Property name="icon">url(>skin>common/icons.gif) -260px -60px</Property>
         <Property name="style">
           <Property name="border">1px solid #000</Property>
+          <Property name="border-radius">6px</Property>
         </Property>
       </ToolBarButton>
       <Fill/>

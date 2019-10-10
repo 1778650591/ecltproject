@@ -89,11 +89,11 @@
       <Property name="label">预览图1</Property>
     </PropertyDef>
     <PropertyDef name="productMaximg2">
-      <Property/>
+      <Property></Property>
       <Property name="label">预览图2</Property>
     </PropertyDef>
     <PropertyDef name="productMaximg3">
-      <Property/>
+      <Property></Property>
       <Property name="label">预览图3</Property>
     </PropertyDef>
   </DataType>
@@ -122,6 +122,53 @@
     <PropertyDef name="uPreset">
       <Property></Property>
       <Property name="label">管理员预设字段</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="ECCompany">
+    <Property name="matchType">com.eclt.entity.EcCompany</Property>
+    <PropertyDef name="coId">
+      <Property name="dataType">int</Property>
+      <Property name="label">id</Property>
+    </PropertyDef>
+    <PropertyDef name="coName">
+      <Property></Property>
+      <Property name="label">名称</Property>
+    </PropertyDef>
+    <PropertyDef name="coAddress">
+      <Property></Property>
+      <Property name="label">地址</Property>
+    </PropertyDef>
+    <PropertyDef name="coPostcode">
+      <Property name="dataType">int</Property>
+      <Property name="label">邮编</Property>
+    </PropertyDef>
+    <PropertyDef name="coFax">
+      <Property></Property>
+      <Property name="label">传真</Property>
+    </PropertyDef>
+    <PropertyDef name="coContact">
+      <Property></Property>
+      <Property name="label">电话</Property>
+    </PropertyDef>
+    <PropertyDef name="coMobile">
+      <Property name="dataType">long</Property>
+      <Property name="label">手机</Property>
+    </PropertyDef>
+    <PropertyDef name="coCooperate">
+      <Property></Property>
+      <Property name="label">业务合作</Property>
+    </PropertyDef>
+    <PropertyDef name="coWebsitenum">
+      <Property></Property>
+      <Property name="label">网站备案号</Property>
+    </PropertyDef>
+    <PropertyDef name="coMail">
+      <Property></Property>
+      <Property name="label">邮箱</Property>
+    </PropertyDef>
+    <PropertyDef name="coPreset">
+      <Property/>
+      <Property name="label">预设字段</Property>
     </PropertyDef>
   </DataType>
 </Model>

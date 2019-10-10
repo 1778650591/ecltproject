@@ -107,6 +107,7 @@ if(entity){&#xD;
       </DataColumn>
       <DataColumn name="ncpSort">
         <Property name="property">ncpSort</Property>
+        <Property name="width">600</Property>
       </DataColumn>
       <DataColumn name="ncpImg">
         <ClientEvent name="onRenderCell">if(arg.data.get(&quot;ncpImg&quot;)){&#xD;

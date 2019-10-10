@@ -22,7 +22,7 @@
         <Property name="label">认证分类</Property>
       </PropertyDef>
       <PropertyDef name="ncpMaximg">
-        <Property/>
+        <Property></Property>
         <Property name="label">大图</Property>
       </PropertyDef>
     </DataType>
@@ -97,6 +97,9 @@ if(entity){&#xD;
       <Property name="dataSet">datasetNcp</Property>
       <Property name="height">300</Property>
       <Property name="readOnly">true</Property>
+      <Property name="style">
+        <Property name="background-color">#D8D8D8</Property>
+      </Property>
       <DataColumn name="ncpName">
         <Property name="property">ncpName</Property>
         <Property name="align">center</Property>
@@ -104,6 +107,7 @@ if(entity){&#xD;
       </DataColumn>
       <DataColumn name="ncpSort">
         <Property name="property">ncpSort</Property>
+        <Property name="width">600</Property>
       </DataColumn>
       <DataColumn name="ncpImg">
         <ClientEvent name="onRenderCell">if(arg.data.get(&quot;ncpImg&quot;)){&#xD;

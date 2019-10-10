@@ -110,6 +110,8 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
             </Button>
           </Container>
           <FieldSet>
+            <ClientEvent name="onReady">&#xD;
+</ClientEvent>
             <Property name="caption">产品信息</Property>
             <Property name="height">450</Property>
             <Property name="width">800</Property>
@@ -125,25 +127,33 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
                 <Property name="dataSet">dataProduct</Property>
                 <AutoFormElement>
                   <Property name="name">productName</Property>
-                  <Property name="width">350</Property>
+                  <Property name="width">700</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">productInfo</Property>
-                  <Property name="width">350</Property>
-                  <Property name="editorType">TextArea</Property>
-                  <Editor/>
+                  <Property name="width">700</Property>
+                  <Editor>
+                    <Container>
+                      <Property name="height">400</Property>
+                      <HtmlEditor id="Info">
+                        <Property name="mode">simple</Property>
+                        <Property name="dataSet">dataProduct</Property>
+                        <Property name="property">productInfo</Property>
+                      </HtmlEditor>
+                    </Container>
+                  </Editor>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">productMinname</Property>
                   <Property name="property">productMinname</Property>
-                  <Property name="width">350</Property>
+                  <Property name="width">700</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">productMaxname</Property>
                   <Property name="property">productMaxname</Property>
-                  <Property name="width">350</Property>
+                  <Property name="width">700</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement id="productMinimg">
@@ -244,7 +254,12 @@ imagePhotoMin.set(&quot;image&quot;,&quot;img/&quot;+imgpathmin);&#xD;
 var img2=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productMaximg2&quot;);&#xD;
 imagePhotoMax2.set(&quot;image&quot;,&quot;img/&quot;+img2);&#xD;
 var img3=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productMaximg3&quot;);&#xD;
-imagePhotoMax3.set(&quot;image&quot;,&quot;img/&quot;+img3);</ClientEvent>
+imagePhotoMax3.set(&quot;image&quot;,&quot;img/&quot;+img3);&#xD;
+&#xD;
+var text=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get('productInfo');&#xD;
+//dorado.MessageBox.alert(infoo);&#xD;
+&#xD;
+</ClientEvent>
           <Property name="dataSet">dataProduct</Property>
           <Property name="currentNodeDataPath">CURRENT_PRODUCT</Property>
           <BindingConfigs>

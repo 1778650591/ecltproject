@@ -34,11 +34,11 @@
         <Property name="label">大标题</Property>
       </PropertyDef>
       <PropertyDef name="productMaximg2">
-        <Property/>
+        <Property></Property>
         <Property name="label">预览图2</Property>
       </PropertyDef>
       <PropertyDef name="productMaximg3">
-        <Property/>
+        <Property></Property>
         <Property name="label">预览图3</Property>
       </PropertyDef>
       <PropertyDef name="pPreset">
@@ -110,8 +110,14 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
             </Button>
           </Container>
           <FieldSet>
+            <ClientEvent name="onReady">&#xD;
+</ClientEvent>
             <Property name="caption">产品信息</Property>
-            <Property name="height">500</Property>
+            <Property name="height">450</Property>
+            <Property name="width">800</Property>
+            <Property name="style">
+              <Property name="background-color">#D8D8D8</Property>
+            </Property>
             <Buttons/>
             <Children>
               <AutoForm id="autoformProduct">
@@ -121,24 +127,33 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
                 <Property name="dataSet">dataProduct</Property>
                 <AutoFormElement>
                   <Property name="name">productName</Property>
-                  <Property name="width">350</Property>
+                  <Property name="width">700</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">productInfo</Property>
-                  <Property name="width">350</Property>
-                  <Editor/>
+                  <Property name="width">700</Property>
+                  <Editor>
+                    <Container>
+                      <Property name="height">400</Property>
+                      <HtmlEditor id="Info">
+                        <Property name="mode">simple</Property>
+                        <Property name="dataSet">dataProduct</Property>
+                        <Property name="property">productInfo</Property>
+                      </HtmlEditor>
+                    </Container>
+                  </Editor>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">productMinname</Property>
                   <Property name="property">productMinname</Property>
-                  <Property name="width">350</Property>
+                  <Property name="width">700</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">productMaxname</Property>
                   <Property name="property">productMaxname</Property>
-                  <Property name="width">350</Property>
+                  <Property name="width">700</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement id="productMinimg">
@@ -153,6 +168,9 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
                       <Button id="buttonUploadMin">
                         <Property name="caption">上传图片</Property>
                         <Property name="action">uploadactionFileMin</Property>
+                        <Property name="style">
+                          <Property name="background-color">#FFFFFF</Property>
+                        </Property>
                       </Button>
                     </Container>
                   </Editor>
@@ -170,6 +188,9 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
                         <ClientEvent name="onClick" signature="self,arg,autoformProduct">autoformProduct.refresh();</ClientEvent>
                         <Property name="caption">上传图片</Property>
                         <Property name="action">uploadactionFile</Property>
+                        <Property name="style">
+                          <Property name="background-color">#FFFFFF</Property>
+                        </Property>
                       </Button>
                     </Container>
                   </Editor>
@@ -186,6 +207,9 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
                       <Button id="buttonUploadMax2">
                         <Property name="caption">上传图片</Property>
                         <Property name="action">uploadactionMax2</Property>
+                        <Property name="style">
+                          <Property name="background-color">#FFFFFF</Property>
+                        </Property>
                       </Button>
                     </Container>
                   </Editor>
@@ -202,6 +226,9 @@ view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;, function(self,arg,da
                       <Button id="buttonUploadMax3">
                         <Property name="caption">上传图片</Property>
                         <Property name="action">uploadactionMax3</Property>
+                        <Property name="style">
+                          <Property name="background-color">#FFFFFF</Property>
+                        </Property>
                       </Button>
                     </Container>
                   </Editor>
@@ -227,7 +254,12 @@ imagePhotoMin.set(&quot;image&quot;,&quot;img/&quot;+imgpathmin);&#xD;
 var img2=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productMaximg2&quot;);&#xD;
 imagePhotoMax2.set(&quot;image&quot;,&quot;img/&quot;+img2);&#xD;
 var img3=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productMaximg3&quot;);&#xD;
-imagePhotoMax3.set(&quot;image&quot;,&quot;img/&quot;+img3);</ClientEvent>
+imagePhotoMax3.set(&quot;image&quot;,&quot;img/&quot;+img3);&#xD;
+&#xD;
+var text=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get('productInfo');&#xD;
+//dorado.MessageBox.alert(infoo);&#xD;
+&#xD;
+</ClientEvent>
           <Property name="dataSet">dataProduct</Property>
           <Property name="currentNodeDataPath">CURRENT_PRODUCT</Property>
           <BindingConfigs>

@@ -99,6 +99,9 @@ if(entity){&#xD;
       <Property name="dataSet">datasetCase</Property>
       <Property name="height">300</Property>
       <Property name="readOnly">true</Property>
+      <Property name="style">
+        <Property name="background-color">#D8D8D8</Property>
+      </Property>
       <DataColumn name="caseName">
         <Property name="property">caseName</Property>
         <Property name="width">200</Property>
@@ -106,20 +109,21 @@ if(entity){&#xD;
       </DataColumn>
       <DataColumn name="caseInfo">
         <Property name="property">caseInfo</Property>
+        <Property name="width">400</Property>
       </DataColumn>
       <DataColumn name="caseImg">
         <ClientEvent name="onRenderCell">if(arg.data.get(&quot;caseImg&quot;)){&#xD;
     $(arg.dom).empty().xCreate(&#xD;
     {&#xD;
         tagName : &quot;IMG&quot;,&#xD;
-        src : $url(&quot;>images/&quot;+ arg.data.get(&quot;caseImg&quot;)),&#xD;
+        src : $url(&quot;>img/&quot;+ arg.data.get(&quot;caseImg&quot;)),&#xD;
         style : &quot;width: 20px; height: 20px; margin: 2px&quot;&#xD;
     });&#xD;
     //初始化Tip控件，在控件中显示图片&#xD;
     dorado.TipManager.initTip(arg.dom.parentNode, {&#xD;
         content : {&#xD;
             tagName : &quot;IMG&quot;,&#xD;
-            src : $url(&quot;>images/&quot;+ arg.data.get(&quot;caseImg&quot;)),&#xD;
+            src : $url(&quot;>img/&quot;+ arg.data.get(&quot;caseImg&quot;)),&#xD;
             style : &quot;width: 128px; height: 128px; margin: 8px&quot;&#xD;
         },&#xD;
         arrowDirection : &quot;top&quot;,&#xD;
@@ -170,7 +174,7 @@ if(entity){&#xD;
 var image = datasetCase.get(&quot;data:#&quot;).get(&quot;caseImg&quot;);&#xD;
 if(image){&#xD;
     //如果照片名不为空，则设置imagePhoto图片控件的属性，使之显示照片&#xD;
-    imagePhoto.set(&quot;image&quot;,$url(&quot;>images/&quot;+image));&#xD;
+    imagePhoto.set(&quot;image&quot;,$url(&quot;>img/&quot;+image));&#xD;
 }else{&#xD;
     imagePhoto.set(&quot;image&quot;,null);&#xD;
 }</ClientEvent>
