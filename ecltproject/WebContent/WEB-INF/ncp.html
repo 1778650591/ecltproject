@@ -261,72 +261,7 @@
 
 $(function(){
 
-    new WOW().init();
-
-	//banner
-	var swiper = new Swiper('.swiper_renzhen .swiper-container', {
-      spaceBetween:20,
-      slidesPerView: 3,
-      slidesPerColumn: 2,
-       autoplay: {
-	    delay: 3000,
-	    },
-      navigation: {
-        nextEl: '.swiper_renzhen .swiper-button-next',
-        prevEl: '.swiper_renzhen .swiper-button-prev',
-      },
-      breakpoints: {
-      	 1200: {
-          slidesPerView: 3,
-          spaceBetween:20,
-        },
-        1024: {
-          slidesPerView:3,
-          spaceBetween:20,
-        },
-      	 992: {
-          slidesPerView: 3,
-          spaceBetween:20,
-        },
-        768: {
-          slidesPerView: 2,
-          // spaceBetween: 30,
-        },
-        640: {
-          slidesPerView:1,
-          // spaceBetween: 20,
-        },
-        320: {
-          slidesPerView: 1,
-          // spaceBetween: 10,
-        }
-      }
-
-    });
-
-    var mySwiper = new Swiper('.Renzrooms_swiper .swiper-container', {
-      slidesPerView: 3,
-      // spaceBetween: 30,
-	  centeredSlides: true,
-	  loop: true,
-	  observer:true,
-      observeParents:true,
-	  autoplay: {
-	    delay:3000,
-	    },
-	   navigation: {
-        nextEl: '.Renzrooms_swiper .swiper-button-next',
-        prevEl: '.Renzrooms_swiper .swiper-button-prev',
-      },
-
-    });
-
-	$('.Renzrooms_swiper').mouseenter(function () {
-	   mySwiper.autoplay.stop();
-	})
-	$('.Renzrooms_swiper').mouseleave(function () {
-	   mySwiper.autoplay.start();
-	})
+    
 	
 
 });
@@ -350,6 +285,74 @@ var vm = new Vue({
                 	response.data[i].ncpImg = "img/"+response.data[i].ncpImg;
                 }
                 _this.ncpList = response.data;
+                setTimeout(function(){
+                	new WOW().init();
+
+                	//banner
+                	var swiper = new Swiper('.swiper_renzhen .swiper-container', {
+                      spaceBetween:20,
+                      slidesPerView: 3,
+                      slidesPerColumn: 2,
+                       autoplay: {
+                	    delay: 3000,
+                	    },
+                      navigation: {
+                        nextEl: '.swiper_renzhen .swiper-button-next',
+                        prevEl: '.swiper_renzhen .swiper-button-prev',
+                      },
+                      breakpoints: {
+                      	 1200: {
+                          slidesPerView: 3,
+                          spaceBetween:20,
+                        },
+                        1024: {
+                          slidesPerView:3,
+                          spaceBetween:20,
+                        },
+                      	 992: {
+                          slidesPerView: 3,
+                          spaceBetween:20,
+                        },
+                        768: {
+                          slidesPerView: 2,
+                          // spaceBetween: 30,
+                        },
+                        640: {
+                          slidesPerView:1,
+                          // spaceBetween: 20,
+                        },
+                        320: {
+                          slidesPerView: 1,
+                          // spaceBetween: 10,
+                        }
+                      }
+
+                    });
+
+                    /* var mySwiper = new Swiper('.Renzrooms_swiper .swiper-container', {
+                      slidesPerView: 3,
+                      // spaceBetween: 30,
+                	  centeredSlides: true,
+                	  loop: true,
+                	  observer:true,
+                      observeParents:true,
+                	  autoplay: {
+                	    delay:3000,
+                	    },
+                	   navigation: {
+                        nextEl: '.Renzrooms_swiper .swiper-button-next',
+                        prevEl: '.Renzrooms_swiper .swiper-button-prev',
+                      },
+
+                    }); */
+
+                	$('.Renzrooms_swiper').mouseenter(function () {
+                	   mySwiper.autoplay.stop();
+                	})
+                	$('.Renzrooms_swiper').mouseleave(function () {
+                	   mySwiper.autoplay.start();
+                	})
+                },500);
             }).catch(function (err) {
                 //console.log(err)
             });
@@ -367,6 +370,27 @@ var vm = new Vue({
 				response.data.ncpImg = "img/"+response.data.ncpImg;
 				response.data.ncpMaximg = "img/"+response.data.ncpMaximg;
                 _this.ncp = response.data;
+                
+                setTimeout(function(){
+
+                    var mySwiper = new Swiper('.Renzrooms_swiper .swiper-container', {
+                      slidesPerView: 3,
+                      // spaceBetween: 30,
+                	  centeredSlides: true,
+                	  loop: true,
+                	  observer:true,
+                      observeParents:true,
+                	  autoplay: {
+                	    delay:3000,
+                	    },
+                	   navigation: {
+                        nextEl: '.Renzrooms_swiper .swiper-button-next',
+                        prevEl: '.Renzrooms_swiper .swiper-button-prev',
+                      },
+
+                    });
+
+                },500);
                 _this.visb = "visibility:visible";
             }).catch(function (err) {
                 console.log(err)

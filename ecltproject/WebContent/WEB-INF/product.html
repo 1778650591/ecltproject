@@ -524,6 +524,9 @@
 	                _this.visb = "visibility:visible";
 	                _this.infos = _this.product.productInfo!=null?_this.product.productInfo.split("|"):[];
 	                console.log(_this.infos);
+	                setTimeout(function(){
+		                _this.initSwiper();
+	                },500);
 	                
 	            }).catch(function (err) {
 	                console.log(err);
@@ -548,6 +551,32 @@
 	            }).catch(function (err) {
 	                console.log(err);
 	            });
+			},
+			initSwiper:function(){
+				  new WOW().init();
+
+					//banner
+					var swiper = new Swiper('.chanpxq_swiper .swiper-container', {
+				      slidesPerView:1,
+				      // spaceBetween:10,
+				      centeredSlides: true,
+				      loop:true,
+
+				      pagination: {
+				        el:'.chanpxq_swiper .swiper-pagination',
+				      },
+				      observer:true,
+				      observeParents:true,
+				      autoplay: {
+					    delay: 3000,
+					    },
+				    });
+				    swiper.el.onmouseover = function(){
+				      swiper.autoplay.stop();
+				    }
+				    swiper.el.onmouseleave = function(){
+				      swiper.autoplay.start();
+				    }
 			}
 		},
 	    created(){
@@ -567,30 +596,7 @@
 <script>
 $(function(){
 
-    new WOW().init();
-
-	//banner
-	var swiper = new Swiper('.chanpxq_swiper .swiper-container', {
-      slidesPerView:1,
-      // spaceBetween:10,
-      centeredSlides: true,
-      loop:true,
-
-      pagination: {
-        el:'.chanpxq_swiper .swiper-pagination',
-      },
-      observer:true,
-      observeParents:true,
-      autoplay: {
-	    delay: 3000,
-	    },
-    });
-    swiper.el.onmouseover = function(){
-      swiper.autoplay.stop();
-    }
-    swiper.el.onmouseleave = function(){
-      swiper.autoplay.start();
-    }
+  
 	
 
 });
