@@ -15,10 +15,11 @@
 <link rel="stylesheet" type="text/css" href="css/animate.css" />
 <link rel="stylesheet" type="text/css" href="css/swiper.min.css" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
+<script src="js/realm.js"></script>
 </head>
 <body>
 	<!--头部 Start!-->
-
+<div id="index">
 	<div class="header clearfix">
 		<div class="inner">
 			<div class="logo"><a href="javascript:;"><img src="images/logo.png" alt=""></a></div>
@@ -29,35 +30,35 @@
 			<div class="header_pcnav">
 				<ul>
 					<li class="icon_1 active">
-						<a href="http://localhost:8080/ecltproject/index.do">
+						<a :href="serUrl+'index.do'">
 							<p><span>首页</span></p>
 							<p><em>HOME</em></p>
 						</a>
 						<div class="gsmosue"></div>
 					</li>
 					<li class="icon_2">
-						<a href="http://localhost:8080/ecltproject/product.do">
+						<a :href="serUrl+'product.do'">
 							<p><span>产品信息</span></p>
 							<p><em>product</em></p>
 						</a>
 						<div class="gsmosue"></div>
 					</li>
 					<li class="icon_3">
-						<a href="http://localhost:8080/ecltproject/case.do">
+						<a :href="serUrl+'case.do'">
 							<p><span>客户案例</span></p>
 							<p><em>case</em></p>
 						</a>
 						<div class="gsmosue"></div>
 					</li>
 					<li class="icon_4">
-						<a href="http://localhost:8080/ecltproject/ncp.do">
+						<a :href="serUrl+'ncp.do'">
 							<p><span>资质认证</span></p>
 							<p><em>certification</em></p>
 						</a>
 						<div class="gsmosue"></div>
 					</li>
 					<li class="icon_5">
-						<a href="http://localhost:8080/ecltproject/we.do">
+						<a :href="serUrl+'we.do'">
 							<p><span>联系我们</span></p>
 							<p><em>Contact us</em></p>
 						</a>
@@ -70,11 +71,11 @@
 			<div class="click_sjnav"></div>
 			<div class="navslider_sj">
 				<ul>
-					<li><a href="http://localhost:8080/ecltproject/index.do">首页</a></li>
-					<li><a href="http://localhost:8080/ecltproject/product.do">产品信息</a></li>
-					<li><a href="http://localhost:8080/ecltproject/case.do">客户案例</a></li>
-					<li><a href="http://localhost:8080/ecltproject/ncp.do">资质认证</a></li>
-					<li><a href="http://localhost:8080/ecltproject/we.do">联系我们</a></li>
+					<li><a :href="serUrl+'index.do'">首页</a></li>
+					<li><a :href="serUrl+'product.do'">产品信息</a></li>
+					<li><a :href="serUrl+'case.do'">客户案例</a></li>
+					<li><a :href="serUrl+'ncp.do'">资质认证</a></li>
+					<li><a :href="serUrl+'we.do'">联系我们</a></li>
 				</ul>
 			</div>
 			<!-- 手机导航 end -->
@@ -114,7 +115,7 @@
 				  <div class="swiper-container">
 				    <div class="swiper-wrapper">
 				      <div class="swiper-slide">
-				      	<a href="http://localhost:8080/ecltproject/product.do">
+				      	<a :href="serUrl+'product.do'">
 				      		<div class="slider_br">
 					      		<div class="slidebgbar slidebgbar_1"><img src="images/lagan_1.png" alt=""></div>
 					      		<div class="slider_yan">
@@ -125,7 +126,7 @@
 				      	</a>
 				      </div>
 				      <div class="swiper-slide">
-				      	<a href="http://localhost:8080/ecltproject/product.do">
+				      	<a :href="serUrl+'product.do'">
 					      	<div class="slider_br">
 					      		<div class="slidebgbar slidebgbar_2"><img src="images/lagan_2.png" alt=""></div>
 					      		<div class="slider_yan">
@@ -136,7 +137,7 @@
 				      	</a>
 				      </div>
 				      <div class="swiper-slide">
-				      	<a href="http://localhost:8080/ecltproject/product.do">
+				      	<a :href="serUrl+'product.do'">
 					      	<div class="slider_br">
 					      		<div class="slidebgbar slidebgbar_3"><img src="images/lagan_3.png" alt=""></div>
 					      		<div class="slider_yan">
@@ -147,7 +148,7 @@
 					     </a>
 				      </div>
 				      <div class="swiper-slide">
-				      	<a href="http://localhost:8080/ecltproject/product.do">
+				      	<a :href="serUrl+'product.do'">
 					      	<div class="slider_br">
 					      		<div class="slidebgbar slidebgbar_4"><img src="images/lagan_4.png" alt=""></div>
 					      		<div class="slider_yan">
@@ -158,7 +159,7 @@
 					     </a>
 				      </div>
 				      <div class="swiper-slide">
-				      	<a href="http://localhost:8080/ecltproject/product.do">
+				      	<a :href="serUrl+'product.do'">
 					      	<div class="slider_br">
 					      		<div class="slidebgbar slidebgbar_1"><img src="images/lagan_1.png" alt=""></div>
 					      		<div class="slider_yan">
@@ -169,7 +170,7 @@
 					     </a>
 				      </div>
 				      <div class="swiper-slide">
-				      	<a href="http://localhost:8080/ecltproject/product.do">
+				      	<a :href="serUrl+'product.do'">
 					      	<div class="slider_br">
 					      		<div class="slidebgbar slidebgbar_2"><img src="images/lagan_2.png" alt=""></div>
 					      		<div class="slider_yan">
@@ -208,7 +209,7 @@
 								<span class="pp_2"></span>
 								<span class="pp_3"></span>
 							</div>
-							<a href="http://localhost:8080/ecltproject/case.do">
+							<a :href="serUrl+'case.do'">
 								<div class="poaslidet">
 									<div class="paostitle"><h3>中国农业银行</h3></div>
 									<div class="palstedimg">
@@ -229,7 +230,7 @@
 									<span class="pp_2"></span>
 									<span class="pp_3"></span>
 								</div>
-							<a href="http://localhost:8080/ecltproject/case.do">
+							<a :href="serUrl+'case.do'">
 								<div class="poaslidet">
 									<div class="paostitle"><h3>中国北京顺义中医医院</h3></div>
 									<div class="palstedimg">
@@ -250,7 +251,7 @@
 									<span class="pp_2"></span>
 									<span class="pp_3"></span>
 								</div>
-							<a href="http://localhost:8080/ecltproject/case.do">
+							<a :href="serUrl+'case.do'">
 								<div class="poaslidet">
 									<div class="paostitle"><h3>中国联通</h3></div>
 									<div class="palstedimg">
@@ -265,7 +266,7 @@
 							</a>
 						</li>
 					</ul>
-					<div class="morechans"><a href="http://localhost:8080/ecltproject/case.do">更多</a></div>
+					<div class="morechans"><a :href="serUrl+'case.do'">更多</a></div>
 				</div>
 			</div>
 		</div>
@@ -333,7 +334,7 @@
 
 	<!--底部 Start!-->
 
-	<div class="footer" id="index">
+	<div class="footer">
 		<div class="inner clearfix">
 			<div class="footer_items">
 				<h3>{{Company.coName}}</h3>     
@@ -358,7 +359,7 @@
 			</div>
 		</div>
 	</div>
-	
+</div>
 	<!--底部 End!-->
 <script src="js/vuejs-2.5.16.js"></script>
 <script src="js/axios-0.18.0.js"></script>
@@ -367,11 +368,13 @@
 		el:"#index",
 		data:{
 			Company:{},
+			serUrl:serverSrc
 		},
 		methods:{
 			getCompanyById:function(companyid){
-				var url = "http://localhost:8080/ecltproject/getCompanyById.do";
 				var _this = this;
+				var url = _this.serUrl+"getCompanyById.do";
+				
 				
 				axios.get(url,{
 					params:{
@@ -388,6 +391,7 @@
 		},
 	    created(){
 	        this.getCompanyById(1);
+	        //console.log(this.serUrl);
 	    }
 	});
 	Vue.config.productionTip = false;

@@ -18,7 +18,7 @@
 </head>
 <body>
 	<!--头部 Start!-->
-
+<div id="case">
 	<div class="header clearfix">
 		<div class="inner">
 			<div class="logo"><a href="javascript:;"><img src="images/logo.png" alt=""></a></div>
@@ -29,35 +29,35 @@
 			<div class="header_pcnav">
 				<ul>
 					<li class="icon_1 active">
-						<a href="http://localhost:8080/ecltproject/index.do">
+						<a :href="serUrl+'index.do'">
 							<p><span>首页</span></p>
 							<p><em>HOME</em></p>
 						</a>
 						<div class="gsmosue"></div>
 					</li>
 					<li class="icon_2">
-						<a href="http://localhost:8080/ecltproject/product.do">
+						<a :href="serUrl+'product.do'">
 							<p><span>产品信息</span></p>
 							<p><em>product</em></p>
 						</a>
 						<div class="gsmosue"></div>
 					</li>
 					<li class="icon_3">
-						<a href="http://localhost:8080/ecltproject/case.do">
+						<a :href="serUrl+'case.do'">
 							<p><span>客户案例</span></p>
 							<p><em>case</em></p>
 						</a>
 						<div class="gsmosue"></div>
 					</li>
 					<li class="icon_4">
-						<a href="http://localhost:8080/ecltproject/ncp.do">
+						<a :href="serUrl+'ncp.do'">
 							<p><span>资质认证</span></p>
 							<p><em>certification</em></p>
 						</a>
 						<div class="gsmosue"></div>
 					</li>
 					<li class="icon_5">
-						<a href="http://localhost:8080/ecltproject/we.do">
+						<a :href="serUrl+'we.do'">
 							<p><span>联系我们</span></p>
 							<p><em>Contact us</em></p>
 						</a>
@@ -70,11 +70,11 @@
 			<div class="click_sjnav"></div>
 			<div class="navslider_sj">
 				<ul>
-					<li><a href="http://localhost:8080/ecltproject/index.do">首页</a></li>
-					<li><a href="http://localhost:8080/ecltproject/product.do">产品信息</a></li>
-					<li><a href="http://localhost:8080/ecltproject/case.do">客户案例</a></li>
-					<li><a href="http://localhost:8080/ecltproject/ncp.do">资质认证</a></li>
-					<li><a href="http://localhost:8080/ecltproject/we.do">联系我们</a></li>
+					<li><a :href="serUrl+'index.do'">首页</a></li>
+					<li><a :href="serUrl+'product.do'">产品信息</a></li>
+					<li><a :href="serUrl+'case.do'">客户案例</a></li>
+					<li><a :href="serUrl+'ncp.do'">资质认证</a></li>
+					<li><a :href="serUrl+'we.do'">联系我们</a></li>
 				</ul>
 			</div>
 			<!-- 手机导航 end -->
@@ -106,7 +106,7 @@
 	<!--banner End!-->
 
 	<!--main Start!-->
-	<div id="case">
+	
 	<div class="renspages">
 		<div class="Topbuells">
 			<div class="inner">
@@ -225,6 +225,7 @@
 	</div>
 <script src="js/vuejs-2.5.16.js"></script>
 <script src="js/axios-0.18.0.js"></script>
+<script src="js/realm.js"></script>
 <script type="text/javascript">
 	var vm = new Vue({
 		el:"#case",
@@ -232,12 +233,14 @@
 			caseList:[],
 			Case:{},
 			Company:{},
-			visb:""
+			visb:"",
+			serUrl:serverSrc
 		},
 		methods:{
 			findNcpAll:function(){
-				var url = "http://localhost:8080/ecltproject/findCaseAll.do";
 				var _this = this;
+				var url = _this.serUrl+"findCaseAll.do";
+				
 				
 				axios.get(url).then(function (response) {
 	                //console.log(response);
@@ -254,8 +257,9 @@
 	            });
 			},
 			getCaseById:function(caseId){
-				var url = "http://localhost:8080/ecltproject/getCaseById.do";
 				var _this = this;
+				var url = _this.serUrl+"getCaseById.do";
+				
 				
 				axios.get(url,{
 					params:{
@@ -276,8 +280,9 @@
 				_this.visb = "";
 			},
 			getCompanyById:function(companyid){
-				var url = "http://localhost:8080/ecltproject/getCompanyById.do";
 				var _this = this;
+				var url = _this.serUrl+"getCompanyById.do";
+				
 				
 				axios.get(url,{
 					params:{
