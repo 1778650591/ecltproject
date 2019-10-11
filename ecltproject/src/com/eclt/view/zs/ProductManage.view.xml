@@ -327,12 +327,11 @@ dorado.widget.NotifyTipManager.notify(destName + &quot;的照片已经成功上�
     <UploadAction id="uploadactionMax2">
       <ClientEvent name="onFileUploaded" signature="self,arg,imagePhotoMax2">var file = arg.file;&#xD;
 var name = file.name;&#xD;
-dorado.MessageBox.alert(arg);&#xD;
 imagePhotoMax2.set(&quot;image&quot;,$url(&quot;>img/&quot;+name));&#xD;
 var autop=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).set(&quot;productMaximg2&quot;,name);&#xD;
 var destName=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productName&quot;);&#xD;
 dorado.widget.NotifyTipManager.notify(destName + &quot;的照片已经成功上传!&quot;);&#xD;
-//192.168.10.131</ClientEvent>
+</ClientEvent>
       <Filters/>
     </UploadAction>
     <UploadAction id="uploadactionMax3">
