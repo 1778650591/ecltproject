@@ -191,7 +191,7 @@
 											<h3>{{p.productMinname}}</h3>
 											<p>{{p.productMaxname}}</p>
 										</div>
-										<div class="felimgbar"><img :src="p.productMinimg" alt=""></div>
+										<div class="felimgbar"><img style="width:100%;height:100%" :src="p.productMinimg" alt=""></div>
 									</div>
 									<div class="felminzhi"><p>{{p.productName}}</p></div>
 								</a>
@@ -229,7 +229,7 @@
 											<h3>{{p.productMinname}}</h3>
 											<p>{{p.productMaxname}}</p>
 										</div>
-										<div class="felimgbar"><img :src="p.productMinimg" alt=""></div>
+										<div class="felimgbar"><img style="width:100%;height:100%" :src="p.productMinimg" alt=""></div>
 									</div>
 									<div class="felminzhi"><p>{{p.productName}}</p></div>
 								</a>
@@ -267,7 +267,7 @@
 											<h3>{{p.productMinname}}</h3>
 											<p>{{p.productMaxname}}</p>
 										</div>
-										<div class="felimgbar"><img :src="p.productMinimg" alt=""></div>
+										<div class="felimgbar"><img style="width:100%;height:100%" :src="p.productMinimg" alt=""></div>
 									</div>
 									<div class="felminzhi"><p>{{p.productName}}</p></div>
 								</a>
@@ -305,7 +305,7 @@
 											<h3>{{p.productMinname}}</h3>
 											<p>{{p.productMaxname}}</p>
 										</div>
-										<div class="felimgbar"><img :src="p.productMinimg" alt=""></div>
+										<div class="felimgbar"><img style="width:100%;height:100%" :src="p.productMinimg" alt=""></div>
 									</div>
 									<div class="felminzhi"><p>{{p.productName}}</p></div>
 								</a>
@@ -343,7 +343,7 @@
 											<h3>{{p.productMinname}}</h3>
 											<p>{{p.productMaxname}}</p>
 										</div>
-										<div class="felimgbar"><img :src="p.productMinimg" alt=""></div>
+										<div class="felimgbar"><img style="width:100%;height:100%" :src="p.productMinimg" alt=""></div>
 									</div>
 									<div class="felminzhi"><p>{{p.productName}}</p></div>
 								</a>
@@ -419,13 +419,13 @@
 						  <div class="swiper-container">
 						    <div class="swiper-wrapper">
 						      <div class="swiper-slide">
-						      	<div class="chanpxq_imgs"><img :src="product.productImg" alt=""></div>
+						      	<div class="chanpxq_imgs"><img style="width:100%;height:100%" :src="product.productImg" alt=""></div>
 						      </div>
 						      <div class="swiper-slide">
-						      	<div class="chanpxq_imgs"><img :src="product.productMaximg2" alt=""></div>
+						      	<div class="chanpxq_imgs"><img style="width:100%;height:100%" :src="product.productMaximg2" alt=""></div>
 						      </div>
 						      <div class="swiper-slide">
-						      	<div class="chanpxq_imgs"><img :src="product.productMaximg3" alt=""></div>
+						      	<div class="chanpxq_imgs"><img style="width:100%;height:100%" :src="product.productMaximg3" alt=""></div>
 						      </div>
 						    </div>
 						    <!-- Add Pagination -->
@@ -433,7 +433,7 @@
 						  </div>
 					</div>
 				</div>
-				<div class="chanpxq_fulls">
+				<div class="chanpxq_fulls" style="overflow:auto">
 					<h3>产品信息</h3>
 					<h4>{{product.productName}}</h4>
 					<!-- <p v-for="i in infos">{{i}}</p> -->
@@ -465,7 +465,8 @@
 			//infos:[],
 			Company:{},
 			visb:"",
-			serUrl:serverSrc
+			serUrl:serverSrc,
+			swiper:null,
 		},
 		methods:{
 			findProductAll:function(productId){
@@ -483,7 +484,8 @@
 	                	//console.log(response.data[i]);
 	                	//修改图片路径
 	                	//response.data[i].productImg = "img/"+response.data[i].productImg;
-	                	response.data[i].productMinimg = "img/"+response.data[i].productMinimg;
+	                	
+	                	response.data[i].productMinimg = response.data[i].productMinimg == null||response.data[i].productMinimg == ""?productMinimg:"img/"+response.data[i].productMinimg;
 	                	//console.log(response.data[i].ncpImg);
 	                }
 					//response.data.caseImg = "img/"+response.data.caseImg;
@@ -520,9 +522,9 @@
 					}
 				}).then(function (response) {
 					//console.log(response);
-					response.data.productImg = "img/"+response.data.productImg;
-					response.data.productMaximg2 = "img/"+response.data.productMaximg2;
-					response.data.productMaximg3 = "img/"+response.data.productMaximg3;
+					response.data.productImg = response.data.productImg==null||response.data.productImg==""?productImg:"img/"+response.data.productImg;
+					response.data.productMaximg2 = response.data.productMaximg2==null||response.data.productMaximg2==""?productImg:"img/"+response.data.productMaximg2;
+					response.data.productMaximg3 = response.data.productMaximg3==null||response.data.productMaximg3==""?productImg:"img/"+response.data.productMaximg3;
 		            //response.data.productMinimg = "img/"+response.data.productMinimg;
 	                _this.product = response.data;
 	                _this.visb = "visibility:visible";
@@ -531,7 +533,6 @@
 	                setTimeout(function(){
 		                _this.initSwiper();
 	                },500);
-	                
 	            }).catch(function (err) {
 	                console.log(err);
 	            });
@@ -539,6 +540,10 @@
 			hiddenDiv:function(){
 				var _this = this;
 				_this.visb = "";
+				if(this.swiper){
+					this.swiper.destroy(true,true);
+					this.swiper = null;
+				}
 			},
 			getCompanyById:function(companyid){
 				var _this = this;
@@ -561,12 +566,12 @@
 				  new WOW().init();
 
 					//banner
-					var swiper = new Swiper('.chanpxq_swiper .swiper-container', {
+					var swiper1 = new Swiper('.chanpxq_swiper .swiper-container', {
 				      slidesPerView:1,
 				      // spaceBetween:10,
 				      centeredSlides: true,
 				      loop:true,
-
+				      activeIndex:0,
 				      pagination: {
 				        el:'.chanpxq_swiper .swiper-pagination',
 				      },
@@ -576,12 +581,13 @@
 					    delay: 3000,
 					    },
 				    });
-				    swiper.el.onmouseover = function(){
-				      swiper.autoplay.stop();
+				    swiper1.el.onmouseover = function(){
+				      swiper1.autoplay.stop();
 				    }
-				    swiper.el.onmouseleave = function(){
-				      swiper.autoplay.start();
+				    swiper1.el.onmouseleave = function(){
+				      swiper1.autoplay.start();
 				    }
+				    this.swiper = swiper1;
 			}
 		},
 	    created(){
