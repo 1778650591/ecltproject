@@ -71,7 +71,7 @@
 			<!-- pc 导航 -->
 			<div class="header_pcnav">
 				<ul>
-					<li class="icon_1 active">
+					<li class="icon_1">
 						<a :href="serUrl+'index.do'">
 							<p><span>首页</span></p>
 							<p><em>HOME</em></p>
@@ -92,7 +92,7 @@
 						</a>
 						<div class="gsmosue"></div>
 					</li>
-					<li class="icon_4">
+					<li class="icon_4 active">
 						<a :href="serUrl+'ncp.do'">
 							<p><span>资质认证</span></p>
 							<p><em>certification</em></p>
@@ -226,10 +226,10 @@
 				<div class="Renzrooms_swiper">
 				  <div class="swiper-container">
 				    <div class="swiper-wrapper">
+				      <div class="swiper-slide" v-for="n in ncpList"><img :src="n.ncpMaximg" alt=""></div>
+				      <!-- <div class="swiper-slide"><img :src="ncp.ncpMaximg" alt=""></div>
 				      <div class="swiper-slide"><img :src="ncp.ncpMaximg" alt=""></div>
-				      <div class="swiper-slide"><img :src="ncp.ncpMaximg" alt=""></div>
-				      <div class="swiper-slide"><img :src="ncp.ncpMaximg" alt=""></div>
-				      <div class="swiper-slide"><img :src="ncp.ncpMaximg" alt=""></div>
+				      <div class="swiper-slide"><img :src="ncp.ncpMaximg" alt=""></div> -->
 				      <!-- <div class="swiper-slide"><img :src="ncp.ncpMaximg" alt=""></div> -->
 				      <!--<div class="swiper-slide"><img :src="Case.caseMaximg" alt=""></div>
 				      <div class="swiper-slide"><img :src="Case.caseMaximg" alt=""></div> -->
@@ -286,6 +286,7 @@ var vm = new Vue({
                 for(var i =0;i<response.data.length;i++){
                 	//修改图片路径
                 	response.data[i].ncpImg = response.data[i].ncpImg==null||response.data[i].ncpImg==""?ncpImg:"img/"+response.data[i].ncpImg;
+                	response.data[i].ncpMaximg = response.data[i].ncpMaximg==null||response.data[i].ncpMaximg==""?ncpImg:"img/"+response.data[i].ncpMaximg;
                 }
                 _this.ncpList = response.data;
                 setTimeout(function(){

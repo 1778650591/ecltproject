@@ -28,14 +28,14 @@
 			<!-- pc 导航 -->
 			<div class="header_pcnav">
 				<ul>
-					<li class="icon_1 active">
+					<li class="icon_1">
 						<a :href="serUrl+'index.do'">
 							<p><span>首页</span></p>
 							<p><em>HOME</em></p>
 						</a>
 						<div class="gsmosue"></div>
 					</li>
-					<li class="icon_2">
+					<li class="icon_2 active">
 						<a :href="serUrl+'product.do'">
 							<p><span>产品信息</span></p>
 							<p><em>product</em></p>
@@ -193,7 +193,7 @@
 										</div>
 										<div class="felimgbar"><img style="width:100%;height:100%" :src="p.productMinimg" alt=""></div>
 									</div>
-									<div class="felminzhi"><p>{{p.productName}}</p></div>
+									<div class="felminzhi"><p style="display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;overflow:hidden;" :title="p.productName">{{p.productName}}</p></div>
 								</a>
 							</li>
 							<!-- <li>
@@ -231,7 +231,7 @@
 										</div>
 										<div class="felimgbar"><img style="width:100%;height:100%" :src="p.productMinimg" alt=""></div>
 									</div>
-									<div class="felminzhi"><p>{{p.productName}}</p></div>
+									<div class="felminzhi"><p style="display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;overflow:hidden;" :title="p.productName">{{p.productName}}</p></div>
 								</a>
 							</li>
 							<!-- <li>
@@ -269,7 +269,7 @@
 										</div>
 										<div class="felimgbar"><img style="width:100%;height:100%" :src="p.productMinimg" alt=""></div>
 									</div>
-									<div class="felminzhi"><p>{{p.productName}}</p></div>
+									<div class="felminzhi"><p style="display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;overflow:hidden;" :title="p.productName">{{p.productName}}</p></div>
 								</a>
 							</li>
 							<!-- <li>
@@ -307,7 +307,7 @@
 										</div>
 										<div class="felimgbar"><img style="width:100%;height:100%" :src="p.productMinimg" alt=""></div>
 									</div>
-									<div class="felminzhi"><p>{{p.productName}}</p></div>
+									<div class="felminzhi"><p style="display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;overflow:hidden;" :title="p.productName">{{p.productName}}</p></div>
 								</a>
 							</li>
 							<!-- <li>
@@ -345,7 +345,7 @@
 										</div>
 										<div class="felimgbar"><img style="width:100%;height:100%" :src="p.productMinimg" alt=""></div>
 									</div>
-									<div class="felminzhi"><p>{{p.productName}}</p></div>
+									<div class="felminzhi"><p style="display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;overflow:hidden;" :title="p.productName">{{p.productName}}</p></div>
 								</a>
 							</li>
 							<!-- <li>
