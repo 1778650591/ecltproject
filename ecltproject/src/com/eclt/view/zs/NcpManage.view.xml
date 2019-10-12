@@ -255,25 +255,25 @@ dialogEdit.hide();</ClientEvent>
       <Tools/>
     </Dialog>
     <UploadAction id="uploadactionFile">
-      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhoto,datasetNcp">var file = arg.file;&#xD;
-var name = file.name;&#xD;
+      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhoto,datasetNcp">var name = arg.returnValue;&#xD;
 imagePhoto.set(&quot;image&quot;,$url(&quot;>img/&quot;+name));&#xD;
 var entity = datasetNcp.get(&quot;data:#&quot;);&#xD;
 entity.set(&quot;ncpImg&quot;,name);&#xD;
 dorado.widget.NotifyTipManager.notify(entity&#xD;
         .get(&quot;ncpName&quot;)+ &quot;的照片已经成功上传!&quot;);</ClientEvent>
       <Property name="maxFileSize">10MB</Property>
+      <Property name="fileResolver">myUploadProcessor#process1</Property>
       <Filters/>
     </UploadAction>
     <UploadAction id="uploadactionMax">
-      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhotoMax,datasetNcp">var file = arg.file;&#xD;
-var name = file.name;&#xD;
+      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhotoMax,datasetNcp">var name = arg.returnValue;&#xD;
 imagePhotoMax.set(&quot;image&quot;,$url(&quot;>img/&quot;+name));&#xD;
 var entity = datasetNcp.get(&quot;data:#&quot;);&#xD;
 entity.set(&quot;ncpMaximg&quot;,name);&#xD;
 dorado.widget.NotifyTipManager.notify(entity&#xD;
         .get(&quot;ncpName&quot;)+ &quot;的照片已经成功上传!&quot;);</ClientEvent>
       <Property name="maxFileSize">10MB</Property>
+      <Property name="fileResolver">myUploadProcessor#process1</Property>
       <Filters/>
     </UploadAction>
   </View>

@@ -304,43 +304,46 @@ var text=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get('produ
       </UpdateItem>
     </UpdateAction>
     <UploadAction id="uploadactionFile">
-      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhoto,dataProduct">var file = arg.file;&#xD;
-var name = file.name;&#xD;
+      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhoto,dataProduct">var name = arg.returnValue;&#xD;
 imagePhoto.set(&quot;image&quot;,$url(&quot;>img/&quot;+name));&#xD;
 var autop=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).set(&quot;productImg&quot;,name);&#xD;
 var destName=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productName&quot;);&#xD;
 dorado.widget.NotifyTipManager.notify(destName + &quot;的照片已经成功上传!&quot;);</ClientEvent>
       <Property name="maxFileSize">10MB</Property>
+      <Property name="fileResolver">myUploadProcessor#process1</Property>
       <Filters/>
     </UploadAction>
     <UploadAction id="uploadactionFileMin">
-      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhotoMin">var file = arg.file;&#xD;
-var name = file.name;&#xD;
+      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhotoMin">&#xD;
+var name = arg.returnValue;&#xD;
 imagePhotoMin.set(&quot;image&quot;,$url(&quot;>img/&quot;+name));&#xD;
 var autop=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).set(&quot;productMinimg&quot;,name);&#xD;
 var destName=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productName&quot;);&#xD;
 dorado.widget.NotifyTipManager.notify(destName + &quot;的照片已经成功上传!&quot;);&#xD;
 </ClientEvent>
       <Property name="maxFileSize">10MB</Property>
+      <Property name="fileResolver">myUploadProcessor#process1</Property>
       <Filters/>
     </UploadAction>
     <UploadAction id="uploadactionMax2">
-      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhotoMax2">var file = arg.file;&#xD;
-var name = file.name;&#xD;
+      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhotoMax2">&#xD;
+var name = arg.returnValue;&#xD;
 imagePhotoMax2.set(&quot;image&quot;,$url(&quot;>img/&quot;+name));&#xD;
 var autop=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).set(&quot;productMaximg2&quot;,name);&#xD;
 var destName=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productName&quot;);&#xD;
 dorado.widget.NotifyTipManager.notify(destName + &quot;的照片已经成功上传!&quot;);&#xD;
 </ClientEvent>
+      <Property name="fileResolver">myUploadProcessor#process1</Property>
       <Filters/>
     </UploadAction>
     <UploadAction id="uploadactionMax3">
-      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhotoMax3">var file = arg.file;&#xD;
-var name = file.name;&#xD;
+      <ClientEvent name="onFileUploaded" signature="self,arg,imagePhotoMax3">&#xD;
+var name = arg.returnValue;&#xD;
 imagePhotoMax3.set(&quot;image&quot;,$url(&quot;>img/&quot;+name));&#xD;
 var autop=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).set(&quot;productMaximg3&quot;,name);&#xD;
 var destName=view.id(&quot;autoformProduct&quot;).get(&quot;entity&quot;).get(&quot;productName&quot;);&#xD;
 dorado.widget.NotifyTipManager.notify(destName + &quot;的照片已经成功上传!&quot;);</ClientEvent>
+      <Property name="fileResolver">myUploadProcessor#process1</Property>
       <Filters/>
     </UploadAction>
   </View>
