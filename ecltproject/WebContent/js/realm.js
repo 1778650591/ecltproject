@@ -1,6 +1,7 @@
 
 //全局域名
 const serverSrc = "http://localhost:8080/ecltproject/";
+//http://www.simonnet.com.cn:8090/index.html
 
 //产品默认图片
 	//--详情小图
